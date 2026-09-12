@@ -9,7 +9,8 @@ export async function POST(req: Request) {
   try { body = await req.json(); } catch { /* empty */ }
   const question = String(body.question || "").slice(0, 500).trim();
   if (!question) return Response.json({ error: "no question" }, { status: 400 });
-  const models = (body.modelIds || []).map((id) => modelById(id)).filter((m): m is NonNullable<typeof m> => Boolean(m));
+  const ids = Array.isArray(body.modelIds) ? body.modelIds.filter((x): x is string => typeof x === "string").slice(0, 40) : [];
+  const models = ids.map((id) => modelById(id)).filter((m): m is NonNullable<typeof m> => Boolean(m));
   const pool = models.length ? models : MODELS.slice(0, 8);
   const docIds = [...new Set(pool.flatMap((m) => docsForModel(m)))];
   const chunks = search(question, { docIds, k: 8 });

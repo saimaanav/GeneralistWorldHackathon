@@ -14,6 +14,9 @@ export interface Evidence {
   page?: number | null;
   section?: string;
   url?: string;
+  /** True when the figure was read from the document but the document is not yet indexed, so `quote` is a metric string, not a passage. */
+  unindexed?: boolean;
+  terms?: string[];
 }
 
 export interface DimScore {
@@ -105,7 +108,17 @@ export interface Interpretation {
   source: "claude" | "rules";
 }
 
-export interface DimResult { s: number; c: number; status: Status; score: number | null; label: string; value?: string; metric?: string }
+export interface DimResult {
+  s: number;
+  c: number;
+  status: Status;
+  score: number | null;
+  label: string;
+  value?: string;
+  metric?: string;
+  /** The DimScore the score was taken from: the base dimension, or `overrides.code` when the website task applies. */
+  source?: DimScore;
+}
 
 export interface Ranked {
   model: Model;

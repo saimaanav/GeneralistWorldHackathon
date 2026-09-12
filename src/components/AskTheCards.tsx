@@ -24,6 +24,7 @@ export default function AskTheCards({ modelIds, openDrawer }: { modelIds: string
     const s = new Set<string>();
     for (const m of MODELS) {
       for (const d of DIMS) for (const e of m.dims[d].evidence) if (e.chunk_id) s.add(e.chunk_id);
+      for (const o of Object.values(m.overrides || {})) for (const e of o.evidence) if (e.chunk_id) s.add(e.chunk_id);
       for (const e of m.policy.evidence) if (e.chunk_id) s.add(e.chunk_id);
     }
     return s;
@@ -40,8 +41,10 @@ export default function AskTheCards({ modelIds, openDrawer }: { modelIds: string
   const cite = (id: string, docId?: string, makerKey?: string) => {
     const model = modelForChunk(id, docId, makerKey);
     const dim = model ? dimForChunk(model, id) : undefined;
-    const evidence = model && dim ? [...model.dims[dim].evidence, ...model.policy.evidence].find((e) => e.chunk_id === id) : undefined;
-    openDrawer({ model, dim, evidence, chunkId: id });
+    const code = model?.overrides?.code;
+    const evidence = model && dim ? [...model.dims[dim].evidence, ...(code?.evidence || []), ...model.policy.evidence].find((e) => e.chunk_id === id) : undefined;
+    const dimScore = model && dim ? (code && code.evidence.some((e) => e.chunk_id === id) ? code : model.dims[dim]) : undefined;
+    openDrawer({ model, dim, evidence, chunkId: id, dimScore });
   };
 
   async function ask(question: string) {

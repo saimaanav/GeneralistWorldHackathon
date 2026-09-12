@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { MODELS, PERSONAS } from "@/lib/data";
 import { answersToParams, answersToProfile, paramsToAnswers } from "@/lib/questionnaire";
 import { rankModels } from "@/lib/scoring";
+import { freeTextRules } from "@/lib/freeTextRules";
 import type { Answers, Interpretation } from "@/lib/types";
 import { css, ACCENT } from "@/lib/proto";
 import WeightsPanel from "./WeightsPanel";
@@ -18,6 +19,18 @@ const INTERPRET_TIMEOUT = 8000;
 
 function isEmpty(a: Answers): boolean {
   return !a.business && !a.jobs.length && !a.rank.length && !a.audience && !a.data.length && !a.reach.length && !a.decisions && !a.text;
+}
+
+function meaningful(i: Interpretation): boolean {
+  return Boolean(i.summary.trim() || Object.keys(i.weight_deltas).length || i.add_tasks.length || i.add_flags.length);
+}
+
+/** One reason as a sentence: capital letter, full stop, no doubling up when the source already has one. */
+function asSentence(s: string): string {
+  const t = s.trim();
+  if (!t) return "";
+  const cap = t.charAt(0).toUpperCase() + t.slice(1);
+  return /[.!?]$/.test(cap) ? cap : cap + ".";
 }
 
 export default function Results() {
@@ -41,7 +54,11 @@ export default function Results() {
   }, [answers.docName]);
 
   const description = useMemo(() => {
-    const typed = answers.text || (persona ? persona.answers.text : "") || "";
+    let typed = answers.text || (persona ? persona.answers.text : "") || "";
+    // The URL carries at most 500 characters; the quiz keeps the full text in sessionStorage.
+    if (typed.length >= 500) {
+      try { const full = sessionStorage.getItem("cardcompass.text") || ""; if (full.startsWith(typed)) typed = full; } catch { /* private mode */ }
+    }
     return [typed, doc.text].filter(Boolean).join("\n\n").trim();
   }, [answers.text, persona, doc.text]);
 
@@ -54,20 +71,26 @@ export default function Results() {
     if (!description) { setInterp(null); setInterpState("idle"); return; }
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), INTERPRET_TIMEOUT);
+    let stale = false;
     setInterpState("loading");
+    // If the server is slow or down, the keyword rules still read the description; it is never silently dropped.
+    const fallback = () => {
+      const r = freeTextRules(description);
+      if (meaningful(r)) { setInterp(r); setInterpState("done"); } else { setInterp(null); setInterpState("off"); }
+    };
     fetch("/api/interpret", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ text: description }), signal: ctrl.signal })
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
       .then((j: Partial<Interpretation> | null) => {
-        if (!j || typeof j !== "object" || typeof j.summary !== "string") { setInterpState("off"); return; }
+        if (stale) return;
+        if (!j || typeof j !== "object" || typeof j.summary !== "string") { fallback(); return; }
         const out: Interpretation = { summary: j.summary, weight_deltas: j.weight_deltas || {}, add_tasks: j.add_tasks || [], add_flags: j.add_flags || [], reasons: j.reasons || [], source: j.source === "claude" ? "claude" : "rules" };
-        const meaningful = out.summary.trim() || Object.keys(out.weight_deltas).length || out.add_tasks.length || out.add_flags.length;
-        if (!meaningful) { setInterpState("off"); return; }
+        if (!meaningful(out)) { setInterp(null); setInterpState("off"); return; }
         setInterp(out);
         setInterpState("done");
       })
-      .catch(() => setInterpState("off"))
+      .catch(() => { if (!stale) fallback(); })
       .finally(() => clearTimeout(timer));
-    return () => { ctrl.abort(); clearTimeout(timer); };
+    return () => { stale = true; ctrl.abort(); clearTimeout(timer); };
   }, [description, doc.ready]);
 
   const activeInterp = ignore ? null : interp;
@@ -93,7 +116,8 @@ export default function Results() {
 
   const visible = showAll ? shown : shown.slice(0, 3);
   const quizHref = "/quiz?" + (() => { const p = answersToParams(answers); if (personaId) p.set("persona", personaId); return p.toString(); })();
-  const name = persona ? persona.name : (answers.businessOther ? answers.businessOther.trim() : "your business");
+  // The typed business name only applies when "Something else" is still the chosen business.
+  const name = persona ? persona.name : (answers.business === "other" && answers.businessOther?.trim() ? answers.businessOther.trim() : "your business");
   const recap = (activeInterp && activeInterp.source === "claude" && activeInterp.summary.trim()) ? activeInterp.summary : (profile.summary || "Tell us a little about your business and we will rank the models for it.") + (activeInterp && activeInterp.source === "rules" && activeInterp.summary.trim() ? " " + activeInterp.summary : "");
 
   return (
@@ -111,8 +135,11 @@ export default function Results() {
               {interp && interpState === "done" && (
                 <p style={{ fontSize: 14, color: "#BEB8C9", margin: "10px 0 0" }}>
                   {ignore ? "Your description is set aside. The ranking uses your eight answers only." : (interp.source === "claude" ? "We read your description and adjusted the weights." : "We picked up keywords from your description and adjusted the weights.")}
-                  {!ignore && interp.reasons.length > 0 && " " + interp.reasons.slice(0, 2).join(" ")}
+                  {!ignore && interp.reasons.length > 0 && " " + interp.reasons.slice(0, 2).map(asSentence).filter(Boolean).join(" ")}
                 </p>
+              )}
+              {interpState === "off" && description && (
+                <p style={{ fontSize: 14, color: "#BEB8C9", margin: "10px 0 0" }}>We could not pick anything out of your description, so the ranking uses your eight answers.</p>
               )}
               <div style={{ display: "flex", gap: 10, marginTop: 18, flexWrap: "wrap" }}>
                 <Link href={quizHref} className="edge-ink" style={css("display:inline-flex;align-items:center;background:transparent;border:2px solid #3A3747;border-radius:999px;padding:10px 20px;font-size:15px;font-weight:700;color:#FFF8EE;text-decoration:none;transition:border-color .18s ease;")}>Change my answers</Link>

@@ -13,7 +13,7 @@ export default function LoadingScreen() {
   const sp = useSearchParams();
   const params = sp.toString();
   const rows = useMemo(() => {
-    const makers = makerPages().slice(0, 6).map((m) => ({ key: m.maker as string | null, text: maker(m.maker).name + ", " + m.pages + " pages" }));
+    const makers = makerPages().filter((m) => m.pages > 0).slice(0, 6).map((m) => ({ key: m.maker as string | null, text: maker(m.maker).name + ", " + m.pages + " pages" }));
     return [...makers, { key: null, text: "Matching against your answers" }];
   }, []);
   const [load, setLoad] = useState(0);

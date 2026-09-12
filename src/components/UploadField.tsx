@@ -66,7 +66,7 @@ export default function UploadField({ docName, onFile, onRemove }: {
       <div
         role="button"
         tabIndex={0}
-        aria-label="Upload a document: Word doc, text file or PDF up to 4 MB"
+        aria-label="Upload a document: text file, Markdown or PDF up to 4 MB"
         onClick={() => input.current?.click()}
         onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); input.current?.click(); } }}
         onDragOver={(e) => { e.preventDefault(); if (!over) setOver(true); }}
@@ -78,7 +78,7 @@ export default function UploadField({ docName, onFile, onRemove }: {
         <div style={{ fontSize: 16, color: "#3F3A48" }}>
           {busy ? <span style={{ animation: "v3-blink 1.2s ease-in-out infinite", fontWeight: 700 }}>Reading it…</span> : <>Got something written down? Drop it here, <span style={{ color: "#17706B", fontWeight: 700, textDecoration: "underline" }}>or browse</span></>}
         </div>
-        <div style={{ fontSize: 13, color: "#565064", marginTop: 6 }}>Word doc, text file or PDF, up to 4 MB. We read it, use it, then throw it away.</div>
+        <div style={{ fontSize: 13, color: "#565064", marginTop: 6 }}>Text file, Markdown or PDF, up to 4 MB. We read it, use it, then throw it away.</div>
         <input ref={input} type="file" accept=".md,.txt,.pdf,text/plain,text/markdown,application/pdf" style={{ display: "none" }} onChange={(e) => handle(e.target.files?.[0])} />
       </div>
       {error && <div role="alert" style={{ fontSize: 14, color: "#8E3524", marginTop: 8 }}>{error}</div>}

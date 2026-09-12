@@ -33,6 +33,10 @@ export const RANK_KEYS = ["performance", "truthfulness", "privacy", "fairness", 
 export const DEFAULT_RANK: string[] = Q.presets.balanced.order;
 
 export const EMPTY_ANSWERS: Answers = { jobs: [], rank: [], data: [], reach: [] };
+/** Options that mean "none of the others" on a multi step. They never sit next to a normal answer. */
+export const EXCLUSIVE = new Set(["nothing", "staff_only"]);
+/** How much of the free-text answer travels in the URL. The quiz keeps the rest in sessionStorage. */
+export const TEXT_URL_MAX = 500;
 
 export function stepById(id: string): Step | undefined {
   return Q.steps.find((s) => s.id === id);
@@ -66,9 +70,20 @@ export function recommend(a: Answers): Recommendation {
       byStep[k] = Array.from(new Set([...(byStep[k] || []), ...(v as string[])]));
     }
   }
+  // Two rules can disagree (marketing says "staff only", customer messages says "public").
+  // A normal answer wins over a "none of the others" one, the same way pick() behaves in the quiz.
+  for (const k of Object.keys(byStep)) {
+    if (byStep[k].some((id) => !EXCLUSIVE.has(id))) byStep[k] = byStep[k].filter((id) => !EXCLUSIVE.has(id));
+  }
   let preset: string | undefined;
   for (const p of Q.presetPriority) if (presets.includes(p)) { preset = p; break; }
   return { byStep, preset, presetOrder: preset ? Q.presets[preset].order : undefined };
+}
+
+/** The ranking in force: the user's own order, else the preset the quiz recommends for their answers, else Balanced. */
+export function effectiveRank(a: Answers): string[] {
+  if (a.rank.length === 6) return a.rank;
+  return recommend(a).presetOrder || DEFAULT_RANK;
 }
 
 /* ---------- Type-to-match ---------- */
@@ -109,7 +124,7 @@ export function answersToParams(a: Answers): URLSearchParams {
   if (a.data.length) p.set("d", a.data.join(","));
   if (a.reach.length) p.set("s", a.reach.join(","));
   if (a.decisions) p.set("p", a.decisions);
-  if (a.text) p.set("t", a.text.slice(0, 500));
+  if (a.text) p.set("t", a.text.slice(0, TEXT_URL_MAX));
   if (a.docName) p.set("dn", a.docName);
   return p;
 }
@@ -147,7 +162,7 @@ export function answersToProfile(input: Answers, interp?: Interpretation | null)
     }
   }
 
-  const order = a.rank.length === 6 ? a.rank : DEFAULT_RANK;
+  const order = effectiveRank(a);
   const dimOrder = order.filter((k) => k !== "cost") as DimKey[];
   const weights = {} as Record<DimKey, number>;
   const notes: DeltaNote[] = [];
@@ -203,30 +218,37 @@ export function answersToProfile(input: Answers, interp?: Interpretation | null)
 export function summarize(a: Answers): string {
   const jobs = a.jobs.map((j) => optionLabel("jobs", j).toLowerCase());
   const parts: string[] = [];
-  if (a.business === "other" && a.businessOther) parts.push("You run " + (/^[aeiou]/i.test(a.businessOther.trim()) ? "an " : "a ") + a.businessOther.trim().replace(/\.$/, "") + ".");
+  if (a.business === "other" && a.businessOther?.trim()) {
+    const what = a.businessOther.trim().replace(/[.\s]+$/, "");
+    if (what) parts.push("You run " + (/^[aeiou]/i.test(what) ? "an " : "a ") + what + ".");
+  }
   if (jobs.length) parts.push("You will use AI to " + joinList(jobs.map(lowerFirst)) + ".");
-  if (a.audience === "customers_direct") parts.push("Customers read what it writes with nobody checking first");
-  else if (a.audience === "customers_reviewed") parts.push("Customers read what it writes after someone checks it");
-  else if (a.audience === "only_me") parts.push("Only you and your team see what it writes");
+  let audience = "";
+  if (a.audience === "customers_direct") audience = "Customers read what it writes with nobody checking first";
+  else if (a.audience === "customers_reviewed") audience = "Customers read what it writes after someone checks it";
+  else if (a.audience === "only_me") audience = "Only you and your team see what it writes";
   const reach: string[] = [];
   if (a.reach.includes("public")) reach.push("the public can message it");
   if (a.reach.includes("reads_others")) reach.push("it reads things other people send you");
   if (a.reach.includes("tools")) reach.push("it can take actions on your behalf");
-  if (reach.length) parts[parts.length - 1] = (parts[parts.length - 1] || "") + (parts.length ? ", " : "") + joinList(reach);
-  if (parts.length > 1 || reach.length) parts[parts.length - 1] += ".";
+  // Each of these is a whole sentence, whether or not the audience question was answered.
+  if (audience && reach.length) parts.push(audience + ", and " + joinList(reach) + ".");
+  else if (audience) parts.push(audience + ".");
+  else if (reach.length) parts.push(upperFirst(joinList(reach)) + ".");
   const data: string[] = [];
   if (a.data.includes("contacts")) data.push("customer names");
   if (a.data.includes("payments")) data.push("payment or tax records");
   if (a.data.includes("sensitive")) data.push("health, legal or HR records");
   if (data.length) parts.push("You will paste in " + joinList(data) + ".");
   if (a.decisions === "yes") parts.push("It will help decide things about people, so fairness is weighted heavily.");
-  const costPos = (a.rank.length === 6 ? a.rank : DEFAULT_RANK).indexOf("cost");
+  const costPos = effectiveRank(a).indexOf("cost");
   if (costPos <= 1) parts.push("You want the cheapest option that is still safe.");
   else if (costPos >= 4) parts.push("You want the best results and cost comes second.");
-  return parts.join(" ").replace(/\.\./g, ".");
+  return parts.join(" ");
 }
 
 function lowerFirst(s: string) { return s.charAt(0).toLowerCase() + s.slice(1); }
+function upperFirst(s: string) { return s.charAt(0).toUpperCase() + s.slice(1); }
 function joinList(xs: string[]): string {
   if (xs.length <= 1) return xs.join("");
   return xs.slice(0, -1).join(", ") + " and " + xs[xs.length - 1];

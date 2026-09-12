@@ -29,7 +29,8 @@ export async function streamResponse(stream: ReturnType<Anthropic["messages"]["s
           if (ev.type === "content_block_delta" && ev.delta.type === "text_delta") { c.enqueue(enc.encode(ev.delta.text)); wrote = true; }
         }
       } catch {
-        c.enqueue(enc.encode((wrote ? "\n\n" : "") + fallback));
+        if (wrote) c.enqueue(enc.encode("\n\n" + fallback));
+        else c.enqueue(enc.encode(JSON.stringify({ mode: "template", text: fallback })));
       } finally { c.close(); }
     },
   }), { headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store", "X-Mode": "claude" } });

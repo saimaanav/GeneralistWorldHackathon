@@ -57,3 +57,9 @@ textarea:focus, input:focus { border-color: #17706B; outline: none; }
   .hero-h1 { font-size: 44px !important; }
   .h2-44 { font-size: 34px !important; }
 }
+
+/* Phones: give the rank step's label column room (finding #23). The card is 34px padded and each row carries two 44px arrows. */
+@media (max-width: 480px) {
+  .quiz-card { padding: 20px !important; }
+  .rank-arrows { flex-direction: column; }
+}

@@ -9,7 +9,7 @@ export function recommendedLabel(business?: string): string {
 
 export default function RecommendedTag({ business }: { business?: string }) {
   return (
-    <span style={{ display: "inline-block", background: "#FFC24B", color: "#40300A", borderRadius: 999, padding: "3px 10px", fontSize: 12, fontWeight: 800, lineHeight: 1.4, whiteSpace: "nowrap" }}>
+    <span style={{ display: "inline-block", maxWidth: "100%", background: "#FFC24B", color: "#40300A", borderRadius: 999, padding: "3px 10px", fontSize: 12, fontWeight: 800, lineHeight: 1.4 }}>
       {recommendedLabel(business)}
     </span>
   );

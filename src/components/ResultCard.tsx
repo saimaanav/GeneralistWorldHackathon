@@ -83,7 +83,7 @@ export default function ResultCard({ ranked, idx, rankNo, isTop, expanded, onTog
       )}
 
       {expanded && (
-        <div style={css("margin-top:22px;border-top:2px solid #F3EEE4;padding-top:22px;display:grid;grid-template-columns:repeat(auto-fit, minmax(290px, 1fr));gap:30px;animation:v3-fade .3s ease-out both;")}>
+        <div style={css("margin-top:22px;border-top:2px solid #F3EEE4;padding-top:22px;display:grid;grid-template-columns:repeat(auto-fit, minmax(min(290px, 100%), 1fr));gap:30px;animation:v3-fade .3s ease-out both;")}>
           <DimensionBars ranked={ranked} on={on} showNumbers={showNumbers} profile={profile} openDrawer={openDrawer} />
           <WhyPanel ranked={ranked} profile={profile} rankNo={rankNo} answers={answers} interpretation={interpretation} openDrawer={openDrawer} />
         </div>

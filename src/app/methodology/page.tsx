@@ -20,11 +20,12 @@ interface Skipped { name: string; reason: string }
 
 export default function MethodologyPage() {
   const n = MODELS.length;
+  const indexed = MODELS.filter((mm) => (STATS.docs[mm.card.doc_id]?.pages || 0) > 0).length;
   const steps = [
     { n: "1", title: "You tell us how you will use it", text: "Eight questions about your business, your data, and who can reach the AI. Each answer changes how much weight we give to the five things we compare." },
-    { n: "2", title: "We read what the makers publish", text: `Every AI company publishes a long document about its model. We index all ${n} cards and pull out what they say about accuracy, privacy, bias and security.` },
+    { n: "2", title: "We read what the makers publish", text: `Every AI company publishes a long document about its model. We have indexed ${indexed} of the ${n} cards sentence by sentence so far; the other ${n - indexed} use figures we checked in the maker's published document, linked from every card.` },
     { n: "3", title: "We score what is there, and what is not", text: "A published test result counts fully. A vague description counts for half. Silence is scored low and lowers our confidence in the total, so quiet makers cannot hide behind a good headline." },
-    { n: "4", title: "You see the quote", text: "Every claim on every card links to the sentence it came from, with the page number and a link to the original." },
+    { n: "4", title: "You see the quote", text: "For indexed cards, every claim links to the sentence it came from, with the page number and a link to the original. For the rest, it links to the document itself until we index it." },
   ];
   const stackRows = stacks().map((s) => ({ id: s.model.id, name: s.model.display_name, makerKey: s.model.maker, published: s.published, described: s.described, silent: s.silent }));
   const sources = SOURCES.map((d) => ({
@@ -73,7 +74,7 @@ export default function MethodologyPage() {
           <div style={css("animation:v3-rise .5s .28s ease-out both;")}>
             <div className="step" style={css("background:#FFFFFF;border-radius:20px;padding:22px 26px;box-shadow:0 12px 26px rgba(22,21,28,.05);border-left:5px solid #17706B;transition:transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .22s ease;")}>
               <p style={css("font-size:16px;line-height:1.65;color:#3F3A48;margin:0;text-wrap:pretty;")}>
-                Each check is scored 0 to 100. Your answers set a weight for each check. A published number counts in full, a description counts for half, an older-version result counts at 80%, and silence is scored 35 and counts as no evidence. Your match score is the weighted average, scaled by how much evidence there is (from 75% to 100%). Cheaper models get a small bonus if you said cost matters.
+                Each check is scored 0 to 100. Your answers set a weight for each check. A published number counts in full, a description counts for half, an older-version result counts at 80%, and silence is scored 35 and counts as no evidence. Your match score is the weighted average, scaled by how much evidence there is (from 75% to 100%). If you ranked cost in your top two, cheaper models get +5 and flagship models -5 on the final score; if cost is in your bottom two, flagship models get +3; otherwise there is no adjustment.
               </p>
             </div>
           </div>

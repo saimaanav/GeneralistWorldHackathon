@@ -17,8 +17,10 @@ export default function DimensionBars({ ranked, on, showNumbers, profile, openDr
       <div style={{ fontSize: 16, fontWeight: 800, marginBottom: 14 }}>What the maker publishes</div>
       {DIMS.map((d, i) => {
         const r = ranked.dims[d];
-        const md = model.dims[d];
+        // The DimScore the row was scored from: the website override when it applies, otherwise the base check.
+        const md = r.source || model.dims[d];
         const pending = r.status === "pending";
+        const statusWord = r.status === "third_party" && md.stale ? "older version" : STATUS_WORD[r.status];
         const pct = pending ? 100 : r.s;
         const covers = md.covers || [];
         const injectionGap = d === "tamper" && profile.flags.injectionExposure && !covers.includes("prompt_injection");
@@ -31,7 +33,7 @@ export default function DimensionBars({ ranked, on, showNumbers, profile, openDr
           <div key={d} className="tint" style={css("padding:11px 12px;margin:0 -12px;border-radius:12px;border-bottom:1px solid #F5F0E7;transition:background .2s ease;")}>
             <div style={{ display: "flex", alignItems: "baseline", gap: 8, flexWrap: "wrap" }}>
               <span style={{ fontSize: 15, fontWeight: 700 }}>{DIM_META[d].label}</span>
-              <span style={css(STATUS_CHIP[r.status])}>{STATUS_WORD[r.status]}</span>
+              <span style={css(STATUS_CHIP[r.status])}>{statusWord}</span>
               <span style={{ marginLeft: "auto", fontSize: 16, fontWeight: 800, fontVariantNumeric: "tabular-nums" }}>{pending ? "—" : Math.round(r.s)}</span>
             </div>
             <div style={{ height: 11, borderRadius: 999, background: "#EFE7DA", marginTop: 8, overflow: "hidden" }}>
@@ -41,7 +43,7 @@ export default function DimensionBars({ ranked, on, showNumbers, profile, openDr
               <span style={{ fontSize: 13, color: "#565064", lineHeight: 1.45 }}>{md.plain || DIM_META[d].plain}</span>
               <button
                 type="button"
-                onClick={() => openDrawer({ model, dim: d, evidence: md.evidence[0] })}
+                onClick={() => openDrawer({ model, dim: d, evidence: md.evidence[0], dimScore: md })}
                 style={css("background:none;border:none;padding:10px 0;margin:-10px 0;font-size:13px;font-weight:700;color:#17706B;text-decoration:underline;cursor:pointer;min-height:44px;")}
               >show me where</button>
             </div>

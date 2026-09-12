@@ -56,7 +56,7 @@ export default function RankStep({ step, order, onChange, presets, activePreset,
             ? "background:" + (active ? "#FFC24B" : "#FFF3D6") + ";border:2px solid " + (active ? "#E0A52E" : "#FFD98A") + ";color:#40300A;"
             : "background:" + (active ? "#F0F7F6" : "#FFFFFF") + ";border:2px solid " + (active ? ACCENT : "#EFE7DA") + ";color:#3F3A48;";
           return (
-            <button key={p.id} type="button" className="spring-2" aria-pressed={active} onClick={() => onChange(p.order)} style={css(base + look)}>
+            <button key={p.id} type="button" className="spring-2" aria-pressed={active} title={p.recommended ? p.label + " preset" : undefined} onClick={() => onChange(p.order)} style={css(base + look)}>
               {p.recommended ? recommendedLabel(business) : p.label}
             </button>
           );
@@ -100,7 +100,7 @@ export default function RankStep({ step, order, onChange, presets, activePreset,
                   <span style={{ fontSize: 14, color: "#565064" }}>{it.plain}</span>
                 </span>
               </button>
-              <span style={{ display: "flex", gap: 6, flex: "0 0 auto" }}>
+              <span className="rank-arrows" style={{ display: "flex", gap: 6, flex: "0 0 auto" }}>
                 <button type="button" className="edge" aria-label={"Move " + it.label + " up"} disabled={i === 0} onClick={(e) => { e.stopPropagation(); move(id, -1); }} style={css(ARROW + (i === 0 ? "opacity:.35;cursor:default;" : ""))}>▲</button>
                 <button type="button" className="edge" aria-label={"Move " + it.label + " down"} disabled={i === ids.length - 1} onClick={(e) => { e.stopPropagation(); move(id, 1); }} style={css(ARROW + (i === ids.length - 1 ? "opacity:.35;cursor:default;" : ""))}>▼</button>
               </span>

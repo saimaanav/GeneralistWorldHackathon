@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Q, DEFAULT_RANK, answersToParams, paramsToAnswers, recommend, matchOptions, answersToProfile, optionLabel, type Step } from "@/lib/questionnaire";
+import { Q, DEFAULT_RANK, EXCLUSIVE, TEXT_URL_MAX, answersToParams, paramsToAnswers, recommend, matchOptions, answersToProfile, optionLabel, type Step } from "@/lib/questionnaire";
 import type { Answers } from "@/lib/types";
 import { css, ACCENT } from "@/lib/proto";
 import TypeToMatch from "./TypeToMatch";
@@ -10,9 +10,9 @@ import RankStep, { type PresetPill } from "./RankStep";
 import UploadField from "./UploadField";
 
 export const DOC_KEY = "cardcompass.docText";
+/** The whole free-text answer. The URL only carries the first TEXT_URL_MAX characters. */
+export const TEXT_KEY = "cardcompass.text";
 const TOTAL = 8;
-/** Options that mean "none of the others" on a multi step. */
-const EXCLUSIVE = new Set(["nothing", "staff_only"]);
 const SHOWN_PRESETS = ["safety_first", "best_results", "balanced"];
 
 type SingleKey = "business" | "audience" | "decisions";
@@ -33,11 +33,17 @@ export default function Quiz() {
   const [rankTouched, setRankTouched] = useState<boolean>(() => paramsToAnswers(new URLSearchParams(sp.toString())).rank.length === 6);
 
   // A document read on an earlier visit lives in sessionStorage, keyed by name in the URL.
+  // So does a long free-text answer: the URL holds the first TEXT_URL_MAX characters, sessionStorage the whole thing.
   useEffect(() => {
-    if (!answers.docName || answers.docText) return;
     try {
-      const t = sessionStorage.getItem(DOC_KEY);
-      if (t) setAnswers((a) => ({ ...a, docText: t }));
+      if (answers.docName && !answers.docText) {
+        const t = sessionStorage.getItem(DOC_KEY);
+        if (t) setAnswers((a) => ({ ...a, docText: t }));
+      }
+      if (answers.text && answers.text.length >= TEXT_URL_MAX) {
+        const full = sessionStorage.getItem(TEXT_KEY);
+        if (full && full.length > answers.text.length && full.startsWith(answers.text)) setAnswers((a) => ({ ...a, text: full }));
+      }
     } catch { /* private mode */ }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -79,8 +85,9 @@ export default function Quiz() {
   const rankOrder = rankTouched && answers.rank.length === 6 ? answers.rank : rec.presetOrder || DEFAULT_RANK;
   const rankWeights = useMemo(() => answersToProfile({ ...answers, rank: rankOrder }).weights, [answers, rankOrder]);
   const presets: PresetPill[] = useMemo(() => {
-    const out: PresetPill[] = SHOWN_PRESETS.filter((id) => Q.presets[id]).map((id) => ({ id, label: Q.presets[id].label, order: Q.presets[id].order }));
-    if (rec.presetOrder && rec.preset) out.push({ id: "rec:" + rec.preset, label: Q.presets[rec.preset].label, order: rec.presetOrder, recommended: true });
+    // A recommended preset that is already one of the shown three becomes that pill, so there is one pill per order and the active one can be found.
+    const out: PresetPill[] = SHOWN_PRESETS.filter((id) => Q.presets[id]).map((id) => ({ id, label: Q.presets[id].label, order: Q.presets[id].order, recommended: rec.preset === id }));
+    if (rec.presetOrder && rec.preset && !SHOWN_PRESETS.includes(rec.preset)) out.push({ id: "rec:" + rec.preset, label: Q.presets[rec.preset].label, order: rec.presetOrder, recommended: true });
     return out;
   }, [rec]);
   const activePreset = presets.find((p) => p.order.join(",") === rankOrder.join(","))?.id;
@@ -90,7 +97,11 @@ export default function Quiz() {
   const pick = (id: string) => {
     if (current.type === "single") {
       const key = current.id as SingleKey;
-      setAnswers((a) => ({ ...a, [key]: a[key] === id ? undefined : id }));
+      setAnswers((a) => {
+        const next = a[key] === id ? undefined : id;
+        // "What do you do?" only makes sense while "Something else" is the answer.
+        return { ...a, [key]: next, ...(key === "business" && next !== "other" ? { businessOther: undefined } : {}) };
+      });
       return;
     }
     if (current.type === "multi") {
@@ -146,8 +157,11 @@ export default function Quiz() {
   const finish = () => {
     let a = answers;
     if (noMatch && typed.trim()) { a = { ...answers, text: answers.text ? answers.text + "\n" + typed.trim() : typed.trim() }; setAnswers(a); }
+    // Results must weigh things the way the rank step said it would, even if the list was never touched.
+    a = { ...a, rank: rankOrder };
     try {
       if (a.docText) sessionStorage.setItem(DOC_KEY, a.docText); else sessionStorage.removeItem(DOC_KEY);
+      if (a.text) sessionStorage.setItem(TEXT_KEY, a.text); else sessionStorage.removeItem(TEXT_KEY);
     } catch { /* private mode */ }
     router.push("/loading?" + paramsFor(a).toString());
   };
@@ -155,6 +169,8 @@ export default function Quiz() {
   const back = () => { if (step > 1) goto(step - 1); else router.push("/"); };
 
   const recommendedHere = rec.byStep[current.id] || [];
+  // Typed notes from earlier steps are appended to the text, so it can run past the box's own limit.
+  const textLen = (answers.text || "").length;
 
   return (
     <div style={{ background: "#FFF8EE", padding: "26px 24px 80px" }}>
@@ -167,7 +183,7 @@ export default function Quiz() {
           <span style={css("display:block;height:100%;border-radius:999px;background:" + ACCENT + ";transition:width .5s cubic-bezier(.34,1.2,.64,1);width:" + (step / TOTAL) * 100 + "%;")} />
         </div>
 
-        <div key={step} style={css("background:#FFFFFF;border-radius:26px;padding:34px;margin-top:22px;box-shadow:0 16px 34px rgba(22,21,28,.08);animation:v3-slide .34s cubic-bezier(.34,1.2,.64,1) both;")}>
+        <div key={step} className="quiz-card" style={css("background:#FFFFFF;border-radius:26px;padding:34px;margin-top:22px;box-shadow:0 16px 34px rgba(22,21,28,.08);animation:v3-slide .34s cubic-bezier(.34,1.2,.64,1) both;")}>
           <h2 style={{ fontSize: 36, lineHeight: 1.1, marginBottom: 8, textWrap: "pretty" }}>{current.title}</h2>
           <p style={{ fontSize: 16, color: "#565064", margin: "0 0 24px" }}>{current.hint}</p>
 
@@ -187,13 +203,21 @@ export default function Quiz() {
 
           {current.type === "text" && (
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-              <textarea
-                value={answers.text || ""}
-                onChange={(e) => setAnswers((a) => ({ ...a, text: e.target.value }))}
-                placeholder="e.g. We are a three person bakery. I answer the same Instagram questions all day and I would like help replying without sounding like a robot."
-                aria-label="Anything else you would like to tell us"
-                style={css("width:100%;min-height:132px;resize:vertical;padding:16px;font-size:16px;line-height:1.5;color:#16151C;background:#FDF9F2;border:2px solid #EFE7DA;border-radius:16px;")}
-              />
+              <div>
+                <textarea
+                  value={answers.text || ""}
+                  onChange={(e) => setAnswers((a) => ({ ...a, text: e.target.value }))}
+                  placeholder="e.g. We are a three person bakery. I answer the same Instagram questions all day and I would like help replying without sounding like a robot."
+                  aria-label="Anything else you would like to tell us"
+                  aria-describedby="quiz-text-count"
+                  maxLength={TEXT_URL_MAX}
+                  style={css("width:100%;min-height:132px;resize:vertical;padding:16px;font-size:16px;line-height:1.5;color:#16151C;background:#FDF9F2;border:2px solid #EFE7DA;border-radius:16px;")}
+                />
+                <div id="quiz-text-count" style={{ display: "flex", justifyContent: "flex-end", gap: 8, flexWrap: "wrap", fontSize: 13, color: textLen > TEXT_URL_MAX ? "#8E3524" : "#565064", marginTop: 6 }}>
+                  {textLen > TEXT_URL_MAX && <span>Over the limit: the first {TEXT_URL_MAX} characters go with your answers, we keep the rest on this device.</span>}
+                  <span style={{ fontVariantNumeric: "tabular-nums" }}>{textLen} / {TEXT_URL_MAX}</span>
+                </div>
+              </div>
               <UploadField
                 docName={answers.docName}
                 onFile={(text, name) => {

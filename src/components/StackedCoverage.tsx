@@ -21,12 +21,13 @@ export default function StackedCoverage({ rows }: { rows: StackRow[] }) {
           <div
             key={s.id}
             className="tint-row"
-            style={css("display:flex;align-items:center;gap:14px;padding:7px 12px;margin:0 -12px;border-radius:12px;transition:background .2s ease, transform .2s ease;")}
+            style={css("display:flex;flex-wrap:wrap;align-items:center;row-gap:8px;column-gap:14px;padding:7px 12px;margin:0 -12px;border-radius:12px;transition:background .2s ease, transform .2s ease;")}
           >
             <MakerTile makerKey={s.makerKey} size={26} />
-            <span style={css("flex:0 0 150px;font-size:14px;font-weight:600;")}>{s.name}</span>
+            <span style={css("flex:0 1 150px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;font-weight:600;")}>{s.name}</span>
+            {/* The bar keeps a real minimum width; on a phone it wraps onto its own line with the number rather than shrinking to nothing. */}
             <span
-              style={css("flex:1 1 auto;display:flex;height:20px;border-radius:999px;overflow:hidden;background:#F3EEE4;")}
+              style={css("flex:1 1 200px;min-width:160px;display:flex;height:20px;border-radius:999px;overflow:hidden;background:#F3EEE4;")}
               role="img"
               aria-label={s.published + "% published, " + s.described + "% described, " + s.silent + "% silent"}
             >

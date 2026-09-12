@@ -81,9 +81,10 @@ export function CitedText({ text, isValid, onCite, onDark = false, color = "#3F3
   );
 }
 
-/** Which check a chunk belongs to, judging by the model's own evidence lists. */
+/** Which check a chunk belongs to, judging by the model's own evidence lists (the website override counts as performance). */
 export function dimForChunk(model: Ranked["model"], chunkId: string): DimKey | undefined {
   for (const d of DIMS) if (model.dims[d].evidence.some((e) => e.chunk_id === chunkId)) return d;
+  if (model.overrides?.code?.evidence.some((e) => e.chunk_id === chunkId)) return "performance";
   if (model.policy.evidence.some((e) => e.chunk_id === chunkId)) return "privacy";
   return undefined;
 }
@@ -108,16 +109,20 @@ export default function WhyPanel({ ranked, profile, rankNo, answers, interpretat
   const evidenceIds = useMemo(() => {
     const s = new Set<string>();
     for (const d of DIMS) for (const e of model.dims[d].evidence) if (e.chunk_id) s.add(e.chunk_id);
+    for (const o of Object.values(model.overrides || {})) for (const e of o.evidence) if (e.chunk_id) s.add(e.chunk_id);
     for (const e of model.policy.evidence) if (e.chunk_id) s.add(e.chunk_id);
     return s;
   }, [model]);
   const isValid = (id: string) => evidenceIds.has(id) || (chunksReady && hasChunk(id));
 
+  /** The DimScore a paragraph's pill should open: the one the score was taken from. */
+  const sourceOf = (d: DimKey) => ranked.dims[d].source || model.dims[d];
+
   const cite = (id: string) => {
     const dim = dimForChunk(model, id);
-    const evidence = dim ? [...model.dims[dim].evidence, ...model.policy.evidence].find((e) => e.chunk_id === id) : undefined;
+    const evidence = dim ? [...sourceOf(dim).evidence, ...model.dims[dim].evidence, ...model.policy.evidence].find((e) => e.chunk_id === id) : undefined;
     const c = chunkById(id);
-    openDrawer({ model, dim, evidence, chunkId: id });
+    openDrawer({ model, dim, evidence, chunkId: id, dimScore: dim ? sourceOf(dim) : undefined });
     void c;
   };
 
@@ -172,7 +177,7 @@ export default function WhyPanel({ ranked, profile, rankNo, answers, interpretat
           paras.map((p, i) => (
             <p key={i} style={{ margin: "0 0 12px", textWrap: "pretty" }}>
               {p.before}
-              <button type="button" onClick={() => openDrawer({ model, dim: p.dim, evidence: p.dim ? model.dims[p.dim].evidence[0] : undefined })} style={css(PILL)}>{p.pill}</button>
+              <button type="button" onClick={() => openDrawer({ model, dim: p.dim, evidence: p.dim ? sourceOf(p.dim).evidence[0] : undefined, dimScore: p.dim ? sourceOf(p.dim) : undefined })} style={css(PILL)}>{p.pill}</button>
               {p.after}
             </p>
           ))

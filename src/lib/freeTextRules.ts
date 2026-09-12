@@ -26,7 +26,7 @@ export function freeTextRules(text: string): Interpretation {
     for (const [k, v] of Object.entries(r.deltas || {})) deltas[k as keyof typeof deltas] = Math.max(-0.15, Math.min(0.15, (deltas[k as keyof typeof deltas] || 0) + (v as number)));
     for (const f of r.flags || []) flags.add(f);
     for (const k of r.tasks || []) tasks.add(k);
-    reasons.push(`keyword match: '${m[0]}', ${r.reason}`);
+    reasons.push(`You mentioned '${m[0]}': ${r.reason}.`);
   }
   const firstSentence = t.split(/[.!?\n]/)[0]?.trim();
   return {

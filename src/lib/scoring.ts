@@ -1,19 +1,24 @@
-import type { DimKey, DimResult, Model, Profile, RankResult, Ranked, Status } from "./types";
+import type { DimKey, DimResult, DimScore, Model, Profile, RankResult, Ranked, Status } from "./types";
 import { DIMS } from "./types";
 
 export const MISSING_PRIOR = 35;
 export const TRUST_FLOOR = 0.75;
 export const COVERAGE: Record<Status, number> = { reported: 1, third_party: 0.8, inferred: 0.5, missing: 0, pending: 0 };
 
-function dimFor(model: Model, dim: DimKey, tasks: string[]): { score: number | null; status: Status; label: string; value?: string; metric?: string } {
-  let d = model.dims[dim];
-  let label = d?.metric || "";
+/** The DimScore a model's check is scored from: the base dimension, or `overrides.code` when the website task applies. */
+export function effectiveDim(model: Model, dim: DimKey, tasks: string[]): DimScore | undefined {
+  const d = model.dims[dim];
   if (dim === "performance" && tasks.includes("website") && model.overrides?.code && model.overrides.code.status !== "missing" && model.overrides.code.status !== "pending") {
-    d = model.overrides.code;
-    label = d.metric || "code benchmark";
+    return model.overrides.code;
   }
+  return d;
+}
+
+function dimFor(model: Model, dim: DimKey, tasks: string[]): { score: number | null; status: Status; label: string; value?: string; metric?: string; source?: DimScore } {
+  const d = effectiveDim(model, dim, tasks);
   if (!d) return { score: null, status: "missing", label: "not reported" };
-  return { score: d.score, status: d.status, label, value: d.value, metric: d.metric };
+  const label = d === model.dims[dim] ? d.metric || "" : d.metric || "code benchmark";
+  return { score: d.score, status: d.status, label, value: d.value, metric: d.metric, source: d };
 }
 
 /** Unweighted share of the five checks the maker publishes (used by the race and pillars). */
@@ -32,12 +37,12 @@ export function scoreModel(model: Model, profile: Profile): Ranked {
     const w = profile.weights[dim];
     if (r.status === "pending") {
       pending = true;
-      dims[dim] = { s: 0, c: 0, status: "pending", score: null, label: r.label, value: r.value, metric: r.metric };
+      dims[dim] = { s: 0, c: 0, status: "pending", score: null, label: r.label, value: r.value, metric: r.metric, source: r.source };
       continue;
     }
     const s = r.status === "missing" || r.score === null ? MISSING_PRIOR : r.score;
     const c = COVERAGE[r.status];
-    dims[dim] = { s, c, status: r.status, score: r.score, label: r.label, value: r.value, metric: r.metric };
+    dims[dim] = { s, c, status: r.status, score: r.score, label: r.label, value: r.value, metric: r.metric, source: r.source };
     wSum += w;
     composite += w * s;
     trust += w * c;

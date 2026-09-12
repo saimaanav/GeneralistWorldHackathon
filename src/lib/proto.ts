@@ -19,7 +19,7 @@ export const STATUS_CHIP: Record<Status, string> = {
 export const STATUS_WORD: Record<Status, string> = {
   reported: "they publish it",
   inferred: "described, not measured",
-  third_party: "older version",
+  third_party: "measured elsewhere",
   missing: "they do not say",
   pending: "we are still checking",
 };
