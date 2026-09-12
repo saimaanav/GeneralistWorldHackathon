@@ -138,7 +138,9 @@ export default function EvidenceDrawer({ target, onClose }: { target: DrawerTarg
                 {dimScore?.curator_note ? <div>note: {dimScore.curator_note}</div> : null}
               </div>
               <div style={css("margin-top:18px;background:#E6F2F0;border-radius:16px;padding:15px 17px;font-size:15px;line-height:1.6;color:#0F4F4B;")}>
-                <strong style={{ fontWeight: 800 }}>In plain English.</strong> This is the maker&apos;s own wording, copied from their document. We check every quote against the original file, and anything we cannot find is marked as still checking rather than scored.
+                <strong style={{ fontWeight: 800 }}>In plain English.</strong> {chunk
+                  ? "This is the maker's own wording, copied from their document. We check every quote against the original file, and anything we cannot find is marked as still checking rather than scored."
+                  : "This figure comes from our research pass over the maker's published document, linked below. We have not yet indexed that document to highlight the exact sentence, so treat it as a citation to the page rather than a quote."}
               </div>
             </>
           )}
