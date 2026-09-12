@@ -1,2 +1,6 @@
 [build]
   command = "npm run build"
+
+[build.environment]
+  # Next's Turbopack build cache is server-side only; Netlify's secrets scanner flags env values it finds there.
+  SECRETS_SCAN_OMIT_PATHS = ".netlify/.next/cache/**,.next/cache/**"
