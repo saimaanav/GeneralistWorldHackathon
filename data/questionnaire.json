@@ -1,0 +1,105 @@
+{
+  "dims": [
+    { "id": "performance", "label": "Good at the work", "short": "Able", "icon": "★", "plain": "How well it handles the job you have in mind.", "technical": "Performance: benchmarks the maker reports on a shared test" },
+    { "id": "truthfulness", "label": "Gets things right", "short": "Right", "icon": "✓", "plain": "How often it makes things up.", "technical": "Truthfulness: honesty and factuality evaluations" },
+    { "id": "privacy", "label": "Keeps your data private", "short": "Private", "icon": "🔒", "plain": "Whether your customers' details train the model.", "technical": "Privacy: training on inputs, retention, zero data retention, certifications" },
+    { "id": "fairness", "label": "Treats people fairly", "short": "Fair", "icon": "⚖", "plain": "Whether anyone tested it for bias.", "technical": "Fairness: bias and harmful-content evaluations" },
+    { "id": "tamper", "label": "Hard to trick", "short": "Safe", "icon": "🛡", "plain": "Whether a stranger can talk it off script.", "technical": "Tamper resistance: jailbreak and prompt-injection evaluations" }
+  ],
+  "rankWeights": [0.32, 0.24, 0.18, 0.14, 0.12],
+  "steps": [
+    { "id": "business", "n": 1, "type": "single", "title": "What kind of business do you run?", "hint": "This just sets sensible starting points.", "reassure": "Nothing is stored",
+      "options": [
+        { "id": "retail", "label": "Shop or online store", "effect": "", "synonyms": ["shop", "store", "ecommerce", "e-commerce", "etsy", "shopify", "boutique", "retail", "sell products", "online shop", "market stall", "florist", "bookshop"] },
+        { "id": "hospitality", "label": "Restaurant, café or hotel", "effect": "", "synonyms": ["restaurant", "cafe", "café", "bakery", "bar", "pub", "hotel", "bnb", "b&b", "takeaway", "catering", "food truck", "coffee shop", "deli", "hospitality"] },
+        { "id": "professional", "label": "Professional services", "effect": "we will assume contracts and payments", "synonyms": ["accountant", "accounting", "bookkeeper", "lawyer", "solicitor", "legal", "consultant", "consulting", "agency", "financial adviser", "architect", "estate agent", "letting agent", "recruiter", "insurance", "mortgage broker"] },
+        { "id": "health", "label": "Health, wellness or care", "effect": "we will insist on strict data handling", "synonyms": ["physio", "physiotherapy", "dentist", "dental", "clinic", "gp", "doctor", "therapist", "therapy", "counselling", "gym", "yoga", "pilates", "nutrition", "care home", "pharmacy", "vet", "veterinary", "massage", "optician", "chiropractor", "osteopath"] },
+        { "id": "trades", "label": "Trades and home services", "effect": "", "synonyms": ["plumber", "electrician", "builder", "cleaner", "cleaning", "landscaping", "gardener", "painter", "decorator", "roofer", "handyman", "removals", "hvac", "mechanic", "garage", "locksmith", "joiner"] },
+        { "id": "creative", "label": "Creative or marketing", "effect": "", "synonyms": ["designer", "design studio", "photographer", "video", "marketing agency", "social media", "copywriter", "branding", "music", "artist", "print", "creative", "illustrator", "events"] },
+        { "id": "education", "label": "School or charity", "effect": "", "synonyms": ["school", "tutor", "tutoring", "teacher", "nursery", "charity", "nonprofit", "non-profit", "community", "church", "club", "training", "coaching"] },
+        { "id": "other", "label": "Something else", "effect": "", "synonyms": ["other", "something else", "startup", "software", "freelance"] }
+      ] },
+    { "id": "jobs", "n": 2, "type": "multi", "max": 2, "title": "What is the first job you would give it?", "hint": "Pick up to two.", "reassure": "Pick up to two",
+      "options": [
+        { "id": "customer_messages", "label": "Reply to customer messages and reviews", "effect": "", "synonyms": ["customer messages", "replies", "reviews", "instagram", "whatsapp", "email replies", "chatbot", "support", "enquiries", "inbox", "dms", "answer questions", "customer service"] },
+        { "id": "marketing", "label": "Write marketing and product copy", "effect": "", "synonyms": ["marketing", "social posts", "instagram posts", "newsletter", "product descriptions", "copy", "ads", "blog", "website text", "captions", "promotions"] },
+        { "id": "documents", "label": "Summarise or draft contracts and long documents", "effect": "needs a model that holds a lot of text", "synonyms": ["contracts", "documents", "summarise", "summarize", "leases", "policies", "reports", "letters", "referral letters", "read pdfs", "terms", "proposals"] },
+        { "id": "bookkeeping", "label": "Bookkeeping, invoices, data entry", "effect": "accuracy matters more here", "synonyms": ["bookkeeping", "invoices", "expenses", "receipts", "data entry", "spreadsheets", "categorise", "categorize", "vat", "tax", "accounts", "quotes", "numbers"] },
+        { "id": "hiring", "label": "Screen applicants or write job posts", "effect": "fairness matters more here", "synonyms": ["hiring", "recruit", "applicants", "cv", "resume", "job posts", "job ads", "interview questions", "candidates", "screening"] },
+        { "id": "staff_qa", "label": "Answer staff questions from our own documents", "effect": "", "synonyms": ["staff questions", "internal", "handbook", "sops", "procedures", "knowledge base", "our documents", "onboarding", "training staff", "faq"] },
+        { "id": "translation", "label": "Translate for customers", "effect": "", "synonyms": ["translate", "translation", "languages", "multilingual", "spanish", "polish", "arabic", "chinese", "french", "interpret"] },
+        { "id": "website", "label": "Build or fix our website", "effect": "", "synonyms": ["website", "web", "code", "coding", "app", "shopify theme", "wordpress", "automate", "automation", "scripts", "it", "tech"] }
+      ] },
+    { "id": "rank", "n": 3, "type": "rank", "title": "What matters most to you?", "hint": "Put these in order. The top one counts most. Tap a card to move it up.", "reassure": "Drag or tap to reorder",
+      "items": [
+        { "id": "performance", "label": "Good at the work", "plain": "It does the job well." },
+        { "id": "truthfulness", "label": "Gets things right", "plain": "It does not make things up." },
+        { "id": "privacy", "label": "Keeps your data private", "plain": "Your customers' details stay yours." },
+        { "id": "fairness", "label": "Treats people fairly", "plain": "It has been tested for bias." },
+        { "id": "tamper", "label": "Hard to trick", "plain": "Strangers cannot talk it off script." },
+        { "id": "cost", "label": "Keeps costs low", "plain": "Cheaper models get a leg up." }
+      ] },
+    { "id": "audience", "n": 4, "type": "single", "title": "Who sees what it writes?", "hint": "", "reassure": "One answer",
+      "options": [
+        { "id": "only_me", "label": "Only me or my team", "effect": "", "synonyms": ["me", "my team", "internal", "staff", "just us", "nobody else", "myself"] },
+        { "id": "customers_reviewed", "label": "Customers, after someone checks it", "effect": "", "synonyms": ["customers after review", "i check first", "we review", "approve before sending", "draft", "human check"] },
+        { "id": "customers_direct", "label": "Customers directly, with nobody checking", "effect": "we will weight accuracy and safety much higher", "synonyms": ["customers directly", "automatic", "auto reply", "chatbot", "no check", "straight to customers", "public", "live"] }
+      ] },
+    { "id": "data", "n": 5, "type": "multi", "title": "What will you type in or connect to it?", "hint": "Pick everything that applies.", "reassure": "This is the important one",
+      "options": [
+        { "id": "nothing", "label": "Nothing personal", "effect": "", "synonyms": ["nothing personal", "no personal data", "public info", "generic", "nothing sensitive"] },
+        { "id": "contacts", "label": "Customer names and contact details", "effect": "", "synonyms": ["names", "emails", "phone numbers", "contact details", "addresses", "customer list", "crm", "bookings"] },
+        { "id": "payments", "label": "Payment, bank or tax records", "effect": "we will rule out anything that trains on your data", "synonyms": ["payments", "bank", "card details", "tax", "invoices", "financial", "accounts", "payroll", "statements", "vat"] },
+        { "id": "sensitive", "label": "Health, legal or HR records", "effect": "we will rule out anything without strict retention terms", "synonyms": ["health", "medical", "patient", "legal", "contracts", "hr", "employee records", "personnel", "case files", "clinical notes", "dbs"] }
+      ] },
+    { "id": "reach", "n": 6, "type": "multi", "title": "Can strangers reach it?", "hint": "Pick everything that applies.", "reassure": "Pick all that apply",
+      "options": [
+        { "id": "staff_only", "label": "No, staff only", "effect": "", "synonyms": ["staff only", "internal", "no", "only us", "private", "nobody outside"] },
+        { "id": "public", "label": "Yes, the public can message it on our site or WhatsApp", "effect": "we will test how hard it is to trick", "synonyms": ["public", "website chat", "whatsapp", "customers message it", "chatbot", "anyone", "phone line", "live chat", "instagram"] },
+        { "id": "reads_others", "label": "It reads emails, uploads or web pages written by other people", "effect": "this is how most attacks arrive", "synonyms": ["reads emails", "uploads", "attachments", "web pages", "documents from others", "inbox", "pdfs people send", "forms", "reviews"] },
+        { "id": "tools", "label": "It can act: send email, take bookings, make payments", "effect": "the highest risk setting there is", "synonyms": ["send email", "bookings", "payments", "actions", "agent", "automation", "connected to tools", "calendar", "refunds", "orders"] }
+      ] },
+    { "id": "decisions", "n": 7, "type": "single", "title": "Will it help decide anything about people?", "hint": "Hiring, pricing, credit, tenancy, eligibility.", "reassure": "One answer",
+      "options": [
+        { "id": "no", "label": "No", "effect": "", "synonyms": ["no", "never", "not really", "nothing about people"] },
+        { "id": "yes", "label": "Yes", "effect": "we will weight fairness heavily and add a legal note", "synonyms": ["yes", "hiring", "pricing", "credit", "tenancy", "eligibility", "who gets", "screening", "approve", "decide"] }
+      ] },
+    { "id": "text", "n": 8, "type": "text", "title": "Anything else you would like to tell us?", "hint": "Optional. Your seven answers are already enough.", "reassure": "Optional" }
+  ],
+  "deltas": {
+    "jobs": { "customer_messages": { "tamper": 0.05, "fairness": 0.05 }, "marketing": { "fairness": 0.05 }, "documents": { "truthfulness": 0.10 }, "bookkeeping": { "truthfulness": 0.10 }, "hiring": { "fairness": 0.15 }, "staff_qa": { "truthfulness": 0.05 }, "translation": { "fairness": 0.05, "truthfulness": 0.05 }, "website": { "performance": 0.05 } },
+    "audience": { "only_me": { "truthfulness": -0.05 }, "customers_reviewed": { "truthfulness": 0.05 }, "customers_direct": { "truthfulness": 0.10, "fairness": 0.05, "tamper": 0.10 } },
+    "data": { "contacts": { "privacy": 0.10 }, "payments": { "privacy": 0.15 }, "sensitive": { "privacy": 0.15 } },
+    "reach": { "staff_only": { "tamper": -0.10 }, "public": { "tamper": 0.15 }, "reads_others": { "tamper": 0.15 }, "tools": { "tamper": 0.25, "privacy": 0.05 } },
+    "decisions": { "yes": { "fairness": 0.15 } }
+  },
+  "presets": {
+    "safety_first": { "label": "Safety first", "order": ["tamper", "truthfulness", "privacy", "fairness", "performance", "cost"] },
+    "best_results": { "label": "Best results", "order": ["performance", "truthfulness", "tamper", "privacy", "cost", "fairness"] },
+    "balanced": { "label": "Balanced", "order": ["truthfulness", "privacy", "performance", "tamper", "cost", "fairness"] },
+    "privacy_first": { "label": "Privacy first", "order": ["privacy", "truthfulness", "tamper", "fairness", "performance", "cost"] },
+    "accuracy_first": { "label": "Accuracy first", "order": ["truthfulness", "privacy", "performance", "tamper", "fairness", "cost"] },
+    "public_facing": { "label": "Public facing", "order": ["tamper", "truthfulness", "fairness", "privacy", "cost", "performance"] },
+    "fair_first": { "label": "Fairness first", "order": ["fairness", "privacy", "truthfulness", "tamper", "performance", "cost"] }
+  },
+  "presetPriority": ["privacy_first", "fair_first", "accuracy_first", "public_facing", "safety_first", "best_results", "balanced"],
+  "recommendations": [
+    { "when": { "business": "hospitality" }, "then": { "jobs": ["customer_messages", "marketing"], "data": ["contacts"], "preset": "public_facing" } },
+    { "when": { "business": "retail" }, "then": { "jobs": ["customer_messages", "marketing"], "data": ["contacts", "payments"], "preset": "public_facing" } },
+    { "when": { "business": "professional" }, "then": { "jobs": ["documents", "bookkeeping"], "data": ["payments", "sensitive"], "audience": ["only_me"], "preset": "accuracy_first" } },
+    { "when": { "business": "health" }, "then": { "jobs": ["customer_messages", "documents"], "data": ["sensitive", "contacts"], "preset": "privacy_first" } },
+    { "when": { "business": "trades" }, "then": { "jobs": ["customer_messages", "bookkeeping"], "data": ["contacts"], "preset": "balanced" } },
+    { "when": { "business": "creative" }, "then": { "jobs": ["marketing", "customer_messages"], "data": ["contacts"], "preset": "best_results" } },
+    { "when": { "business": "education" }, "then": { "jobs": ["staff_qa", "marketing"], "data": ["sensitive"], "preset": "privacy_first" } },
+    { "when": { "jobs": "customer_messages" }, "then": { "audience": ["customers_direct"], "reach": ["public"], "preset": "public_facing" } },
+    { "when": { "jobs": "documents" }, "then": { "audience": ["only_me"], "reach": ["reads_others"], "preset": "accuracy_first" } },
+    { "when": { "jobs": "bookkeeping" }, "then": { "audience": ["only_me"], "data": ["payments"], "reach": ["reads_others"], "preset": "accuracy_first" } },
+    { "when": { "jobs": "hiring" }, "then": { "decisions": ["yes"], "data": ["sensitive"], "reach": ["reads_others"], "preset": "fair_first" } },
+    { "when": { "jobs": "staff_qa" }, "then": { "audience": ["only_me"], "reach": ["reads_others"] } },
+    { "when": { "jobs": "marketing" }, "then": { "audience": ["customers_reviewed"], "reach": ["staff_only"] } },
+    { "when": { "jobs": "website" }, "then": { "reach": ["tools"], "preset": "best_results" } },
+    { "when": { "jobs": "translation" }, "then": { "audience": ["customers_reviewed"] } },
+    { "when": { "audience": "customers_direct" }, "then": { "reach": ["public"] } },
+    { "when": { "data": "sensitive" }, "then": { "preset": "privacy_first" } }
+  ]
+}

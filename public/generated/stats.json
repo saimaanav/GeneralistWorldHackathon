@@ -1,0 +1,139 @@
+{
+  "generated": "2026-09-12",
+  "docs": {
+    "fable-5-1-syscard": {
+      "pages": 213,
+      "chunks": 457,
+      "kind": "pdf",
+      "chars": 366815
+    },
+    "haiku-4-5-syscard": {
+      "pages": 40,
+      "chunks": 78,
+      "kind": "pdf",
+      "chars": 68277
+    },
+    "gpt-6-astra-syscard": {
+      "pages": 119,
+      "chunks": 257,
+      "kind": "pdf",
+      "chars": 198524
+    },
+    "gpt-5-6-syscard": {
+      "pages": 83,
+      "chunks": 173,
+      "kind": "pdf",
+      "chars": 139641
+    },
+    "gemini-3-8-flash-card": {
+      "pages": 9,
+      "chunks": 11,
+      "kind": "pdf",
+      "chars": 8183
+    },
+    "gemini-3-5-flash-lite-card": {
+      "pages": 8,
+      "chunks": 10,
+      "kind": "pdf",
+      "chars": 8350
+    },
+    "muse-spark-safety-report": {
+      "pages": 161,
+      "chunks": 504,
+      "kind": "pdf",
+      "chars": 420491
+    },
+    "muse-spark-1-1-eval": {
+      "pages": 113,
+      "chunks": 317,
+      "kind": "pdf",
+      "chars": 270871
+    },
+    "muse-glimmer-30b-card": {
+      "pages": 5,
+      "chunks": 17,
+      "kind": "md",
+      "chars": 16748
+    },
+    "anthropic-retention": {
+      "pages": 12,
+      "chunks": 36,
+      "kind": "md",
+      "chars": 37548
+    },
+    "anthropic-training": {
+      "pages": 1,
+      "chunks": 3,
+      "kind": "html",
+      "chars": 2527
+    },
+    "openai-your-data": {
+      "pages": 13,
+      "chunks": 43,
+      "kind": "md",
+      "chars": 41103
+    },
+    "google-gemini-terms": {
+      "pages": 7,
+      "chunks": 25,
+      "kind": "html",
+      "chars": 21342
+    },
+    "google-usage-policies": {
+      "pages": 1,
+      "chunks": 5,
+      "kind": "html",
+      "chars": 4172
+    },
+    "google-zdr": {
+      "pages": 2,
+      "chunks": 6,
+      "kind": "html",
+      "chars": 5335
+    },
+    "meta-model-api": {
+      "pages": 1,
+      "chunks": 1,
+      "kind": "txt",
+      "chars": 1021
+    },
+    "haiku-4-5-announcement": {
+      "pages": 3,
+      "chunks": 8,
+      "kind": "html",
+      "chars": 8133
+    },
+    "fable-5-1-announcement": {
+      "pages": 11,
+      "chunks": 32,
+      "kind": "html",
+      "chars": 34006
+    },
+    "gemini-3-8-flash-card-web": {
+      "pages": 3,
+      "chunks": 9,
+      "kind": "html",
+      "chars": 10363
+    },
+    "gemini-3-5-flash-lite-card-web": {
+      "pages": 3,
+      "chunks": 9,
+      "kind": "html",
+      "chars": 9841
+    },
+    "gemini-cyber": {
+      "pages": 1,
+      "chunks": 4,
+      "kind": "html",
+      "chars": 3052
+    },
+    "muse-spark-1-3-methodology": {
+      "pages": 5,
+      "chunks": 10,
+      "kind": "pdf",
+      "chars": 7673
+    }
+  },
+  "totalPages": 814,
+  "totalChunks": 2015
+}

@@ -1,0 +1,1440 @@
+{
+ "version": "2026-09-12",
+ "models": [
+  {
+   "id": "fable-5-1",
+   "display_name": "Claude Fable 5.1",
+   "maker": "anthropic",
+   "tier": "flagship",
+   "deployment": "api",
+   "api_id": "claude-fable-5-1",
+   "price": {
+    "input": 10,
+    "output": 50,
+    "note": "$10 in / $50 out per million tokens",
+    "band": "high"
+   },
+   "context": "1M tokens",
+   "data_location": "US or global endpoints; no EU pinning",
+   "card": {
+    "doc_id": "fable-5-1-syscard",
+    "url": "https://www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/Claude%20Fable%205.1%20&%20Claude%20Mythos%205.1%20System%20Card.pdf",
+    "type": "system_card",
+    "published": "2026-09-01",
+    "retrieved": "2026-09-12",
+    "title": "Claude Fable 5.1 and Mythos 5.1 system card"
+   },
+   "status": "draft",
+   "one_liner": "The best documented model here. It is the only one publishing a real number for both accuracy and resisting people who try to trick it.",
+   "next_step": "Anthropic keeps your inputs for 30 days and cannot switch that off for this model. Fine for customer messages, not for health or HR records.",
+   "how_to_use": "Through the Claude API or Claude for Work. The training and retention facts below describe the API.",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "API",
+    "zdr": "not_available",
+    "retention": "30 days, mandatory for this model",
+    "baa": true,
+    "evidence": [
+     {
+      "doc_id": "anthropic-training",
+      "source_type": "policy_page",
+      "terms": [
+       "train"
+      ],
+      "chunk_id": "anthropic-training#0000",
+      "page": null,
+      "section": "",
+      "quote": "Is my data used for model training?",
+      "url": "https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training"
+     },
+     {
+      "doc_id": "anthropic-retention",
+      "source_type": "policy_page",
+      "terms": [
+       "Zero data retention (ZDR)",
+       "does not store customer prompts"
+      ],
+      "chunk_id": "anthropic-retention#0002",
+      "page": null,
+      "section": "",
+      "quote": "## Zero data retention (ZDR) Under a ZDR arrangement, Anthropic does not store customer prompts or responses at rest after the API response is returned.",
+      "url": "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention"
+     },
+     {
+      "doc_id": "anthropic-retention",
+      "source_type": "policy_page",
+      "terms": [
+       "Covered",
+       "retention"
+      ],
+      "chunk_id": "anthropic-retention#0014",
+      "page": null,
+      "section": "",
+      "quote": "e\": \"error\", \"error\": { \"type\": \"invalid_request_error\", \" } } ``` The 30-day data retention requirement applies wherever Covered Models are offered.",
+      "url": "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 96,
+     "status": "reported",
+     "metric": "GDPval-AA v2 Elo",
+     "value": "1853",
+     "plain": "Top of the set on real work tasks.",
+     "evidence": [
+      {
+       "doc_id": "fable-5-1-syscard",
+       "source_type": "system_card",
+       "terms": [
+        "GDPval-AA v2",
+        "1853"
+       ],
+       "chunk_id": "fable-5-1-syscard#0369",
+       "page": 167,
+       "section": "8 Capabilities",
+       "quote": "Multilingual 1 6 5 - SWE-bench Multimodal 7 1 4 - 0 56% (61%) 42% (45%) 52% 37% 1 6% 7% 0% 4% Humanity’s Last Exam No tools 9% 8% 6% - With tools 0% 8% 6% - 0 (partial/strict) 7 1 6 - HealthBench Professional 1% 3% 8% – GDPval-AA v2 1853 1723 1824 1711 AA-Briefcase 1694 1572 1685 1502 AutomationBench 4 1 9 6 ARC-AGI-1 5% 5% 5% 5% ARC-AGI-2 0% 2% 42% 5% A] Capability evaluation summary.",
+       "url": "https://www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/Claude%20Fable%205.1%20&%20Claude%20Mythos%205.1%20System%20Card.pdf#page=167"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": 85,
+     "status": "reported",
+     "metric": "MASK honesty",
+     "value": "85%",
+     "plain": "Tested for honesty, scored 85 out of 100.",
+     "evidence": [
+      {
+       "doc_id": "fable-5-1-syscard",
+       "source_type": "system_card",
+       "terms": [
+        "MASK",
+        "contradict its own stated belief"
+       ],
+       "chunk_id": "fable-5-1-syscard#0286",
+       "page": 123,
+       "section": "6.5.1 Factual hallucinations",
+       "quote": "2 MASK Model Alignment between Statements and Knowledge (MASK) measures whether a model will contradict its own stated belief when pushed by the user or by the system prompt.",
+       "url": "https://www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/Claude%20Fable%205.1%20&%20Claude%20Mythos%205.1%20System%20Card.pdf#page=123"
+      }
+     ],
+     "curator_note": "Figure transcribed from the card; the sentence quoted describes the test."
+    },
+    "privacy": {
+     "score": 70,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "no training, 30-day retention, no ZDR, HIPAA BAA",
+     "plain": "Never trains on your data, but keeps it 30 days.",
+     "evidence": [
+      {
+       "doc_id": "anthropic-retention",
+       "source_type": "policy_page",
+       "terms": [
+        "Zero data retention (ZDR)",
+        "does not store customer prompts"
+       ],
+       "chunk_id": "anthropic-retention#0002",
+       "page": null,
+       "section": "",
+       "quote": "## Zero data retention (ZDR) Under a ZDR arrangement, Anthropic does not store customer prompts or responses at rest after the API response is returned.",
+       "url": "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention"
+      }
+     ]
+    },
+    "fairness": {
+     "score": 70,
+     "status": "reported",
+     "metric": "BBQ",
+     "value": "disambiguated accuracy 89.9%, bias -0.91%",
+     "plain": "Bias testing published, results near neutral.",
+     "evidence": [
+      {
+       "doc_id": "fable-5-1-syscard",
+       "source_type": "system_card",
+       "terms": [
+        "Bias Benchmark for Question Answering (BBQ)",
+        "age, race, gender"
+       ],
+       "chunk_id": "fable-5-1-syscard#0169",
+       "page": 72,
+       "section": "4.4.1 Political bias and even-handedness",
+       "quote": "2 Bias Benchmark for Question Answering 1 using the Bias Benchmark for Question Answering (BBQ),4 a standard benchmark-based bias evaluation covering attributes such as age, race, gender, disability, and socioeconomic status.",
+       "url": "https://www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/Claude%20Fable%205.1%20&%20Claude%20Mythos%205.1%20System%20Card.pdf#page=72"
+      }
+     ]
+    },
+    "tamper": {
+     "score": 99,
+     "status": "reported",
+     "metric": "Gray Swan Shade prompt injection, k=15",
+     "value": "1.0% attack success",
+     "plain": "Attackers got through 1 time in 100 attempts.",
+     "covers": [
+      "jailbreak",
+      "prompt_injection"
+     ],
+     "evidence": [
+      {
+       "doc_id": "fable-5-1-syscard",
+       "source_type": "system_card",
+       "terms": [
+        "Gray Swan",
+        "prompt injection"
+       ],
+       "chunk_id": "fable-5-1-syscard#0196",
+       "page": 83,
+       "section": "5.2.1 External red teaming",
+       "quote": "A] Indirect prompt injection attacks from the Gray Swan IPI benchmark (Q1+Q2 2026), lower scores are better.",
+       "url": "https://www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/Claude%20Fable%205.1%20&%20Claude%20Mythos%205.1%20System%20Card.pdf#page=83"
+      }
+     ]
+    }
+   },
+   "overrides": {
+    "code": {
+     "score": 56,
+     "status": "reported",
+     "metric": "Terminal-Bench 4.0",
+     "value": "55.8%",
+     "evidence": [
+      {
+       "doc_id": "fable-5-1-syscard",
+       "source_type": "system_card",
+       "terms": [
+        "Terminal-Bench"
+       ],
+       "chunk_id": "fable-5-1-syscard#0378",
+       "page": 171,
+       "section": "8.5 FrontierSWE v2",
+       "quote": "Previous Terminal-Bench versions were very 0 largely addresses these issues by increasing timeouts and adaptively bumping up both RAM and CPU in a few tasks that could benefit from it.",
+       "url": "https://www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/Claude%20Fable%205.1%20&%20Claude%20Mythos%205.1%20System%20Card.pdf#page=171"
+      }
+     ]
+    }
+   },
+   "badges": []
+  },
+  {
+   "id": "haiku-4-5",
+   "display_name": "Claude Haiku 4.5",
+   "maker": "anthropic",
+   "tier": "efficient",
+   "deployment": "api",
+   "api_id": "claude-haiku-4-5-20251001",
+   "price": {
+    "input": 1,
+    "output": 5,
+    "note": "$1 in / $5 out per million tokens",
+    "band": "low"
+   },
+   "context": "200K tokens",
+   "data_location": "US or global endpoints; regional profiles on AWS Bedrock",
+   "card": {
+    "doc_id": "haiku-4-5-syscard",
+    "url": "https://www-cdn.anthropic.com/7aad69bf12627d42234e01ee7c36305dc2f6a970/Claude%20Haiku%204.5%20System%20Card.pdf",
+    "type": "system_card",
+    "published": "2025-10-15",
+    "retrieved": "2026-09-12",
+    "title": "Claude Haiku 4.5 system card"
+   },
+   "status": "draft",
+   "one_liner": "The most open about its own weaknesses and the best privacy terms here, but it publishes no accuracy testing and half the attacks on it got through.",
+   "next_step": "Zero data retention is available on request, and worth asking for even on a small account.",
+   "how_to_use": "Through the Claude API. Cheapest Claude model; built for speed.",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "API",
+    "zdr": "on_request",
+    "retention": "deleted within 30 days by default",
+    "baa": true,
+    "evidence": [
+     {
+      "doc_id": "anthropic-training",
+      "source_type": "policy_page",
+      "terms": [
+       "train"
+      ],
+      "chunk_id": "anthropic-training#0000",
+      "page": null,
+      "section": "",
+      "quote": "Is my data used for model training?",
+      "url": "https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training"
+     },
+     {
+      "doc_id": "anthropic-retention",
+      "source_type": "policy_page",
+      "terms": [
+       "Zero data retention (ZDR)",
+       "does not store customer prompts"
+      ],
+      "chunk_id": "anthropic-retention#0002",
+      "page": null,
+      "section": "",
+      "quote": "## Zero data retention (ZDR) Under a ZDR arrangement, Anthropic does not store customer prompts or responses at rest after the API response is returned.",
+      "url": "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": null,
+     "status": "pending",
+     "metric": "GDPval-AA v2 Elo, as reported in Google's Gemini 3.5 Flash-Lite card",
+     "value": "907",
+     "plain": "Built for speed and cost, not hard tasks.",
+     "evidence": [
+      {
+       "doc_id": "gemini-3-5-flash-lite-card-web",
+       "source_type": "model_card",
+       "terms": [
+        "Claude Haiku 4.5"
+       ]
+      }
+     ],
+     "unverified": {
+      "score": 34,
+      "status": "third_party"
+     }
+    },
+    "truthfulness": {
+     "score": null,
+     "status": "missing",
+     "plain": "Not tested publicly at all.",
+     "evidence": [],
+     "curator_note": "Searched the card for SimpleQA, factuality, hallucination: no number. The automated behavioural audit is chart-only."
+    },
+    "privacy": {
+     "score": 90,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "no training, 30-day deletion, ZDR on request, HIPAA BAA",
+     "plain": "No training, zero retention on request, healthcare agreement.",
+     "evidence": [
+      {
+       "doc_id": "anthropic-retention",
+       "source_type": "policy_page",
+       "terms": [
+        "Zero data retention (ZDR)",
+        "does not store customer prompts"
+       ],
+       "chunk_id": "anthropic-retention#0002",
+       "page": null,
+       "section": "",
+       "quote": "## Zero data retention (ZDR) Under a ZDR arrangement, Anthropic does not store customer prompts or responses at rest after the API response is returned.",
+       "url": "https://platform.claude.com/docs/en/manage-claude/api-and-data-retention"
+      }
+     ]
+    },
+    "fairness": {
+     "score": 90,
+     "status": "reported",
+     "metric": "BBQ and single-turn harmlessness",
+     "value": "BBQ bias 0.54% / 1.37%; harmless response rate 99.38%",
+     "plain": "Best bias results in the set.",
+     "evidence": [
+      {
+       "doc_id": "haiku-4-5-syscard",
+       "source_type": "system_card",
+       "terms": [
+        "Bias Benchmark for Question Answering (BBQ)",
+        "Closer to zero is better"
+       ],
+       "chunk_id": "haiku-4-5-syscard#0026",
+       "page": 13,
+       "section": "2.5.1 Political bias",
+       "quote": "Model Disambiguated bias (%) Ambiguous bias (%) 5 54 37 5 21 25 1 51 20 5 86 79 A Bias scores on the Bias Benchmark for Question Answering (BBQ) evaluation. … Closer to zero is better.",
+       "url": "https://www-cdn.anthropic.com/7aad69bf12627d42234e01ee7c36305dc2f6a970/Claude%20Haiku%204.5%20System%20Card.pdf#page=13"
+      }
+     ]
+    },
+    "tamper": {
+     "score": 49,
+     "status": "reported",
+     "metric": "Gray Swan Agent Red Teaming, k=10",
+     "value": "51.1% attack success (with thinking)",
+     "plain": "About half of attacks got through.",
+     "covers": [
+      "jailbreak",
+      "prompt_injection"
+     ],
+     "evidence": [
+      {
+       "doc_id": "haiku-4-5-syscard",
+       "source_type": "system_card",
+       "terms": [
+        "Gray Swan Agent Red Teaming benchmark",
+        "prompt injection attacks"
+       ],
+       "chunk_id": "haiku-4-5-syscard#0033",
+       "page": 17,
+       "section": "3.1.2 Malicious use of Claude Code",
+       "quote": "1 Gray Swan Agent Red Teaming benchmark 5 to evaluate the model’s susceptibility to prompt injection attacks in comparison to other AI models in the ecosystem.",
+       "url": "https://www-cdn.anthropic.com/7aad69bf12627d42234e01ee7c36305dc2f6a970/Claude%20Haiku%204.5%20System%20Card.pdf#page=17"
+      }
+     ]
+    }
+   },
+   "overrides": {
+    "code": {
+     "score": null,
+     "status": "pending",
+     "metric": "SWE-bench Verified",
+     "value": "73.3%",
+     "evidence": [
+      {
+       "doc_id": "haiku-4-5-announcement",
+       "source_type": "model_card",
+       "terms": [
+        "SWE-bench Verified",
+        "73.3%"
+       ]
+      }
+     ],
+     "unverified": {
+      "score": 73,
+      "status": "reported"
+     }
+    }
+   },
+   "badges": []
+  },
+  {
+   "id": "gpt-6-astra",
+   "display_name": "GPT-6 Astra",
+   "maker": "openai",
+   "tier": "flagship",
+   "deployment": "api",
+   "api_id": "gpt-6-astra",
+   "price": {
+    "input": 10,
+    "output": 50,
+    "note": "$10 in / $50 out per million tokens",
+    "band": "high"
+   },
+   "context": "1.05M tokens",
+   "data_location": "Choice of 10 regions including US, EU and UK",
+   "card": {
+    "doc_id": "gpt-6-astra-syscard",
+    "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+    "type": "system_card",
+    "published": "2026-09-03",
+    "retrieved": "2026-09-12",
+    "title": "GPT-6 Astra system card"
+   },
+   "status": "draft",
+   "one_liner": "Same price as the top Claude model and better privacy controls, but it talks about its accuracy rather than measuring it.",
+   "next_step": "Ask OpenAI to switch on zero data retention for your account before you paste anything with customer names in it.",
+   "how_to_use": "Through the OpenAI API (Responses API for tools) or ChatGPT Business.",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "API",
+    "zdr": "available",
+    "retention": "abuse-monitoring logs up to 30 days by default",
+    "baa": true,
+    "evidence": [
+     {
+      "doc_id": "openai-your-data",
+      "source_type": "policy_page",
+      "terms": [
+       "not used to train or improve OpenAI models"
+      ],
+      "chunk_id": "openai-your-data#0000",
+      "page": null,
+      "section": "Data controls in the OpenAI platform",
+      "quote": "As of March 1, 2023, data sent to the OpenAI API is not used to train or improve OpenAI models (unless you explicitly opt in to share data with us).",
+      "url": "https://developers.openai.com/api/docs/guides/your-data"
+     },
+     {
+      "doc_id": "openai-your-data",
+      "source_type": "policy_page",
+      "terms": [
+       "retained for up to 30 days"
+      ],
+      "chunk_id": "openai-your-data#0001",
+      "page": null,
+      "section": "Data controls in the OpenAI platform",
+      "quote": "By default, abuse monitoring logs are generated for all API feature usage and retained for up to 30 days, unless longer retention is required by law, or is reasonably necessary to protect our services or any third party from harm.",
+      "url": "https://developers.openai.com/api/docs/guides/your-data"
+     },
+     {
+      "doc_id": "openai-your-data",
+      "source_type": "policy_page",
+      "terms": [
+       "Zero Data Retention"
+      ],
+      "chunk_id": "openai-your-data#0001",
+      "page": null,
+      "section": "Data controls in the OpenAI platform",
+      "quote": "Eligible customers may have their customer content excluded from these abuse monitoring logs, subject to the limitations below, by getting approved for the [Zero Data Retention](#zero-data-retention) or [Modified Abuse Monitoring](#modified-abuse-monitoring) controls.",
+      "url": "https://developers.openai.com/api/docs/guides/your-data"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 73,
+     "status": "reported",
+     "metric": "HealthBench Professional and agentic benchmarks",
+     "value": "HealthBench Professional 63.4; DeepSWE 74.1%, OSWorld 2.0 72.6% (launch post)",
+     "plain": "Strong across coding, computer use and professional tasks.",
+     "evidence": [
+      {
+       "doc_id": "gpt-6-astra-syscard",
+       "source_type": "system_card",
+       "terms": [
+        "HealthBench Professional"
+       ],
+       "chunk_id": "gpt-6-astra-syscard#0037",
+       "page": 19,
+       "section": "5.2 Prompt Injection",
+       "quote": "We evaluate Astra on HealthBench [4], a public evaluation of health performance and safety, and HealthBench Professional, a public evaluation of model capability and safety for clinician use cases [5].",
+       "url": "https://deploymentsafety.openai.com/gpt-6-astra#page=19"
+      }
+     ],
+     "curator_note": "The card carries HealthBench; the coding and computer-use figures are from OpenAI's launch post, which blocks automated fetching."
+    },
+    "truthfulness": {
+     "score": 55,
+     "status": "inferred",
+     "metric": "Hallucination curves and relative claims",
+     "value": "charts only; 'substantially fewer factual errors than GPT-5.6 Sol'",
+     "plain": "Charts only, no headline number to check.",
+     "evidence": [
+      {
+       "doc_id": "gpt-6-astra-syscard",
+       "source_type": "system_card",
+       "terms": [
+        "Hallucinations",
+        "Performance in Cases Flagged by Users"
+       ],
+       "chunk_id": "gpt-6-astra-syscard#0043",
+       "page": 21,
+       "section": "6.2 Dynamic Mental Health Benchmarks with Adversarial User",
+       "quote": "le 7: Dynamic Benchmarks with Adversarial User Simulations (higher is better) Category 4-thinking 5-thinking 6-sol gpt-6 Astra 914 976 975 820 915 868 991 953 856 000 993 989 Mental health Emotional reliance Self-harm 7 Hallucinations 1 Performance in Cases Flagged by Users",
+       "url": "https://deploymentsafety.openai.com/gpt-6-astra#page=21"
+      }
+     ]
+    },
+    "privacy": {
+     "score": 90,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "no training, 30-day abuse logs, ZDR, HIPAA BAA, 10 regions",
+     "plain": "No training, zero retention available, healthcare agreement.",
+     "evidence": [
+      {
+       "doc_id": "openai-your-data",
+       "source_type": "policy_page",
+       "terms": [
+        "not used to train or improve OpenAI models"
+       ],
+       "chunk_id": "openai-your-data#0000",
+       "page": null,
+       "section": "Data controls in the OpenAI platform",
+       "quote": "As of March 1, 2023, data sent to the OpenAI API is not used to train or improve OpenAI models (unless you explicitly opt in to share data with us).",
+       "url": "https://developers.openai.com/api/docs/guides/your-data"
+      }
+     ]
+    },
+    "fairness": {
+     "score": 74,
+     "status": "reported",
+     "metric": "Safe-completion rates on challenging prompts; no demographic bias test",
+     "value": "mean safe rate about 97.7%",
+     "plain": "Safe response rate 97.7%, no standard bias test.",
+     "evidence": [
+      {
+       "doc_id": "gpt-6-astra-syscard",
+       "source_type": "system_card",
+       "terms": [
+        "Challenging Prompts"
+       ],
+       "chunk_id": "gpt-6-astra-syscard#0000",
+       "page": 2,
+       "section": "",
+       "quote": "8 1 Evaluations with Challenging Prompts .",
+       "url": "https://deploymentsafety.openai.com/gpt-6-astra#page=2"
+      }
+     ]
+    },
+    "tamper": {
+     "score": 92,
+     "status": "reported",
+     "metric": "Gray Swan IPI Arena, k=15",
+     "value": "8.5% attack success; instruction hierarchy 99.99%",
+     "plain": "Attacks succeeded 8 times in 100.",
+     "covers": [
+      "jailbreak",
+      "prompt_injection"
+     ],
+     "evidence": [
+      {
+       "doc_id": "gpt-6-astra-syscard",
+       "source_type": "system_card",
+       "terms": [
+        "Gray Swan IPI",
+        "1,810 curated attacks"
+       ],
+       "chunk_id": "gpt-6-astra-syscard#0037",
+       "page": 19,
+       "section": "5.2 Prompt Injection",
+       "quote": "Figure 5: Indirect prompt injection robustness on the Gray Swan IPI benchmark. … Estimated attack success rates on 1,810 curated attacks from the Q1 and Q2 (April) 2026 arenas, spanning coding, computer use, and tool use.",
+       "url": "https://deploymentsafety.openai.com/gpt-6-astra#page=19"
+      },
+      {
+       "doc_id": "gpt-6-astra-syscard",
+       "source_type": "system_card",
+       "terms": [
+        "Static Jailbreak Evaluations"
+       ],
+       "chunk_id": "gpt-6-astra-syscard#0000",
+       "page": 2,
+       "section": "",
+       "quote": "14 1 Static Jailbreak Evaluations .",
+       "url": "https://deploymentsafety.openai.com/gpt-6-astra#page=2"
+      }
+     ]
+    }
+   },
+   "overrides": {},
+   "badges": []
+  },
+  {
+   "id": "gpt-5-6-luna",
+   "display_name": "GPT-5.6 Luna",
+   "maker": "openai",
+   "tier": "efficient",
+   "deployment": "api",
+   "api_id": "gpt-5.6-luna",
+   "price": {
+    "input": 0.2,
+    "output": 1.2,
+    "note": "$0.20 in / $1.20 out per million tokens",
+    "band": "low"
+   },
+   "context": "1.05M tokens",
+   "data_location": "Choice of 10 regions including US, EU and UK",
+   "card": {
+    "doc_id": "gpt-5-6-syscard",
+    "url": "https://deploymentsafety.openai.com/gpt-5-6",
+    "type": "system_card",
+    "published": "2026-07-09",
+    "retrieved": "2026-09-12",
+    "title": "GPT-5.6 system card"
+   },
+   "status": "draft",
+   "one_liner": "By far the cheapest, with the same privacy terms as its bigger sibling. We have not finished checking how capable it is, so it cannot take the top spot yet.",
+   "next_step": "Come back later today. We are fetching a comparable capability score, and until then its place in the list is provisional.",
+   "how_to_use": "Through the OpenAI API. Fastest and cheapest of the GPT-5.6 family.",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "API",
+    "zdr": "available",
+    "retention": "abuse-monitoring logs up to 30 days by default",
+    "baa": true,
+    "evidence": [
+     {
+      "doc_id": "openai-your-data",
+      "source_type": "policy_page",
+      "terms": [
+       "not used to train or improve OpenAI models"
+      ],
+      "chunk_id": "openai-your-data#0000",
+      "page": null,
+      "section": "Data controls in the OpenAI platform",
+      "quote": "As of March 1, 2023, data sent to the OpenAI API is not used to train or improve OpenAI models (unless you explicitly opt in to share data with us).",
+      "url": "https://developers.openai.com/api/docs/guides/your-data"
+     },
+     {
+      "doc_id": "openai-your-data",
+      "source_type": "policy_page",
+      "terms": [
+       "Zero Data Retention"
+      ],
+      "chunk_id": "openai-your-data#0001",
+      "page": null,
+      "section": "Data controls in the OpenAI platform",
+      "quote": "Eligible customers may have their customer content excluded from these abuse monitoring logs, subject to the limitations below, by getting approved for the [Zero Data Retention](#zero-data-retention) or [Modified Abuse Monitoring](#modified-abuse-monitoring) controls.",
+      "url": "https://developers.openai.com/api/docs/guides/your-data"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": null,
+     "status": "pending",
+     "metric": "GDPval-AA v2 Elo",
+     "value": "",
+     "plain": "No shared test between the makers yet.",
+     "evidence": [],
+     "curator_note": "Fetch the GDPval-AA v2 Elo from artificialanalysis.ai."
+    },
+    "truthfulness": {
+     "score": 50,
+     "status": "inferred",
+     "metric": "Hallucination charts and relative claims",
+     "value": "chart-only",
+     "plain": "Charts only, no number we can check.",
+     "evidence": [
+      {
+       "doc_id": "gpt-5-6-syscard",
+       "source_type": "system_card",
+       "terms": [
+        "Hallucinations",
+        "Performance in Cases Flagged by Users"
+       ],
+       "chunk_id": "gpt-5-6-syscard#0006",
+       "page": 4,
+       "section": "1 Introduction",
+       "quote": "15 6 Hallucinations 1 15 Performance in Cases Flagged by Users .",
+       "url": "https://deploymentsafety.openai.com/gpt-5-6#page=4"
+      }
+     ]
+    },
+    "privacy": {
+     "score": 90,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "no training, 30-day abuse logs, ZDR, HIPAA BAA",
+     "plain": "No training, zero retention available.",
+     "evidence": [
+      {
+       "doc_id": "openai-your-data",
+       "source_type": "policy_page",
+       "terms": [
+        "not used to train or improve OpenAI models"
+       ],
+       "chunk_id": "openai-your-data#0000",
+       "page": null,
+       "section": "Data controls in the OpenAI platform",
+       "quote": "As of March 1, 2023, data sent to the OpenAI API is not used to train or improve OpenAI models (unless you explicitly opt in to share data with us).",
+       "url": "https://developers.openai.com/api/docs/guides/your-data"
+      }
+     ]
+    },
+    "fairness": {
+     "score": 90,
+     "status": "reported",
+     "metric": "First-Person Fairness",
+     "value": "harm_overall 0.61%",
+     "plain": "Strong published fairness results.",
+     "evidence": [
+      {
+       "doc_id": "gpt-5-6-syscard",
+       "source_type": "system_card",
+       "terms": [
+        "First-Person Fairness Evaluation",
+        "multiturn conversations"
+       ],
+       "chunk_id": "gpt-5-6-syscard#0071",
+       "page": 34,
+       "section": "7.4.2 Metagaming in training",
+       "quote": "8 Bias Evaluations 1 First-Person Fairness Evaluation We also tested the models on our first-person fairness evaluation [12]. … This evaluation consists of multiturn conversations, starting with a prompt in ” to which the model responds “Hi [NAME]!",
+       "url": "https://deploymentsafety.openai.com/gpt-5-6#page=34"
+      }
+     ]
+    },
+    "tamper": {
+     "score": 50,
+     "status": "reported",
+     "metric": "Gray Swan IPI Arena, k=15 (from the GPT-6 Astra card) and connector prompt-injection robustness",
+     "value": "50.0% attack success at k=15; connectors 0.999",
+     "plain": "Half of attacks got through.",
+     "covers": [
+      "prompt_injection"
+     ],
+     "evidence": [
+      {
+       "doc_id": "gpt-5-6-syscard",
+       "source_type": "system_card",
+       "terms": [
+        "Prompt injection",
+        "prompt injection attacks against connectors"
+       ],
+       "chunk_id": "gpt-5-6-syscard#0029",
+       "page": 13,
+       "section": "4.1 Jailbreaks",
+       "quote": "Figure 3 2 Prompt injection We evaluate the model’s robustness to known prompt injection attacks against connectors.",
+       "url": "https://deploymentsafety.openai.com/gpt-5-6#page=13"
+      }
+     ]
+    }
+   },
+   "overrides": {},
+   "badges": [
+    {
+     "text": "we are still checking this one",
+     "kind": "pending"
+    }
+   ]
+  },
+  {
+   "id": "gemini-3-8-flash",
+   "display_name": "Gemini 3.8 Flash",
+   "maker": "google",
+   "tier": "flagship",
+   "deployment": "api",
+   "api_id": "gemini-3.8-flash",
+   "price": {
+    "input": 0.75,
+    "output": 3.75,
+    "note": "$0.75 in / $3.75 out per million tokens (introductory price to Dec 2026)",
+    "band": "low"
+   },
+   "context": "1M tokens",
+   "data_location": "Global endpoint; no data residency on the developer API",
+   "card": {
+    "doc_id": "gemini-3-8-flash-card",
+    "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-8-Flash-Model-Card.pdf",
+    "type": "model_card",
+    "published": "2026-09",
+    "retrieved": "2026-09-12",
+    "title": "Gemini 3.8 Flash model card"
+   },
+   "status": "draft",
+   "one_liner": "Cheap and hard to trick, but it publishes no accuracy testing, and its safety in languages other than English went backwards.",
+   "next_step": "The promise not to train on your data only applies once billing is switched on. Turn billing on before you connect anything.",
+   "how_to_use": "Through the Gemini API with billing enabled, or Vertex AI.",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "paid Gemini API",
+    "zdr": "on_request",
+    "retention": "55 days for abuse monitoring",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "google-gemini-terms",
+      "source_type": "policy_page",
+      "terms": [
+       "Unpaid Services"
+      ],
+      "chunk_id": "google-gemini-terms#0003",
+      "page": null,
+      "section": "",
+      "quote": "## Unpaid Services Any Services that are offered free of charge like direct interactions with Google AI Studio or unpaid quota in",
+      "url": "https://ai.google.dev/gemini-api/terms"
+     },
+     {
+      "doc_id": "google-usage-policies",
+      "source_type": "policy_page",
+      "terms": [
+       "not used to train or fine-tune any AI/ML models"
+      ],
+      "chunk_id": "google-usage-policies#0002",
+      "page": null,
+      "section": "",
+      "quote": "It is not used to train or fine-tune any AI/ML models besides those used specifically for policy enforcement.",
+      "url": "https://ai.google.dev/gemini-api/docs/usage-policies"
+     },
+     {
+      "doc_id": "google-zdr",
+      "source_type": "policy_page",
+      "terms": [
+       "achieving zero data retention"
+      ],
+      "chunk_id": "google-zdr#0000",
+      "page": null,
+      "section": "",
+      "quote": "## Customer data retention and achieving zero data retention",
+      "url": "https://ai.google.dev/gemini-api/docs/zdr"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 79,
+     "status": "reported",
+     "metric": "GDPval-AA v2 Elo, Terminal-Bench 2.1, DeepSWE",
+     "value": "Elo 1545; Terminal-Bench 2.1 89.4%; DeepSWE 73.7%",
+     "plain": "Very capable for the price.",
+     "evidence": [
+      {
+       "doc_id": "gemini-3-8-flash-card-web",
+       "source_type": "model_card",
+       "terms": [
+        "GDPVal-AA v2",
+        "1545"
+       ],
+       "chunk_id": "gemini-3-8-flash-card-web#0003",
+       "page": null,
+       "section": "",
+       "quote": "s, no caching 50 regular) 50 regular) 00 00 00 00 Output price $/1M tokens 50 regular) 50 regular) 00 00 00 00 1 Long-horizon software engineering 7% 3% 0% 8% 7% 6% GDPVal-AA v2 Knowledge work Elo 1545 1482 1824 1584 1710 1528 Vals Finance Agent v2 Financial analyst tasks 4% 0% 6% 9% 8% 4% Harvey's Legal Agent Benchmark Complex legal workflows All pass rate 0% 8% 7% 0% 5% 8% 1 Agentic terminal coding 4% 8% 1% 4% 8% 4% 0 Ge",
+       "url": "https://deepmind.google/models/model-cards/gemini-3-8-flash/"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": null,
+     "status": "missing",
+     "plain": "Not tested publicly at all.",
+     "evidence": [],
+     "curator_note": "The card only says the model may exhibit hallucinations; no factuality number."
+    },
+    "privacy": {
+     "score": 73,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "no training on paid tier, 55-day abuse retention, ZDR on approval",
+     "plain": "Paid accounts only, kept 55 days for abuse checks.",
+     "evidence": [
+      {
+       "doc_id": "google-zdr",
+       "source_type": "policy_page",
+       "terms": [
+        "achieving zero data retention"
+       ],
+       "chunk_id": "google-zdr#0000",
+       "page": null,
+       "section": "",
+       "quote": "## Customer data retention and achieving zero data retention",
+       "url": "https://ai.google.dev/gemini-api/docs/zdr"
+      }
+     ]
+    },
+    "fairness": {
+     "score": null,
+     "status": "pending",
+     "metric": "Relative safety deltas vs Gemini 3.7 Flash",
+     "value": "multilingual safety +5.4pp worse",
+     "plain": "Only relative claims, and multilingual safety got worse.",
+     "evidence": [
+      {
+       "doc_id": "gemini-3-8-flash-card",
+       "source_type": "model_card",
+       "terms": [
+        "Multilingual Safety",
+        "Lower is better"
+       ]
+      }
+     ],
+     "unverified": {
+      "score": 45,
+      "status": "inferred"
+     }
+    },
+    "tamper": {
+     "score": null,
+     "status": "pending",
+     "metric": "Gray Swan indirect prompt injection",
+     "value": "5.5% attack success (chart); 6.0% cyber variant (text)",
+     "plain": "Attacks succeeded 6 times in 100.",
+     "covers": [
+      "prompt_injection"
+     ],
+     "evidence": [
+      {
+       "doc_id": "gemini-cyber",
+       "source_type": "model_card",
+       "terms": [
+        "6.0%"
+       ]
+      }
+     ],
+     "unverified": {
+      "score": 94,
+      "status": "reported"
+     }
+    }
+   },
+   "overrides": {
+    "code": {
+     "score": null,
+     "status": "pending",
+     "metric": "Terminal-Bench 2.1",
+     "value": "89.4%",
+     "evidence": [
+      {
+       "doc_id": "gemini-3-8-flash-card-web",
+       "source_type": "model_card",
+       "terms": [
+        "Terminal-Bench 2.1"
+       ]
+      }
+     ],
+     "unverified": {
+      "score": 89,
+      "status": "reported"
+     }
+    }
+   },
+   "badges": []
+  },
+  {
+   "id": "gemini-3-5-flash-lite",
+   "display_name": "Gemini 3.5 Flash-Lite",
+   "maker": "google",
+   "tier": "efficient",
+   "deployment": "api",
+   "api_id": "gemini-3.5-flash-lite",
+   "price": {
+    "input": 0.3,
+    "output": 2.5,
+    "note": "$0.30 in / $2.50 out per million tokens",
+    "band": "low"
+   },
+   "context": "1M tokens",
+   "data_location": "Global endpoint; no data residency on the developer API",
+   "card": {
+    "doc_id": "gemini-3-5-flash-lite-card",
+    "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-5-Flash-Lite-Model-Card.pdf",
+    "type": "model_card",
+    "published": "2026-07",
+    "retrieved": "2026-09-12",
+    "title": "Gemini 3.5 Flash-Lite model card"
+   },
+   "status": "draft",
+   "one_liner": "The thinnest document of the set. Nothing published on accuracy, and nothing on resisting attacks.",
+   "next_step": "Only use it where nobody outside your team can type into it, and turn billing on before you connect anything.",
+   "how_to_use": "Through the Gemini API with billing enabled.",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "paid Gemini API",
+    "zdr": "on_request",
+    "retention": "55 days for abuse monitoring",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "google-gemini-terms",
+      "source_type": "policy_page",
+      "terms": [
+       "Unpaid Services"
+      ],
+      "chunk_id": "google-gemini-terms#0003",
+      "page": null,
+      "section": "",
+      "quote": "## Unpaid Services Any Services that are offered free of charge like direct interactions with Google AI Studio or unpaid quota in",
+      "url": "https://ai.google.dev/gemini-api/terms"
+     },
+     {
+      "doc_id": "google-zdr",
+      "source_type": "policy_page",
+      "terms": [
+       "achieving zero data retention"
+      ],
+      "chunk_id": "google-zdr#0000",
+      "page": null,
+      "section": "",
+      "quote": "## Customer data retention and achieving zero data retention",
+      "url": "https://ai.google.dev/gemini-api/docs/zdr"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 48,
+     "status": "reported",
+     "metric": "GDPval-AA v2 Elo and Terminal-Bench 2.1",
+     "value": "Elo 1140; Terminal-Bench 2.1 54.0%",
+     "plain": "Modest, but fine for simple jobs.",
+     "evidence": [
+      {
+       "doc_id": "gemini-3-5-flash-lite-card-web",
+       "source_type": "model_card",
+       "terms": [
+        "GDPVal-AA v2",
+        "1140"
+       ],
+       "chunk_id": "gemini-3-5-flash-lite-card-web#0003",
+       "page": null,
+       "section": "",
+       "quote": "rice $/1M tokens 50 50 50 00 SWE-Bench Pro (Public) Diverse agentic coding tasks 2% 3% 4% 5% 1 Agentic terminal coding Terminus-2 harness 0% 0% 2% 2% MLE-Bench Machine Learning Engineering 2% 0% — — GDPVal-AA v2 Knowledge work Elo 1140 642 1171 907 OSWorld-Verified Agentic computer use 0% 3% 1% 7% CharXiv Reasoning Information synthesis from complex charts No tools 5% 2% 3% 7% With tools 5% 6% — — GDM-MRCR v2 (8-needle) Long context performance 128k (avera",
+       "url": "https://deepmind.google/models/model-cards/gemini-3-5-flash-lite/"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": null,
+     "status": "missing",
+     "plain": "Not tested publicly at all.",
+     "evidence": [],
+     "curator_note": "The card only says the model may exhibit hallucinations."
+    },
+    "privacy": {
+     "score": 73,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "no training on paid tier, 55-day abuse retention, ZDR on approval",
+     "plain": "Paid accounts only, kept 55 days for abuse checks.",
+     "evidence": [
+      {
+       "doc_id": "google-zdr",
+       "source_type": "policy_page",
+       "terms": [
+        "achieving zero data retention"
+       ],
+       "chunk_id": "google-zdr#0000",
+       "page": null,
+       "section": "",
+       "quote": "## Customer data retention and achieving zero data retention",
+       "url": "https://ai.google.dev/gemini-api/docs/zdr"
+      }
+     ]
+    },
+    "fairness": {
+     "score": 50,
+     "status": "inferred",
+     "metric": "Relative safety deltas vs Gemini 3.1 Flash-Lite",
+     "value": "text safety improved; unjustified refusals regressed",
+     "plain": "Only relative claims, no rates.",
+     "evidence": [
+      {
+       "doc_id": "gemini-3-5-flash-lite-card",
+       "source_type": "model_card",
+       "terms": [
+        "unjustified refusals",
+        "regression"
+       ],
+       "chunk_id": "gemini-3-5-flash-lite-card#0005",
+       "page": 6,
+       "section": "",
+       "quote": "There was a slight regression in unjustified refusals, however we see this because the model is more likely to refuse to answer on sensitive topics to remain safe.",
+       "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-5-Flash-Lite-Model-Card.pdf#page=6"
+      }
+     ]
+    },
+    "tamper": {
+     "score": null,
+     "status": "missing",
+     "plain": "Nothing published about being tricked.",
+     "evidence": [],
+     "curator_note": "Searched for jailbreak, prompt injection, adversarial, red team: only a generic sentence about improving jailbreak resistance."
+    }
+   },
+   "overrides": {},
+   "badges": []
+  },
+  {
+   "id": "muse-spark-1-3",
+   "display_name": "Muse Spark 1.3",
+   "maker": "meta",
+   "tier": "flagship",
+   "deployment": "api",
+   "api_id": "muse-spark-1.3",
+   "price": {
+    "input": 1.25,
+    "output": 4.25,
+    "note": "$1.25 in / $4.25 out per million tokens",
+    "band": "mid"
+   },
+   "context": "1M tokens",
+   "data_location": "Not published",
+   "card": {
+    "doc_id": "muse-spark-safety-report",
+    "url": "https://ai.meta.com/static-resource/muse-spark-safety-and-preparedness-report/",
+    "type": "technical_report",
+    "published": "2026-05-26",
+    "retrieved": "2026-09-12",
+    "title": "Muse Spark safety and preparedness report (v1.0) and v1.1 evaluation report"
+   },
+   "status": "draft",
+   "one_liner": "Strong numbers for a fraction of the price, but the safety testing was done on an older version and Meta will not say how long it keeps your data.",
+   "next_step": "Meta has not published a retention period. Get zero retention terms in writing from their sales team before you send customer details.",
+   "how_to_use": "Through the Meta Model API. Use the standard model id, not the cheaper -contributor id, which is used to improve Meta's products.",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "Meta Model API (standard model id)",
+    "zdr": "unknown",
+    "retention": "not published",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "meta-model-api",
+      "source_type": "policy_page",
+      "terms": [
+       "Not used to improve our products"
+      ],
+      "chunk_id": "meta-model-api#0000",
+      "page": null,
+      "section": "",
+      "quote": "3 is annotated \"Not used to improve our products\".",
+      "url": "https://developer.meta.com/ai/products/meta-model-api/"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 87,
+     "status": "reported",
+     "metric": "GDPval-AA v2 Elo and Terminal-Bench 2.1",
+     "value": "Elo 1709 (xhigh); Terminal-Bench 2.1 89.2%",
+     "plain": "Second only to the top model.",
+     "evidence": [
+      {
+       "doc_id": "muse-spark-1-3-methodology",
+       "source_type": "technical_report",
+       "terms": [
+        "GDPval"
+       ],
+       "chunk_id": "muse-spark-1-3-methodology#0001",
+       "page": 1,
+       "section": "",
+       "quote": "Per-benchmark details Professional work ● GDPVal-AA v2.",
+       "url": "https://research.meta.ai/static/muse-spark-1-3-multimodal-evaluation-methodology#page=1"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": 75,
+     "status": "third_party",
+     "metric": "MASK honesty (v1.1) and SimpleQA Verified (v1.0)",
+     "value": "MASK 95.7% on v1.1; SimpleQA Verified 70.8% on v1.0; discounted 10% for version",
+     "plain": "Good score, but measured on version 1.1.",
+     "stale": true,
+     "evidence": [
+      {
+       "doc_id": "muse-spark-1-1-eval",
+       "source_type": "technical_report",
+       "terms": [
+        "MASK",
+        "measures honesty by comparing"
+       ],
+       "chunk_id": "muse-spark-1-1-eval#0146",
+       "page": 62,
+       "section": "3.1 Pro",
+       "quote": "MASK. … , 2025) measures honesty by comparing a model’s statements when it is incentivized to be dishonest against its statements under neutral conditions; contradicting itself under pressure is evidence of dishonesty.",
+       "url": "https://ai.meta.com/static-resource/muse-spark-1-1-evaluation-report#page=62"
+      }
+     ]
+    },
+    "privacy": {
+     "score": 38,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "no training on the standard id; retention not published; ZDR via sales; no certifications listed",
+     "plain": "No training on your data, but no published retention period.",
+     "evidence": [
+      {
+       "doc_id": "meta-model-api",
+       "source_type": "policy_page",
+       "terms": [
+        "Not used to improve our products"
+       ],
+       "chunk_id": "meta-model-api#0000",
+       "page": null,
+       "section": "",
+       "quote": "3 is annotated \"Not used to improve our products\".",
+       "url": "https://developer.meta.com/ai/products/meta-model-api/"
+      }
+     ]
+    },
+    "fairness": {
+     "score": 50,
+     "status": "inferred",
+     "metric": "Meta withholds absolute content-safety rates",
+     "value": "TextQuests 2.4 harmful actions per 100 (v1.0)",
+     "plain": "Meta describes improvements and withholds the rates.",
+     "evidence": [
+      {
+       "doc_id": "muse-spark-safety-report",
+       "source_type": "technical_report",
+       "terms": [
+        "TextQuests"
+       ],
+       "chunk_id": "muse-spark-safety-report#0032",
+       "page": 12,
+       "section": "FORTRESS",
+       "quote": "• Harm aversion: On TextQuests, Muse Spark achieves the lowest rate of harmful actions 6) and Claude Opus 5).",
+       "url": "https://ai.meta.com/static-resource/muse-spark-safety-and-preparedness-report/#page=12"
+      }
+     ]
+    },
+    "tamper": {
+     "score": 87,
+     "status": "third_party",
+     "metric": "Gray Swan ART, pass@10 (v1.1)",
+     "value": "3.2% attack success on v1.1; discounted 10% for version",
+     "plain": "Strong, on the older version.",
+     "stale": true,
+     "covers": [
+      "jailbreak",
+      "prompt_injection"
+     ],
+     "evidence": [
+      {
+       "doc_id": "muse-spark-1-1-eval",
+       "source_type": "technical_report",
+       "terms": [
+        "GraySwan ART Benchmark",
+        "Attack Success Rate"
+       ],
+       "chunk_id": "muse-spark-1-1-eval#0130",
+       "page": 56,
+       "section": "3.1 Pro",
+       "quote": "80 pass@1 pass@10 pass@100 6% Attack Success Rate (%) ↓ 70 60 50 5% 40 30 8% 8% 8% 20 6% 10 0 2% 3% Muse Spark 1 1% 8% Muse Spark 0 4% 5% 4% 1% 0% Claude Opus 8 1 Pro Figure 31 GraySwan ART Benchmark.",
+       "url": "https://ai.meta.com/static-resource/muse-spark-1-1-evaluation-report#page=56"
+      }
+     ]
+    }
+   },
+   "overrides": {},
+   "badges": [
+    {
+     "text": "safety tests cover an older version",
+     "kind": "warn"
+    }
+   ]
+  },
+  {
+   "id": "muse-glimmer-30b",
+   "display_name": "Muse Glimmer 30B",
+   "maker": "meta",
+   "tier": "efficient",
+   "deployment": "open_weights",
+   "api_id": "meta-models/Muse-Glimmer-30B",
+   "price": {
+    "input": 0.3,
+    "output": 1.1,
+    "note": "open weights; about $0.30 / $1.10 per million tokens via hosts",
+    "band": "low"
+   },
+   "context": "131K tokens",
+   "data_location": "Wherever you host it",
+   "card": {
+    "doc_id": "muse-glimmer-30b-card",
+    "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B",
+    "type": "model_card",
+    "published": "2026-08-10",
+    "retrieved": "2026-09-12",
+    "title": "Muse Glimmer 30B model card"
+   },
+   "status": "draft",
+   "one_liner": "You can run this one yourself, which makes privacy your decision rather than a company's, but two of the five things we check are not reported at all.",
+   "next_step": "Run it yourself, or pick a hosting company that will sign a data processing agreement.",
+   "how_to_use": "Download the weights and run it on your own hardware, or through a hosting provider.",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "self-hosted",
+    "zdr": "self_host",
+    "retention": "your choice, if you host it",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "muse-glimmer-30b-card",
+      "source_type": "model_card",
+      "terms": [
+       "Muse Glimmer"
+      ],
+      "chunk_id": "muse-glimmer-30b-card#0000",
+      "page": null,
+      "section": "",
+      "quote": "0 library_name: transformers pipeline_tag: image-text-to-text --- # Muse Glimmer Model Card **Authors:** Meta Superintelligence Lab **Model Release Date:** August 2026 0) Muse Glimmer is a 30-billion-parameter causal language model with a dedicated perception encoder, distilled from Muse Spark and purpose-built for autonomous a",
+      "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 39,
+     "status": "reported",
+     "metric": "GDPval-AA v2 Elo and Terminal-Bench 2.1",
+     "value": "Elo 953; Terminal-Bench 2.1 51.7%",
+     "plain": "Modest, but fine for simple jobs.",
+     "evidence": [
+      {
+       "doc_id": "muse-glimmer-30b-card",
+       "source_type": "model_card",
+       "terms": [
+        "GDPVal-AA v2",
+        "953"
+       ],
+       "chunk_id": "muse-glimmer-30b-card#0006",
+       "page": null,
+       "section": "",
+       "quote": "6-27B Thinking Mode | | :---- | :---- | :---: | :---: | :---: | 5 | 1 | 7 | 2 | | | GDPVal-AA v2 | 953 | 811 | **1141** | 0 | 6** | 6** | 2 | 2** | 7** | 8 | 4 | 1** | 8** | | | MMMU Pro | 74 | 73 | **75** | | | | | | | 9** | 7 | | | | | | | 8 | 1 | 2 | 1 | 3 | 0 | ai/static/muse-glimmer-methodology).",
+       "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": null,
+     "status": "missing",
+     "plain": "Not tested publicly at all.",
+     "evidence": [],
+     "curator_note": "No SimpleQA, MASK, FActScore or calibration numbers in the card."
+    },
+    "privacy": {
+     "score": 80,
+     "status": "reported",
+     "metric": "Self-hosted",
+     "value": "your data never leaves your machine if you host it",
+     "plain": "Your data never leaves your machine, if you host it.",
+     "evidence": [
+      {
+       "doc_id": "muse-glimmer-30b-card",
+       "source_type": "model_card",
+       "terms": [
+        "Muse Glimmer"
+       ],
+       "chunk_id": "muse-glimmer-30b-card#0000",
+       "page": null,
+       "section": "",
+       "quote": "0 library_name: transformers pipeline_tag: image-text-to-text --- # Muse Glimmer Model Card **Authors:** Meta Superintelligence Lab **Model Release Date:** August 2026 0) Muse Glimmer is a 30-billion-parameter causal language model with a dedicated perception encoder, distilled from Muse Spark and purpose-built for autonomous a",
+       "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B"
+      }
+     ]
+    },
+    "fairness": {
+     "score": null,
+     "status": "missing",
+     "plain": "Not tested publicly at all.",
+     "evidence": [],
+     "curator_note": "No BBQ, toxicity or harmful-content rates in the card."
+    },
+    "tamper": {
+     "score": null,
+     "status": "pending",
+     "metric": "AgentDojo prompt injection (Siren)",
+     "value": "28.4% attack success",
+     "plain": "Attacks succeeded 28 times in 100.",
+     "covers": [
+      "prompt_injection"
+     ],
+     "evidence": [
+      {
+       "doc_id": "muse-glimmer-30b-card",
+       "source_type": "model_card",
+       "terms": [
+        "AgentDojo"
+       ]
+      }
+     ],
+     "unverified": {
+      "score": 72,
+      "status": "reported"
+     }
+    }
+   },
+   "overrides": {
+    "code": {
+     "score": 76,
+     "status": "reported",
+     "metric": "SWE-Bench Verified",
+     "value": "76.0%",
+     "evidence": [
+      {
+       "doc_id": "muse-glimmer-30b-card",
+       "source_type": "model_card",
+       "terms": [
+        "SWE-Bench"
+       ],
+       "chunk_id": "muse-glimmer-30b-card#0000",
+       "page": null,
+       "section": "",
+       "quote": "Muse Glimmer is trained and evaluated on these capabilities: ** Muse Glimmer achieves strong success rates on full-task benchmarks including DeepSearch QA, MCP-Atlas, 𝛕3\\-Bench and SWE-Bench, which measure its ability to work within scaffolds, write and debug code, and resolve multi-turn requests from start to finish.",
+       "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B"
+      }
+     ]
+    }
+   },
+   "badges": [
+    {
+     "text": "privacy depends on who hosts it",
+     "kind": "info"
+    }
+   ]
+  }
+ ],
+ "validated": "2026-09-12"
+}

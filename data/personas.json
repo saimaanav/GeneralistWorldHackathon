@@ -1,0 +1,11 @@
+[
+  { "id": "rosa-bakery", "mark": "🥖", "name": "Rosa's Bakery", "blurb": "Replies to customer messages and writes marketing copy. The public can message it.", "markBg": "#FFE3A3",
+    "answers": { "business": "hospitality", "jobs": ["customer_messages", "marketing"], "rank": ["tamper", "cost", "truthfulness", "performance", "privacy", "fairness"], "audience": "customers_direct", "data": ["contacts"], "reach": ["public"], "decisions": "no",
+      "text": "We are a three person bakery. I answer the same Instagram questions all day and I would like help replying without sounding like a robot. Some customers ask about allergens." } },
+  { "id": "northside-physio", "mark": "🩺", "name": "Northside Physio", "blurb": "Drafts letters from patient notes, so the data rules are strict.", "markBg": "#E6F2F0",
+    "answers": { "business": "health", "jobs": ["documents", "customer_messages"], "rank": ["privacy", "truthfulness", "tamper", "fairness", "performance", "cost"], "audience": "customers_reviewed", "data": ["sensitive", "contacts"], "reach": ["reads_others"], "decisions": "no",
+      "text": "Two physiotherapists and a receptionist. We want help drafting referral letters and replying to patient emails. Patient notes will go in, so privacy is the whole question." } },
+  { "id": "kwan-accounting", "mark": "🧾", "name": "Kwan Accounting", "blurb": "Bookkeeping and client documents. Payment and tax records go in.", "markBg": "#F0EBE1",
+    "answers": { "business": "professional", "jobs": ["bookkeeping", "documents"], "rank": ["truthfulness", "privacy", "performance", "tamper", "cost", "fairness"], "audience": "only_me", "data": ["payments", "contacts", "sensitive"], "reach": ["reads_others"], "decisions": "no",
+      "text": "Small accounting practice with about forty clients. We want to categorise expenses, summarise contracts and draft client emails. Tax records and bank statements are involved." } }
+]
