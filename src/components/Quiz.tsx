@@ -174,7 +174,7 @@ export default function Quiz() {
           {(current.type === "single" || current.type === "multi") && (
             <>
               <TypeToMatch value={typed} onChange={setTyped} onEnter={onEnter} noMatch={noMatch} bestLabel={bestId ? optionLabel(current.id, bestId) : undefined} />
-              <QuestionStep step={current} selected={selected} onPick={pick} order={optionOrder} bestId={bestId} recommended={recommendedHere} business={answers.business} onUseRecommended={useRecommended} />
+              <QuestionStep step={current} selected={selected} onPick={pick} order={optionOrder} bestId={bestId} recommended={recommendedHere} business={answers.business} onUseRecommended={useRecommended} otherText={answers.businessOther} onOtherChange={(v) => setAnswers((a) => ({ ...a, businessOther: v }))} />
             </>
           )}
 

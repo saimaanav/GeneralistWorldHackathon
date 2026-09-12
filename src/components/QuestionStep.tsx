@@ -3,8 +3,10 @@ import { css, ACCENT } from "@/lib/proto";
 import type { Step } from "@/lib/questionnaire";
 import RecommendedTag, { BestMatchTag } from "./RecommendedTag";
 
-export default function QuestionStep({ step, selected, onPick, order, bestId, recommended, business, onUseRecommended }: {
+export default function QuestionStep({ step, selected, onPick, order, bestId, recommended, business, onUseRecommended, otherText, onOtherChange }: {
   step: Step;
+  otherText?: string;
+  onOtherChange?: (value: string) => void;
   selected: string[];
   onPick: (id: string) => void;
   order: string[];
@@ -60,6 +62,20 @@ export default function QuestionStep({ step, selected, onPick, order, bestId, re
           );
         })}
       </div>
+      {step.id === "business" && selected.includes("other") && onOtherChange ? (
+        <div style={{ marginTop: 14 }}>
+          <label htmlFor="business-other" style={{ display: "block", fontSize: 15, fontWeight: 700, marginBottom: 8 }}>What do you do? Write it in your own words.</label>
+          <input
+            id="business-other"
+            value={otherText || ""}
+            onChange={(e) => onOtherChange(e.target.value)}
+            placeholder="e.g. mobile dog groomer, wedding photographer, tattoo studio"
+            maxLength={80}
+            style={css("width:100%;padding:14px 16px;font-size:16px;color:#16151C;background:#FDF9F2;border:2px solid #EFE7DA;border-radius:16px;min-height:48px;")}
+          />
+          <div style={{ fontSize: 13, color: "#565064", marginTop: 6 }}>We will use this to describe your business on the results page.</div>
+        </div>
+      ) : null}
     </div>
   );
 }

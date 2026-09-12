@@ -1,19 +1,120 @@
 {
-  "anthropic": { "name": "Anthropic", "letter": "A", "bg": "#F0E3DA", "fg": "#8A4A2B" },
-  "openai": { "name": "OpenAI", "letter": "O", "bg": "#E4E7E6", "fg": "#26332F" },
-  "google": { "name": "Google", "letter": "G", "bg": "#E2EBFA", "fg": "#2E5DA8" },
-  "meta": { "name": "Meta", "letter": "M", "bg": "#E6E6FB", "fg": "#3A3AA8" },
-  "xai": { "name": "xAI", "letter": "X", "bg": "#E8E8E8", "fg": "#1B1B1B" },
-  "mistral": { "name": "Mistral AI", "letter": "Mi", "bg": "#FFEBD6", "fg": "#B4531B" },
-  "deepseek": { "name": "DeepSeek", "letter": "D", "bg": "#E0EEFF", "fg": "#1F4FB8" },
-  "qwen": { "name": "Alibaba Qwen", "letter": "Q", "bg": "#EDE6FF", "fg": "#5B3BB5" },
-  "moonshot": { "name": "Moonshot AI", "letter": "K", "bg": "#E9E9EC", "fg": "#2B2B33" },
-  "zhipu": { "name": "Z.ai", "letter": "Z", "bg": "#E3F1FF", "fg": "#1E5FA8" },
-  "minimax": { "name": "MiniMax", "letter": "Mx", "bg": "#FDE6EF", "fg": "#A8266A" },
-  "bytedance": { "name": "ByteDance Seed", "letter": "B", "bg": "#E6F4FF", "fg": "#1F5FA0" },
-  "baidu": { "name": "Baidu", "letter": "Bd", "bg": "#E4F0FF", "fg": "#1A4FA3" },
-  "tencent": { "name": "Tencent", "letter": "T", "bg": "#E3F3F9", "fg": "#0F5F8A" },
-  "stepfun": { "name": "StepFun", "letter": "S", "bg": "#EAF6EE", "fg": "#1F6B3C" },
-  "xiaomi": { "name": "Xiaomi", "letter": "Xm", "bg": "#FFE9E2", "fg": "#B0421F" },
-  "other": { "name": "Other", "letter": "?", "bg": "#EFEBE3", "fg": "#565064" }
+  "anthropic": {
+    "name": "Anthropic",
+    "letter": "A",
+    "bg": "#F0E3DA",
+    "fg": "#8A4A2B",
+    "domain": "anthropic.com"
+  },
+  "openai": {
+    "name": "OpenAI",
+    "letter": "O",
+    "bg": "#E4E7E6",
+    "fg": "#26332F",
+    "domain": "openai.com"
+  },
+  "google": {
+    "name": "Google",
+    "letter": "G",
+    "bg": "#E2EBFA",
+    "fg": "#2E5DA8",
+    "domain": "deepmind.google"
+  },
+  "meta": {
+    "name": "Meta",
+    "letter": "M",
+    "bg": "#E6E6FB",
+    "fg": "#3A3AA8",
+    "domain": "meta.com"
+  },
+  "xai": {
+    "name": "xAI",
+    "letter": "X",
+    "bg": "#E8E8E8",
+    "fg": "#1B1B1B",
+    "domain": "x.ai"
+  },
+  "mistral": {
+    "name": "Mistral AI",
+    "letter": "Mi",
+    "bg": "#FFEBD6",
+    "fg": "#B4531B",
+    "domain": "mistral.ai"
+  },
+  "deepseek": {
+    "name": "DeepSeek",
+    "letter": "D",
+    "bg": "#E0EEFF",
+    "fg": "#1F4FB8",
+    "domain": "deepseek.com"
+  },
+  "qwen": {
+    "name": "Alibaba Qwen",
+    "letter": "Q",
+    "bg": "#EDE6FF",
+    "fg": "#5B3BB5",
+    "domain": "qwen.ai"
+  },
+  "moonshot": {
+    "name": "Moonshot AI",
+    "letter": "K",
+    "bg": "#E9E9EC",
+    "fg": "#2B2B33",
+    "domain": "kimi.com"
+  },
+  "zhipu": {
+    "name": "Z.ai",
+    "letter": "Z",
+    "bg": "#E3F1FF",
+    "fg": "#1E5FA8",
+    "domain": "z.ai"
+  },
+  "minimax": {
+    "name": "MiniMax",
+    "letter": "Mx",
+    "bg": "#FDE6EF",
+    "fg": "#A8266A",
+    "domain": "minimax.io"
+  },
+  "bytedance": {
+    "name": "ByteDance Seed",
+    "letter": "B",
+    "bg": "#E6F4FF",
+    "fg": "#1F5FA0",
+    "domain": "bytedance.com"
+  },
+  "baidu": {
+    "name": "Baidu",
+    "letter": "Bd",
+    "bg": "#E4F0FF",
+    "fg": "#1A4FA3",
+    "domain": "baidu.com"
+  },
+  "tencent": {
+    "name": "Tencent",
+    "letter": "T",
+    "bg": "#E3F3F9",
+    "fg": "#0F5F8A",
+    "domain": "tencent.com"
+  },
+  "stepfun": {
+    "name": "StepFun",
+    "letter": "S",
+    "bg": "#EAF6EE",
+    "fg": "#1F6B3C",
+    "domain": "stepfun.com"
+  },
+  "xiaomi": {
+    "name": "Xiaomi",
+    "letter": "Xm",
+    "bg": "#FFE9E2",
+    "fg": "#B0421F",
+    "domain": "xiaomi.com"
+  },
+  "other": {
+    "name": "Other",
+    "letter": "?",
+    "bg": "#EFEBE3",
+    "fg": "#565064"
+  }
 }

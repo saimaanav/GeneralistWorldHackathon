@@ -93,7 +93,7 @@ export default function Results() {
 
   const visible = showAll ? shown : shown.slice(0, 3);
   const quizHref = "/quiz?" + (() => { const p = answersToParams(answers); if (personaId) p.set("persona", personaId); return p.toString(); })();
-  const name = persona ? persona.name : "your business";
+  const name = persona ? persona.name : (answers.businessOther ? answers.businessOther.trim() : "your business");
   const recap = (activeInterp && activeInterp.source === "claude" && activeInterp.summary.trim()) ? activeInterp.summary : (profile.summary || "Tell us a little about your business and we will rank the models for it.") + (activeInterp && activeInterp.source === "rules" && activeInterp.summary.trim() ? " " + activeInterp.summary : "");
 
   return (

@@ -44,7 +44,7 @@ export function fill(pct: number, status: Status, accent: string, on: boolean, d
 
 export const BAR_COLOR: Record<Status, string> = { reported: ACCENT, inferred: "#F0C878", third_party: ACCENT, missing: "#E8B7AB", pending: "#D8D1C5" };
 
-export type Maker = { name: string; letter: string; bg: string; fg: string };
+export type Maker = { name: string; letter: string; bg: string; fg: string; domain?: string };
 export const MAKERS: Record<string, Maker> = makersJson as Record<string, Maker>;
 
 export function maker(key: string): Maker {

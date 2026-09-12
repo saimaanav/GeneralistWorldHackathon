@@ -102,6 +102,7 @@ export function matchOptions(step: Step, query: string): { id: string; score: nu
 export function answersToParams(a: Answers): URLSearchParams {
   const p = new URLSearchParams();
   if (a.business) p.set("b", a.business);
+  if (a.businessOther) p.set("bo", a.businessOther.slice(0, 80));
   if (a.jobs.length) p.set("j", a.jobs.join(","));
   if (a.rank.length) p.set("r", a.rank.join(","));
   if (a.audience) p.set("a", a.audience);
@@ -117,6 +118,7 @@ export function paramsToAnswers(p: URLSearchParams): Answers {
   const list = (k: string) => (p.get(k) ? p.get(k)!.split(",").filter(Boolean) : []);
   return {
     business: p.get("b") || undefined,
+    businessOther: p.get("bo") || undefined,
     jobs: list("j"),
     rank: list("r"),
     audience: p.get("a") || undefined,
@@ -201,6 +203,7 @@ export function answersToProfile(input: Answers, interp?: Interpretation | null)
 export function summarize(a: Answers): string {
   const jobs = a.jobs.map((j) => optionLabel("jobs", j).toLowerCase());
   const parts: string[] = [];
+  if (a.business === "other" && a.businessOther) parts.push("You run " + (/^[aeiou]/i.test(a.businessOther.trim()) ? "an " : "a ") + a.businessOther.trim().replace(/\.$/, "") + ".");
   if (jobs.length) parts.push("You will use AI to " + joinList(jobs.map(lowerFirst)) + ".");
   if (a.audience === "customers_direct") parts.push("Customers read what it writes with nobody checking first");
   else if (a.audience === "customers_reviewed") parts.push("Customers read what it writes after someone checks it");

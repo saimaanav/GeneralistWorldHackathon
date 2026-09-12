@@ -71,7 +71,7 @@ function processEvidence(list: Evidence[], label: string): boolean {
   for (const ev of list) {
     total++;
     const r = resolve(ev);
-    if (r.ok && r.unindexed) { unindexedCount++; (ev as Evidence & { unindexed?: boolean }).unindexed = true; ev.url = ev.url || docUrl.get(ev.doc_id) || ""; continue; }
+    if (r.ok && r.unindexed) { unindexedCount++; (ev as Evidence & { unindexed?: boolean }).unindexed = true; ev.chunk_id = ev.chunk_id || "ev:" + label.replace(/\s+/g, ":") + ":" + list.indexOf(ev); ev.url = ev.url || docUrl.get(ev.doc_id) || ""; continue; }
     if (r.ok && r.chunk) {
       resolvedCount++;
       ev.chunk_id = r.chunk.id; ev.page = r.chunk.page; ev.section = r.chunk.section; ev.quote = r.quote;

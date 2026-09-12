@@ -62,6 +62,7 @@ export interface ScoresFile { version: string; models: Model[] }
 
 export interface Answers {
   business?: string;
+  businessOther?: string;
   jobs: string[];
   rank: string[];
   audience?: string;

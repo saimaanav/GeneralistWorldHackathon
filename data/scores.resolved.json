@@ -1485,6 +1485,7 @@
       "source_type": "system_card",
       "quote": "Data policy: trains on inputs by default = false; zero data retention = available; retention = 30 days by default",
       "unindexed": true,
+      "chunk_id": "ev:claude-opus-5:policy:0",
       "url": "https://www.anthropic.com/claude-opus-5-system-card"
      }
     ]
@@ -1502,6 +1503,7 @@
        "source_type": "model_card",
        "quote": "GDPval-AA v2 Elo; DeepSWE v1.1: Elo 1861; DeepSWE 68.8%",
        "unindexed": true,
+       "chunk_id": "ev:claude-opus-5:performance:0",
        "url": "https://www.anthropic.com/claude-opus-5-system-card"
       }
      ]
@@ -1518,6 +1520,7 @@
        "source_type": "model_card",
        "quote": "AA-Omniscience hallucination rate (independent): 50% of attempted answers wrong",
        "unindexed": true,
+       "chunk_id": "ev:claude-opus-5:truthfulness:0",
        "url": "https://www.anthropic.com/claude-opus-5-system-card"
       }
      ]
@@ -1534,6 +1537,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: no training; 30-day retention; ZDR available; HIPAA BAA; US or global",
        "unindexed": true,
+       "chunk_id": "ev:claude-opus-5:privacy:0",
        "url": "https://www.anthropic.com/claude-opus-5-system-card"
       }
      ]
@@ -1550,6 +1554,7 @@
        "source_type": "model_card",
        "quote": "BBQ and harmful-content evaluations: BBQ disambiguated accuracy 81.6%; safe-response mean about 88%",
        "unindexed": true,
+       "chunk_id": "ev:claude-opus-5:fairness:0",
        "url": "https://www.anthropic.com/claude-opus-5-system-card"
       }
      ]
@@ -1566,6 +1571,7 @@
        "source_type": "model_card",
        "quote": "Indirect prompt injection benchmark, k=15: 2.0% attack success",
        "unindexed": true,
+       "chunk_id": "ev:claude-opus-5:tamper:0",
        "url": "https://www.anthropic.com/claude-opus-5-system-card"
       }
      ],
@@ -1587,6 +1593,7 @@
        "source_type": "model_card",
        "quote": "SWE-bench Verified: 96.0%",
        "unindexed": true,
+       "chunk_id": "ev:claude-opus-5:override:code:0",
        "url": "https://www.anthropic.com/claude-opus-5-system-card"
       }
      ]
@@ -1638,6 +1645,7 @@
       "source_type": "system_card",
       "quote": "Data policy: trains on inputs by default = false; zero data retention = available; retention = 30 days by default",
       "unindexed": true,
+      "chunk_id": "ev:claude-sonnet-5:policy:0",
       "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf"
      }
     ]
@@ -1655,6 +1663,7 @@
        "source_type": "model_card",
        "quote": "GDPval-AA v2 Elo; Terminal-Bench 2.1: Elo 1618; Terminal-Bench 2.1 80.4%",
        "unindexed": true,
+       "chunk_id": "ev:claude-sonnet-5:performance:0",
        "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf"
       }
      ]
@@ -1671,6 +1680,7 @@
        "source_type": "model_card",
        "quote": "MASK lying rate: 3.1% (lower is better)",
        "unindexed": true,
+       "chunk_id": "ev:claude-sonnet-5:truthfulness:0",
        "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf"
       }
      ]
@@ -1687,6 +1697,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: no training; 30-day retention; ZDR available; HIPAA BAA",
        "unindexed": true,
+       "chunk_id": "ev:claude-sonnet-5:privacy:0",
        "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf"
       }
      ]
@@ -1703,6 +1714,7 @@
        "source_type": "model_card",
        "quote": "BBQ and harmful-content evaluations: BBQ accuracy 72.4% / 98.6%, bias 1.8% / 0.6%; safe-response mean 95%",
        "unindexed": true,
+       "chunk_id": "ev:claude-sonnet-5:fairness:0",
        "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf"
       }
      ]
@@ -1719,6 +1731,7 @@
        "source_type": "model_card",
        "quote": "Indirect prompt injection benchmark, k=15: 5.9% attack success",
        "unindexed": true,
+       "chunk_id": "ev:claude-sonnet-5:tamper:0",
        "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf"
       }
      ],
@@ -1739,6 +1752,7 @@
        "source_type": "model_card",
        "quote": "SWE-bench Verified: 85.2%",
        "unindexed": true,
+       "chunk_id": "ev:claude-sonnet-5:override:code:0",
        "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf"
       }
      ]
@@ -1790,6 +1804,7 @@
       "source_type": "system_card",
       "quote": "Data policy: trains on inputs by default = false; zero data retention = available; retention = abuse-monitoring logs up to 30 days",
       "unindexed": true,
+      "chunk_id": "ev:gpt-5-6-sol:policy:0",
       "url": "https://deploymentsafety.openai.com/gpt-5-6"
      }
     ]
@@ -1807,6 +1822,7 @@
        "source_type": "model_card",
        "quote": "Terminal-Bench 2.1; GDPval-AA v2 Elo (independent): Terminal-Bench 2.1 88.8%; Elo 1624",
        "unindexed": true,
+       "chunk_id": "ev:gpt-5-6-sol:performance:0",
        "url": "https://deploymentsafety.openai.com/gpt-5-6"
       }
      ]
@@ -1823,6 +1839,7 @@
        "source_type": "model_card",
        "quote": "Response-level hallucination rate measured on GPT-5.5, discounted: 9.2% on the previous model; Sol described as slightly better",
        "unindexed": true,
+       "chunk_id": "ev:gpt-5-6-sol:truthfulness:0",
        "url": "https://deploymentsafety.openai.com/gpt-5-6"
       }
      ]
@@ -1839,6 +1856,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: no training; 30-day abuse logs; ZDR; HIPAA BAA; regions",
        "unindexed": true,
+       "chunk_id": "ev:gpt-5-6-sol:privacy:0",
        "url": "https://deploymentsafety.openai.com/gpt-5-6"
       }
      ]
@@ -1855,6 +1873,7 @@
        "source_type": "model_card",
        "quote": "Safe-completion rates; no demographic bias test: production not_unsafe mean 93.0%",
        "unindexed": true,
+       "chunk_id": "ev:gpt-5-6-sol:fairness:0",
        "url": "https://deploymentsafety.openai.com/gpt-5-6"
       }
      ]
@@ -1871,6 +1890,7 @@
        "source_type": "model_card",
        "quote": "GPT-Red indirect prompt injection: 3.77% attack success; direct 0.05%",
        "unindexed": true,
+       "chunk_id": "ev:gpt-5-6-sol:tamper:0",
        "url": "https://deploymentsafety.openai.com/gpt-5-6"
       }
      ],
@@ -1892,6 +1912,7 @@
        "source_type": "model_card",
        "quote": "Terminal-Bench 2.1: 88.8%",
        "unindexed": true,
+       "chunk_id": "ev:gpt-5-6-sol:override:code:0",
        "url": "https://deploymentsafety.openai.com/gpt-5-6"
       }
      ]
@@ -1943,6 +1964,7 @@
       "source_type": "system_card",
       "quote": "Data policy: trains on inputs by default = false; zero data retention = available; retention = abuse-monitoring logs up to 30 days",
       "unindexed": true,
+      "chunk_id": "ev:gpt-5-6-terra:policy:0",
       "url": "https://deploymentsafety.openai.com/gpt-5-6"
      }
     ]
@@ -1960,6 +1982,7 @@
        "source_type": "model_card",
        "quote": "Terminal-Bench 2.1; GDPval-AA v2 Elo (independent): Terminal-Bench 2.1 87.4%; Elo 1479",
        "unindexed": true,
+       "chunk_id": "ev:gpt-5-6-terra:performance:0",
        "url": "https://deploymentsafety.openai.com/gpt-5-6"
       }
      ]
@@ -1976,6 +1999,7 @@
        "source_type": "model_card",
        "quote": "Hallucination curves only: charts only; 'larger models perform better'",
        "unindexed": true,
+       "chunk_id": "ev:gpt-5-6-terra:truthfulness:0",
        "url": "https://deploymentsafety.openai.com/gpt-5-6"
       }
      ]
@@ -1992,6 +2016,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: no training; 30-day abuse logs; ZDR; HIPAA BAA; regions",
        "unindexed": true,
+       "chunk_id": "ev:gpt-5-6-terra:privacy:0",
        "url": "https://deploymentsafety.openai.com/gpt-5-6"
       }
      ]
@@ -2008,6 +2033,7 @@
        "source_type": "model_card",
        "quote": "Safe-completion rates; no demographic bias test: production not_unsafe mean 92.8%",
        "unindexed": true,
+       "chunk_id": "ev:gpt-5-6-terra:fairness:0",
        "url": "https://deploymentsafety.openai.com/gpt-5-6"
       }
      ]
@@ -2024,6 +2050,7 @@
        "source_type": "model_card",
        "quote": "GPT-Red indirect prompt injection: 3.32% attack success",
        "unindexed": true,
+       "chunk_id": "ev:gpt-5-6-terra:tamper:0",
        "url": "https://deploymentsafety.openai.com/gpt-5-6"
       }
      ],
@@ -2044,6 +2071,7 @@
        "source_type": "model_card",
        "quote": "Terminal-Bench 2.1: 87.4%",
        "unindexed": true,
+       "chunk_id": "ev:gpt-5-6-terra:override:code:0",
        "url": "https://deploymentsafety.openai.com/gpt-5-6"
       }
      ]
@@ -2095,6 +2123,7 @@
       "source_type": "model_card",
       "quote": "Data policy: trains on inputs by default = false; zero data retention = on_request; retention = 55 days for abuse monitoring",
       "unindexed": true,
+      "chunk_id": "ev:gemini-3-1-pro-preview:policy:0",
       "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"
      }
     ]
@@ -2112,6 +2141,7 @@
        "source_type": "model_card",
        "quote": "GDPval-AA v2 Elo; Terminal-Bench 2.0: Elo 1317; Terminal-Bench 2.0 68.5%",
        "unindexed": true,
+       "chunk_id": "ev:gemini-3-1-pro-preview:performance:0",
        "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"
       }
      ]
@@ -2128,6 +2158,7 @@
        "source_type": "model_card",
        "quote": "SimpleQA-Verified as listed in DeepSeek's V4 report: 75.6%",
        "unindexed": true,
+       "chunk_id": "ev:gemini-3-1-pro-preview:truthfulness:0",
        "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"
       }
      ]
@@ -2144,6 +2175,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: no training on paid tier; 55-day abuse retention; certifications via enterprise platform only",
        "unindexed": true,
+       "chunk_id": "ev:gemini-3-1-pro-preview:privacy:0",
        "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"
       }
      ]
@@ -2160,6 +2192,7 @@
        "source_type": "model_card",
        "quote": "Frontier safety violation rates; no demographic bias test: cyber 5.4%, CBRN 7.5% violation rates",
        "unindexed": true,
+       "chunk_id": "ev:gemini-3-1-pro-preview:fairness:0",
        "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"
       }
      ]
@@ -2176,6 +2209,7 @@
        "source_type": "model_card",
        "quote": "Gray Swan Shade jailbreak (chart reads): about 62% cyber and 29% bio attack success",
        "unindexed": true,
+       "chunk_id": "ev:gemini-3-1-pro-preview:tamper:0",
        "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"
       }
      ],
@@ -2196,6 +2230,7 @@
        "source_type": "model_card",
        "quote": "SWE-bench Verified: 80.6%",
        "unindexed": true,
+       "chunk_id": "ev:gemini-3-1-pro-preview:override:code:0",
        "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"
       }
      ]
@@ -2251,6 +2286,7 @@
       "source_type": "model_card",
       "quote": "Data policy: trains on inputs by default = true; zero data retention = self_host; retention = free hosted tier retains and uses inputs; self-hosting is your choice",
       "unindexed": true,
+      "chunk_id": "ev:gemma-4:policy:0",
       "url": "https://ai.google.dev/gemma/docs/core/model_card_4"
      }
     ]
@@ -2268,6 +2304,7 @@
        "source_type": "model_card",
        "quote": "GPQA Diamond, tau2-bench, MMLU-Pro (no shared axis): GPQA 84.3; tau2 76.9; MMLU-Pro 85.2",
        "unindexed": true,
+       "chunk_id": "ev:gemma-4:performance:0",
        "url": "https://ai.google.dev/gemma/docs/core/model_card_4"
       }
      ]
@@ -2292,6 +2329,7 @@
        "source_type": "model_card",
        "quote": "Self-hosted with a caveat: free hosted tier trains on inputs; your data stays yours only if you host it",
        "unindexed": true,
+       "chunk_id": "ev:gemma-4:privacy:0",
        "url": "https://ai.google.dev/gemma/docs/core/model_card_4"
       }
      ]
@@ -2364,6 +2402,7 @@
       "source_type": "model_card",
       "quote": "Data policy: trains on inputs by default = false; zero data retention = unknown; retention = not verified",
       "unindexed": true,
+      "chunk_id": "ev:grok-4-6:policy:0",
       "url": "https://media.x.ai/v1/website/card-4p6-4cd2dc57.pdf"
      }
     ]
@@ -2381,6 +2420,7 @@
        "source_type": "model_card",
        "quote": "GDPval-AA v2 Elo; DeepSWE v1.1: Elo 1753; DeepSWE 65.9%",
        "unindexed": true,
+       "chunk_id": "ev:grok-4-6:performance:0",
        "url": "https://media.x.ai/v1/website/card-4p6-4cd2dc57.pdf"
       }
      ]
@@ -2397,6 +2437,7 @@
        "source_type": "model_card",
        "quote": "Internal hallucination rate; MASK-Rectified dishonesty: 1.7% hallucination; 1.9% dishonesty",
        "unindexed": true,
+       "chunk_id": "ev:grok-4-6:truthfulness:0",
        "url": "https://media.x.ai/v1/website/card-4p6-4cd2dc57.pdf"
       }
      ]
@@ -2413,6 +2454,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: no training; retention published; region unverified",
        "unindexed": true,
+       "chunk_id": "ev:grok-4-6:privacy:0",
        "url": "https://media.x.ai/v1/website/card-4p6-4cd2dc57.pdf"
       }
      ]
@@ -2429,6 +2471,7 @@
        "source_type": "model_card",
        "quote": "Harmful-content rates; no demographic bias test: safe-response mean 99.4%",
        "unindexed": true,
+       "chunk_id": "ev:grok-4-6:fairness:0",
        "url": "https://media.x.ai/v1/website/card-4p6-4cd2dc57.pdf"
       }
      ]
@@ -2445,6 +2488,7 @@
        "source_type": "model_card",
        "quote": "StrongREJECT compliance: 3.9% of jailbreak attempts complied with",
        "unindexed": true,
+       "chunk_id": "ev:grok-4-6:tamper:0",
        "url": "https://media.x.ai/v1/website/card-4p6-4cd2dc57.pdf"
       }
      ],
@@ -2500,6 +2544,7 @@
       "source_type": "model_card",
       "quote": "Data policy: trains on inputs by default = unknown; zero data retention = unknown; retention = 30 days",
       "unindexed": true,
+      "chunk_id": "ev:mistral-large-3:policy:0",
       "url": "https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512"
      }
     ]
@@ -2517,6 +2562,7 @@
        "source_type": "model_card",
        "quote": "GPQA Diamond (no shared axis; independent Elo looks broken): GPQA 67.2%",
        "unindexed": true,
+       "chunk_id": "ev:mistral-large-3:performance:0",
        "url": "https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512"
       }
      ]
@@ -2541,6 +2587,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: training default not stated; 30-day retention; EU hosting; HIPAA via registry",
        "unindexed": true,
+       "chunk_id": "ev:mistral-large-3:privacy:0",
        "url": "https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512"
       }
      ]
@@ -2609,6 +2656,7 @@
       "source_type": "model_card",
       "quote": "Data policy: trains on inputs by default = unknown; zero data retention = unknown; retention = 30 days",
       "unindexed": true,
+      "chunk_id": "ev:mistral-medium-3-5:policy:0",
       "url": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B"
      }
     ]
@@ -2626,6 +2674,7 @@
        "source_type": "model_card",
        "quote": "GDPval-AA v2 Elo (independent): Elo 875",
        "unindexed": true,
+       "chunk_id": "ev:mistral-medium-3-5:performance:0",
        "url": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B"
       }
      ]
@@ -2650,6 +2699,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: training default not stated; 30-day retention; EU hosting",
        "unindexed": true,
+       "chunk_id": "ev:mistral-medium-3-5:privacy:0",
        "url": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B"
       }
      ]
@@ -2683,6 +2733,7 @@
        "source_type": "model_card",
        "quote": "SWE-bench Verified: 77.6%",
        "unindexed": true,
+       "chunk_id": "ev:mistral-medium-3-5:override:code:0",
        "url": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B"
       }
      ]
@@ -2734,6 +2785,7 @@
       "source_type": "model_card",
       "quote": "Data policy: trains on inputs by default = unknown; zero data retention = unknown; retention = not stated; PRC law applies",
       "unindexed": true,
+      "chunk_id": "ev:deepseek-v4-pro:policy:0",
       "url": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf"
      }
     ]
@@ -2751,6 +2803,7 @@
        "source_type": "model_card",
        "quote": "Terminal-Bench 2.1; DeepSWE v1.1: Terminal-Bench 2.1 87.9%; DeepSWE 62.7%",
        "unindexed": true,
+       "chunk_id": "ev:deepseek-v4-pro:performance:0",
        "url": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf"
       }
      ]
@@ -2767,6 +2820,7 @@
        "source_type": "model_card",
        "quote": "SimpleQA-Verified on the April preview, discounted: 57.9% (preview)",
        "unindexed": true,
+       "chunk_id": "ev:deepseek-v4-pro:truthfulness:0",
        "url": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf"
       }
      ]
@@ -2783,6 +2837,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: training default not stated; data stored in mainland China; self-host possible",
        "unindexed": true,
+       "chunk_id": "ev:deepseek-v4-pro:privacy:0",
        "url": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf"
       }
      ]
@@ -2807,6 +2862,7 @@
        "source_type": "model_card",
        "quote": "StrongREJECT by an independent lab: 77.8% attack success",
        "unindexed": true,
+       "chunk_id": "ev:deepseek-v4-pro:tamper:0",
        "url": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf"
       }
      ],
@@ -2828,6 +2884,7 @@
        "source_type": "model_card",
        "quote": "SWE-bench Verified (preview): 80.6%",
        "unindexed": true,
+       "chunk_id": "ev:deepseek-v4-pro:override:code:0",
        "url": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf"
       }
      ]
@@ -2879,6 +2936,7 @@
       "source_type": "technical_report",
       "quote": "Data policy: trains on inputs by default = unknown; zero data retention = unknown; retention = not stated; PRC law applies",
       "unindexed": true,
+      "chunk_id": "ev:deepseek-v4-1-flash:policy:0",
       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
      }
     ]
@@ -2896,6 +2954,7 @@
        "source_type": "model_card",
        "quote": "Terminal-Bench 2.1; DeepSWE v1.1: Terminal-Bench 2.1 90.6%; DeepSWE 74.2%",
        "unindexed": true,
+       "chunk_id": "ev:deepseek-v4-1-flash:performance:0",
        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
       }
      ]
@@ -2912,6 +2971,7 @@
        "source_type": "model_card",
        "quote": "Base-model SimpleQA-Verified only: 42.3% (base model, 25-shot)",
        "unindexed": true,
+       "chunk_id": "ev:deepseek-v4-1-flash:truthfulness:0",
        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
       }
      ]
@@ -2928,6 +2988,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: training default not stated; data stored in mainland China; self-host possible",
        "unindexed": true,
+       "chunk_id": "ev:deepseek-v4-1-flash:privacy:0",
        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
       }
      ]
@@ -2961,6 +3022,7 @@
        "source_type": "model_card",
        "quote": "Terminal-Bench 2.1: 90.6%",
        "unindexed": true,
+       "chunk_id": "ev:deepseek-v4-1-flash:override:code:0",
        "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
       }
      ]
@@ -3012,6 +3074,7 @@
       "source_type": "model_card",
       "quote": "Data policy: trains on inputs by default = false; zero data retention = unknown; retention = not stated",
       "unindexed": true,
+      "chunk_id": "ev:qwen3-8-max:policy:0",
       "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B"
      }
     ]
@@ -3029,6 +3092,7 @@
        "source_type": "model_card",
        "quote": "Terminal-Bench 2.1; DeepSWE v1.1; GDPval-AA v2 Elo (as cited by Z.ai): Terminal-Bench 2.1 86.6%; DeepSWE 56.6%; Elo 1739",
        "unindexed": true,
+       "chunk_id": "ev:qwen3-8-max:performance:0",
        "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B"
       }
      ]
@@ -3053,6 +3117,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: no training; SOC 2; selectable regions; self-host",
        "unindexed": true,
+       "chunk_id": "ev:qwen3-8-max:privacy:0",
        "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B"
       }
      ]
@@ -3121,6 +3186,7 @@
       "source_type": "technical_report",
       "quote": "Data policy: trains on inputs by default = false; zero data retention = unknown; retention = not stated",
       "unindexed": true,
+      "chunk_id": "ev:qwen3-8-flash:policy:0",
       "url": "https://github.com/QwenLM/Qwen3.8-Flash-Next/blob/main/tech_report.pdf"
      }
     ]
@@ -3138,6 +3204,7 @@
        "source_type": "model_card",
        "quote": "DeepSWE v1.1 only: 58.7%",
        "unindexed": true,
+       "chunk_id": "ev:qwen3-8-flash:performance:0",
        "url": "https://github.com/QwenLM/Qwen3.8-Flash-Next/blob/main/tech_report.pdf"
       }
      ]
@@ -3162,6 +3229,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: no training; SOC 2; selectable regions; self-host",
        "unindexed": true,
+       "chunk_id": "ev:qwen3-8-flash:privacy:0",
        "url": "https://github.com/QwenLM/Qwen3.8-Flash-Next/blob/main/tech_report.pdf"
       }
      ]
@@ -3230,6 +3298,7 @@
       "source_type": "technical_report",
       "quote": "Data policy: trains on inputs by default = true; zero data retention = unknown; retention = not stated",
       "unindexed": true,
+      "chunk_id": "ev:kimi-k3:policy:0",
       "url": "https://arxiv.org/abs/2607.24653"
      }
     ]
@@ -3247,6 +3316,7 @@
        "source_type": "model_card",
        "quote": "GDPval-AA v2 Elo; Terminal-Bench 2.1; DeepSWE v1.1: Elo 1686; Terminal-Bench 2.1 88.3%; DeepSWE 67.5%",
        "unindexed": true,
+       "chunk_id": "ev:kimi-k3:performance:0",
        "url": "https://arxiv.org/abs/2607.24653"
       }
      ]
@@ -3263,6 +3333,7 @@
        "source_type": "model_card",
        "quote": "AA-Omniscience hallucination rate (independent): 51%",
        "unindexed": true,
+       "chunk_id": "ev:kimi-k3:truthfulness:0",
        "url": "https://arxiv.org/abs/2607.24653"
       }
      ]
@@ -3279,6 +3350,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: trains on inputs by default; Singapore; self-host",
        "unindexed": true,
+       "chunk_id": "ev:kimi-k3:privacy:0",
        "url": "https://arxiv.org/abs/2607.24653"
       }
      ]
@@ -3312,6 +3384,7 @@
        "source_type": "model_card",
        "quote": "Terminal-Bench 2.1: 88.3%",
        "unindexed": true,
+       "chunk_id": "ev:kimi-k3:override:code:0",
        "url": "https://arxiv.org/abs/2607.24653"
       }
      ]
@@ -3363,6 +3436,7 @@
       "source_type": "model_card",
       "quote": "Data policy: trains on inputs by default = false; zero data retention = unknown; retention = content stated as not stored (page now missing)",
       "unindexed": true,
+      "chunk_id": "ev:glm-5-3:policy:0",
       "url": "https://huggingface.co/zai-org/GLM-5.3"
      }
     ]
@@ -3380,6 +3454,7 @@
        "source_type": "model_card",
        "quote": "GDPval-AA v2 Elo; Terminal-Bench 2.1; DeepSWE v1.1: Elo 1769; Terminal-Bench 2.1 88.2%; DeepSWE 66.9%",
        "unindexed": true,
+       "chunk_id": "ev:glm-5-3:performance:0",
        "url": "https://huggingface.co/zai-org/GLM-5.3"
       }
      ]
@@ -3404,6 +3479,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: no training; no-storage default; Singapore; self-host",
        "unindexed": true,
+       "chunk_id": "ev:glm-5-3:privacy:0",
        "url": "https://huggingface.co/zai-org/GLM-5.3"
       }
      ]
@@ -3437,6 +3513,7 @@
        "source_type": "model_card",
        "quote": "Terminal-Bench 2.1: 88.2%",
        "unindexed": true,
+       "chunk_id": "ev:glm-5-3:override:code:0",
        "url": "https://huggingface.co/zai-org/GLM-5.3"
       }
      ]
@@ -3488,6 +3565,7 @@
       "source_type": "model_card",
       "quote": "Data policy: trains on inputs by default = false; zero data retention = unknown; retention = content stated as not stored",
       "unindexed": true,
+      "chunk_id": "ev:glm-5-3-flash:policy:0",
       "url": "https://huggingface.co/zai-org/GLM-5.3-Flash"
      }
     ]
@@ -3505,6 +3583,7 @@
        "source_type": "model_card",
        "quote": "GDPval-AA v2 Elo; Terminal-Bench 2.1; DeepSWE v1.1: Elo 1773 (image); Terminal-Bench 2.1 84.3%; DeepSWE 63.4%",
        "unindexed": true,
+       "chunk_id": "ev:glm-5-3-flash:performance:0",
        "url": "https://huggingface.co/zai-org/GLM-5.3-Flash"
       }
      ]
@@ -3529,6 +3608,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: no training; no-storage default; Singapore; self-host",
        "unindexed": true,
+       "chunk_id": "ev:glm-5-3-flash:privacy:0",
        "url": "https://huggingface.co/zai-org/GLM-5.3-Flash"
       }
      ]
@@ -3597,6 +3677,7 @@
       "source_type": "model_card",
       "quote": "Data policy: trains on inputs by default = unknown; zero data retention = unknown; retention = not stated",
       "unindexed": true,
+      "chunk_id": "ev:minimax-m3:policy:0",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3"
      }
     ]
@@ -3614,6 +3695,7 @@
        "source_type": "model_card",
        "quote": "GDPval-AA v2 Elo (independent); Terminal-Bench 2.1: Elo about 1670; Terminal-Bench 2.1 66.0%",
        "unindexed": true,
+       "chunk_id": "ev:minimax-m3:performance:0",
        "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3"
       }
      ]
@@ -3630,6 +3712,7 @@
        "source_type": "model_card",
        "quote": "AA-Omniscience hallucination rate (independent): 16.1%, driven by a low attempt rate",
        "unindexed": true,
+       "chunk_id": "ev:minimax-m3:truthfulness:0",
        "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3"
       }
      ]
@@ -3646,6 +3729,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: training default not stated; US single region; self-host",
        "unindexed": true,
+       "chunk_id": "ev:minimax-m3:privacy:0",
        "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3"
       }
      ]
@@ -3679,6 +3763,7 @@
        "source_type": "model_card",
        "quote": "SWE-bench Verified: 80.5%",
        "unindexed": true,
+       "chunk_id": "ev:minimax-m3:override:code:0",
        "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3"
       }
      ]
@@ -3730,6 +3815,7 @@
       "source_type": "model_card",
       "quote": "Data policy: trains on inputs by default = unknown; zero data retention = unknown; retention = not verified",
       "unindexed": true,
+      "chunk_id": "ev:seed-2-1-pro:policy:0",
       "url": "https://seed.bytedance.com/seed2_1"
      }
     ]
@@ -3747,6 +3833,7 @@
        "source_type": "model_card",
        "quote": "Terminal-Bench 2.1: 71.0%",
        "unindexed": true,
+       "chunk_id": "ev:seed-2-1-pro:performance:0",
        "url": "https://seed.bytedance.com/seed2_1"
       }
      ]
@@ -3763,6 +3850,7 @@
        "source_type": "model_card",
        "quote": "SimpleQA Verified on Seed 2.0 Pro, discounted: 36.0% (previous version)",
        "unindexed": true,
+       "chunk_id": "ev:seed-2-1-pro:truthfulness:0",
        "url": "https://seed.bytedance.com/seed2_1"
       }
      ]
@@ -3839,6 +3927,7 @@
       "source_type": "model_card",
       "quote": "Data policy: trains on inputs by default = false; zero data retention = unknown; retention = filter-flagged data kept 180 days in Malaysia",
       "unindexed": true,
+      "chunk_id": "ev:seed-2-1-turbo:policy:0",
       "url": "https://seed.bytedance.com/seed2_1"
      }
     ]
@@ -3856,6 +3945,7 @@
        "source_type": "model_card",
        "quote": "Terminal-Bench 2.1: 67.6%",
        "unindexed": true,
+       "chunk_id": "ev:seed-2-1-turbo:performance:0",
        "url": "https://seed.bytedance.com/seed2_1"
       }
      ]
@@ -3880,6 +3970,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: no training; processing in Malaysia, Indonesia or EU, not selectable",
        "unindexed": true,
+       "chunk_id": "ev:seed-2-1-turbo:privacy:0",
        "url": "https://seed.bytedance.com/seed2_1"
       }
      ]
@@ -3948,6 +4039,7 @@
       "source_type": "model_card",
       "quote": "Data policy: trains on inputs by default = unknown; zero data retention = unknown; retention = China storage for China-collected data",
       "unindexed": true,
+      "chunk_id": "ev:hy4-preview:policy:0",
       "url": "https://huggingface.co/tencent/Hy4-preview"
      }
     ]
@@ -3965,6 +4057,7 @@
        "source_type": "model_card",
        "quote": "Terminal-Bench 2.1; DeepSWE v1.1: Terminal-Bench 2.1 85.4%; DeepSWE 64.3%",
        "unindexed": true,
+       "chunk_id": "ev:hy4-preview:performance:0",
        "url": "https://huggingface.co/tencent/Hy4-preview"
       }
      ]
@@ -3989,6 +4082,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: self-host only path outside China; China storage otherwise",
        "unindexed": true,
+       "chunk_id": "ev:hy4-preview:privacy:0",
        "url": "https://huggingface.co/tencent/Hy4-preview"
       }
      ]
@@ -4022,6 +4116,7 @@
        "source_type": "model_card",
        "quote": "Terminal-Bench 2.1: 85.4%",
        "unindexed": true,
+       "chunk_id": "ev:hy4-preview:override:code:0",
        "url": "https://huggingface.co/tencent/Hy4-preview"
       }
      ]
@@ -4077,6 +4172,7 @@
       "source_type": "model_card",
       "quote": "Data policy: trains on inputs by default = unknown; zero data retention = unknown; retention = not stated",
       "unindexed": true,
+      "chunk_id": "ev:mimo-v2-5-pro:policy:0",
       "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro"
      }
     ]
@@ -4094,6 +4190,7 @@
        "source_type": "model_card",
        "quote": "GDPval-AA v2 Elo; Terminal-Bench 2.0 (press transcriptions of Xiaomi's chart): Elo 1581; Terminal-Bench 2.0 68.4%",
        "unindexed": true,
+       "chunk_id": "ev:mimo-v2-5-pro:performance:0",
        "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro"
       }
      ]
@@ -4118,6 +4215,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: self-host only path; API location not stated",
        "unindexed": true,
+       "chunk_id": "ev:mimo-v2-5-pro:privacy:0",
        "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro"
       }
      ]
@@ -4151,6 +4249,7 @@
        "source_type": "model_card",
        "quote": "SWE-bench Verified: 78.9%",
        "unindexed": true,
+       "chunk_id": "ev:mimo-v2-5-pro:override:code:0",
        "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro"
       }
      ]
@@ -4202,6 +4301,7 @@
       "source_type": "technical_report",
       "quote": "Data policy: trains on inputs by default = unknown; zero data retention = unknown; retention = kept in mainland China",
       "unindexed": true,
+      "chunk_id": "ev:step-3-7-flash:policy:0",
       "url": "https://static.stepfun.com/blog/step-3.7-flash/"
      }
     ]
@@ -4219,6 +4319,7 @@
        "source_type": "model_card",
        "quote": "Terminal-Bench 2.1: 59.5%",
        "unindexed": true,
+       "chunk_id": "ev:step-3-7-flash:performance:0",
        "url": "https://static.stepfun.com/blog/step-3.7-flash/"
       }
      ]
@@ -4243,6 +4344,7 @@
        "source_type": "model_card",
        "quote": "Privacy checklist: mainland China; self-host",
        "unindexed": true,
+       "chunk_id": "ev:step-3-7-flash:privacy:0",
        "url": "https://static.stepfun.com/blog/step-3.7-flash/"
       }
      ]
@@ -4276,6 +4378,7 @@
        "source_type": "model_card",
        "quote": "SWE-bench Verified: 76.5%",
        "unindexed": true,
+       "chunk_id": "ev:step-3-7-flash:override:code:0",
        "url": "https://static.stepfun.com/blog/step-3.7-flash/"
       }
      ]

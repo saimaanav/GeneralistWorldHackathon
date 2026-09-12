@@ -28,10 +28,20 @@ export async function POST(req: Request) {
   const seen = new Set<string>();
   const evidenceLists = [model.policy.evidence, ...Object.values(model.dims).map((d) => d.evidence)];
   for (const list of evidenceLists) for (const ev of list || []) { if (ev.chunk_id && !seen.has(ev.chunk_id)) { const c = chunkById(ev.chunk_id); if (c) { curated.push(c); seen.add(ev.chunk_id); } } }
+  // Evidence recorded from cards we have not indexed yet becomes a research-note passage with the same id the drawer uses.
+  const notes: Chunk[] = [];
+  const dimLists: [string, typeof model.policy.evidence][] = [["Keeps your data private (policy)", model.policy.evidence], ...Object.entries(model.dims).map(([k, d]) => [DIM_META[k as keyof typeof DIM_META]?.label || k, d.evidence] as [string, typeof model.policy.evidence])];
+  for (const [what, list] of dimLists) for (const ev of list || []) {
+    if (!ev.chunk_id || seen.has(ev.chunk_id) || !ev.quote) continue;
+    if (chunkById(ev.chunk_id)) continue;
+    notes.push({ id: ev.chunk_id, doc_id: ev.doc_id, maker: model.maker, section: "research note", page: null, text: `${what}: ${ev.quote} (research note: figure recorded from the maker's published card, which we have not indexed yet)` });
+    seen.add(ev.chunk_id);
+  }
   const weakest = weakestDim(ranked, profile);
   const q = profile.tasks.map((t) => optionLabel("jobs", t)).join(" ") + " " + DIM_META[weakest].technical;
   const extra = search(q, { docIds: docsForModel(model), k: 8 }).filter((c) => !seen.has(c.id)).slice(0, 3);
-  const chunks = [...curated, ...extra].slice(0, 12);
+  const chunks = [...curated, ...notes, ...extra].slice(0, 14);
+  if (!chunks.length) return Response.json({ mode: "template", text: fallback });
 
   const stream = client.messages.stream({
     model: MODEL, max_tokens: 700, output_config: { effort: "low" },
