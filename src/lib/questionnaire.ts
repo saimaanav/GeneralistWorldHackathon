@@ -191,7 +191,7 @@ export function answersToProfile(input: Answers, interp?: Interpretation | null)
     publicInput: a.reach.includes("public") || a.reach.includes("tools"),
     injectionExposure: a.reach.includes("reads_others") || a.reach.includes("tools"),
     decisions: a.decisions === "yes",
-    health: a.business === "health" || a.data.includes("sensitive"),
+    health: a.business === "health",
   };
 
   return { weights, tierAdj, flags, tasks: a.jobs, notes, summary: summarize(a), business: a.business };

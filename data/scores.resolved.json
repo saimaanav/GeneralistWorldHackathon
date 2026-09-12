@@ -279,24 +279,26 @@
    },
    "dims": {
     "performance": {
-     "score": null,
-     "status": "pending",
-     "metric": "GDPval-AA v2 Elo, as reported in Google's Gemini 3.5 Flash-Lite card",
-     "value": "907",
+     "score": 34,
+     "status": "third_party",
+     "metric": "GDPval-AA v2 Elo (reported in Google's Gemini 3.5 Flash-Lite card); SWE-bench Verified (announcement)",
+     "value": "Elo 907; SWE-bench Verified 73.3%",
      "plain": "Built for speed and cost, not hard tasks.",
      "evidence": [
       {
-       "doc_id": "gemini-3-5-flash-lite-card-web",
+       "doc_id": "haiku-4-5-announcement",
        "source_type": "model_card",
        "terms": [
-        "Claude Haiku 4.5"
-       ]
+        "SWE-bench Verified"
+       ],
+       "chunk_id": "haiku-4-5-announcement#0004",
+       "page": null,
+       "section": "",
+       "quote": "#### Methodology SWE-bench Verified : All Claude results were reported using a simple scaffold with two tools—bash and file editing via string replacements.",
+       "url": "https://www.anthropic.com/news/claude-haiku-4-5"
       }
      ],
-     "unverified": {
-      "score": 34,
-      "status": "third_party"
-     }
+     "curator_note": "The Elo figure is from another lab's comparison table; the announcement carries the SWE-bench figure in a chart."
     },
     "truthfulness": {
      "score": null,
@@ -378,8 +380,8 @@
    },
    "overrides": {
     "code": {
-     "score": null,
-     "status": "pending",
+     "score": 73,
+     "status": "reported",
      "metric": "SWE-bench Verified",
      "value": "73.3%",
      "evidence": [
@@ -387,15 +389,15 @@
        "doc_id": "haiku-4-5-announcement",
        "source_type": "model_card",
        "terms": [
-        "SWE-bench Verified",
-        "73.3%"
-       ]
+        "SWE-bench Verified"
+       ],
+       "chunk_id": "haiku-4-5-announcement#0004",
+       "page": null,
+       "section": "",
+       "quote": "#### Methodology SWE-bench Verified : All Claude results were reported using a simple scaffold with two tools—bash and file editing via string replacements.",
+       "url": "https://www.anthropic.com/news/claude-haiku-4-5"
       }
-     ],
-     "unverified": {
-      "score": 73,
-      "status": "reported"
-     }
+     ]
     }
    },
    "badges": []
@@ -894,8 +896,8 @@
      ]
     },
     "fairness": {
-     "score": null,
-     "status": "pending",
+     "score": 45,
+     "status": "inferred",
      "metric": "Relative safety deltas vs Gemini 3.7 Flash",
      "value": "multilingual safety +5.4pp worse",
      "plain": "Only relative claims, and multilingual safety got worse.",
@@ -904,19 +906,19 @@
        "doc_id": "gemini-3-8-flash-card",
        "source_type": "model_card",
        "terms": [
-        "Multilingual Safety",
-        "Lower is better"
-       ]
+        "Multilingual Safety"
+       ],
+       "chunk_id": "gemini-3-8-flash-card#0006",
+       "page": 7,
+       "section": "",
+       "quote": "7 Flash Text to Text Safety Automated content safety evaluation measuring safety policies 4pp Multilingual Safety Automated safety policy evaluation across multiple languages 4pp​ Image to Text Safety Automated content safety evaluation measuring safety policies 0pp​ Tone1 Automated evaluation measuring the objective tone of model responses 2pp​ Unjusti",
+       "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-8-Flash-Model-Card.pdf#page=7"
       }
-     ],
-     "unverified": {
-      "score": 45,
-      "status": "inferred"
-     }
+     ]
     },
     "tamper": {
-     "score": null,
-     "status": "pending",
+     "score": 94,
+     "status": "reported",
      "metric": "Gray Swan indirect prompt injection",
      "value": "5.5% attack success (chart); 6.0% cyber variant (text)",
      "plain": "Attacks succeeded 6 times in 100.",
@@ -928,20 +930,22 @@
        "doc_id": "gemini-cyber",
        "source_type": "model_card",
        "terms": [
-        "6.0%"
-       ]
+        "Gray Swan IPI benchmark"
+       ],
+       "chunk_id": "gemini-cyber#0003",
+       "page": null,
+       "section": "",
+       "quote": "### Gray Swan IPI benchmark 8 models have also made a significant leap in prompt injection robustness as measured by Gray Swan, protecting Gemini model users from prompt-injection related malicious attacks.",
+       "url": "https://deepmind.google/models/gemini/cyber/"
       }
      ],
-     "unverified": {
-      "score": 94,
-      "status": "reported"
-     }
+     "curator_note": "The 5.5% figure is a chart value; the cyber page text confirms the leap on the Gray Swan IPI benchmark with a 6.0% figure for the cyber variant."
     }
    },
    "overrides": {
     "code": {
-     "score": null,
-     "status": "pending",
+     "score": 89,
+     "status": "reported",
      "metric": "Terminal-Bench 2.1",
      "value": "89.4%",
      "evidence": [
@@ -949,14 +953,15 @@
        "doc_id": "gemini-3-8-flash-card-web",
        "source_type": "model_card",
        "terms": [
-        "Terminal-Bench 2.1"
-       ]
+        "Agentic terminal coding"
+       ],
+       "chunk_id": "gemini-3-8-flash-card-web#0003",
+       "page": null,
+       "section": "",
+       "quote": "% 6% GDPVal-AA v2 Knowledge work Elo 1545 1482 1824 1584 1710 1528 Vals Finance Agent v2 Financial analyst tasks 4% 0% 6% 9% 8% 4% Harvey's Legal Agent Benchmark Complex legal workflows All pass rate 0% 8% 7% 0% 5% 8% 1 Agentic terminal coding 4% 8% 1% 4% 8% 4% 0 General agent capabilities 1% 2% 8% 4% 3% 6% PDF Expert PDF document comprehension All pass rate 0% 0% 0% 0% 0% 0% CharXiv Reasoning Information synthesis from complex charts No tools 2% 5% 7% 1% 8% 9% LVBench Long vi",
+       "url": "https://deepmind.google/models/model-cards/gemini-3-8-flash/"
       }
-     ],
-     "unverified": {
-      "score": 89,
-      "status": "reported"
-     }
+     ]
     }
    },
    "badges": []
@@ -1274,6 +1279,10 @@
      "text": "safety tests cover an older version",
      "kind": "warn"
     }
+   ],
+   "docs": [
+    "muse-spark-1-1-eval",
+    "muse-spark-1-3-methodology"
    ]
   },
   {
@@ -1383,8 +1392,8 @@
      "curator_note": "No BBQ, toxicity or harmful-content rates in the card."
     },
     "tamper": {
-     "score": null,
-     "status": "pending",
+     "score": 72,
+     "status": "reported",
      "metric": "AgentDojo prompt injection (Siren)",
      "value": "28.4% attack success",
      "plain": "Attacks succeeded 28 times in 100.",
@@ -1396,14 +1405,16 @@
        "doc_id": "muse-glimmer-30b-card",
        "source_type": "model_card",
        "terms": [
-        "AgentDojo"
-       ]
+        "prompt injection resistance"
+       ],
+       "chunk_id": "muse-glimmer-30b-card#0012",
+       "page": null,
+       "section": "",
+       "quote": "**Safety SFT:** Curated examples demonstrating correct safety behavior, including agentic safety scenarios covering tool-use boundaries, prompt injection resistance, and permission handling.",
+       "url": "https://huggingface.co/meta-models/Muse-Glimmer-30B"
       }
      ],
-     "unverified": {
-      "score": 72,
-      "status": "reported"
-     }
+     "curator_note": "The 28.4% AgentDojo figure is in Meta's Glimmer methodology page; the card itself describes the prompt-injection resistance training and evaluation."
     }
    },
    "overrides": {
@@ -1434,6 +1445,2882 @@
      "kind": "info"
     }
    ]
+  },
+  {
+   "id": "claude-opus-5",
+   "display_name": "Claude Opus 5",
+   "maker": "anthropic",
+   "tier": "flagship",
+   "deployment": "api",
+   "api_id": "claude-opus-5",
+   "price": {
+    "input": 5,
+    "output": 25,
+    "note": "$5 in / $25 out per million tokens",
+    "band": "mid"
+   },
+   "context": "1M tokens",
+   "data_location": "US or global endpoints; no EU pinning",
+   "card": {
+    "doc_id": "claude-opus-5-card",
+    "url": "https://www.anthropic.com/claude-opus-5-system-card",
+    "type": "system_card",
+    "published": "2026-04",
+    "retrieved": "2026-09-12",
+    "title": "Claude Opus 5 system card"
+   },
+   "status": "draft",
+   "one_liner": "Anthropic's workhorse model: top marks on real work and on resisting attacks, priced at half its bigger sibling, but its own card says it makes things up a little more than its predecessor.",
+   "next_step": "Turn on zero data retention in the console if you handle client records; it is available for this model.",
+   "how_to_use": "Through the Claude API or Claude for Work.",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "API",
+    "zdr": "available",
+    "retention": "30 days by default",
+    "baa": true,
+    "evidence": [
+     {
+      "doc_id": "claude-opus-5-card",
+      "source_type": "system_card",
+      "quote": "Data policy: trains on inputs by default = false; zero data retention = available; retention = 30 days by default",
+      "unindexed": true,
+      "url": "https://www.anthropic.com/claude-opus-5-system-card"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 83,
+     "status": "reported",
+     "metric": "GDPval-AA v2 Elo; DeepSWE v1.1",
+     "value": "Elo 1861; DeepSWE 68.8%",
+     "plain": "Top tier on real work tasks.",
+     "evidence": [
+      {
+       "doc_id": "claude-opus-5-card",
+       "source_type": "model_card",
+       "quote": "GDPval-AA v2 Elo; DeepSWE v1.1: Elo 1861; DeepSWE 68.8%",
+       "unindexed": true,
+       "url": "https://www.anthropic.com/claude-opus-5-system-card"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": 50,
+     "status": "third_party",
+     "metric": "AA-Omniscience hallucination rate (independent)",
+     "value": "50% of attempted answers wrong",
+     "plain": "Measured independently, middling.",
+     "evidence": [
+      {
+       "doc_id": "claude-opus-5-card",
+       "source_type": "model_card",
+       "quote": "AA-Omniscience hallucination rate (independent): 50% of attempted answers wrong",
+       "unindexed": true,
+       "url": "https://www.anthropic.com/claude-opus-5-system-card"
+      }
+     ]
+    },
+    "privacy": {
+     "score": 78,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "no training; 30-day retention; ZDR available; HIPAA BAA; US or global",
+     "plain": "No training, zero retention available.",
+     "evidence": [
+      {
+       "doc_id": "claude-opus-5-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: no training; 30-day retention; ZDR available; HIPAA BAA; US or global",
+       "unindexed": true,
+       "url": "https://www.anthropic.com/claude-opus-5-system-card"
+      }
+     ]
+    },
+    "fairness": {
+     "score": 85,
+     "status": "reported",
+     "metric": "BBQ and harmful-content evaluations",
+     "value": "BBQ disambiguated accuracy 81.6%; safe-response mean about 88%",
+     "plain": "Bias testing published.",
+     "evidence": [
+      {
+       "doc_id": "claude-opus-5-card",
+       "source_type": "model_card",
+       "quote": "BBQ and harmful-content evaluations: BBQ disambiguated accuracy 81.6%; safe-response mean about 88%",
+       "unindexed": true,
+       "url": "https://www.anthropic.com/claude-opus-5-system-card"
+      }
+     ]
+    },
+    "tamper": {
+     "score": 98,
+     "status": "reported",
+     "metric": "Indirect prompt injection benchmark, k=15",
+     "value": "2.0% attack success",
+     "plain": "Attackers got through 2 times in 100.",
+     "evidence": [
+      {
+       "doc_id": "claude-opus-5-card",
+       "source_type": "model_card",
+       "quote": "Indirect prompt injection benchmark, k=15: 2.0% attack success",
+       "unindexed": true,
+       "url": "https://www.anthropic.com/claude-opus-5-system-card"
+      }
+     ],
+     "covers": [
+      "jailbreak",
+      "prompt_injection"
+     ]
+    }
+   },
+   "overrides": {
+    "code": {
+     "score": 96,
+     "status": "reported",
+     "metric": "SWE-bench Verified",
+     "value": "96.0%",
+     "evidence": [
+      {
+       "doc_id": "claude-opus-5-card",
+       "source_type": "model_card",
+       "quote": "SWE-bench Verified: 96.0%",
+       "unindexed": true,
+       "url": "https://www.anthropic.com/claude-opus-5-system-card"
+      }
+     ]
+    }
+   },
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "claude-sonnet-5",
+   "display_name": "Claude Sonnet 5",
+   "maker": "anthropic",
+   "tier": "mid",
+   "deployment": "api",
+   "api_id": "claude-sonnet-5",
+   "price": {
+    "input": 2,
+    "output": 10,
+    "note": "$2 in / $10 out per million tokens",
+    "band": "mid"
+   },
+   "context": "1M tokens",
+   "data_location": "US or global endpoints; no EU pinning",
+   "card": {
+    "doc_id": "claude-sonnet-5-card",
+    "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf",
+    "type": "system_card",
+    "published": "2026-05",
+    "retrieved": "2026-09-12",
+    "title": "Claude Sonnet 5 system card"
+   },
+   "status": "draft",
+   "one_liner": "A strong all-rounder with the best published honesty score in the set and solid resistance to prompt injection, at a fifth of the flagship price.",
+   "next_step": "Turn on zero data retention in the console if you handle client records; it is available for this model.",
+   "how_to_use": "Through the Claude API or Claude for Work.",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "API",
+    "zdr": "available",
+    "retention": "30 days by default",
+    "baa": true,
+    "evidence": [
+     {
+      "doc_id": "claude-sonnet-5-card",
+      "source_type": "system_card",
+      "quote": "Data policy: trains on inputs by default = false; zero data retention = available; retention = 30 days by default",
+      "unindexed": true,
+      "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 79,
+     "status": "reported",
+     "metric": "GDPval-AA v2 Elo; Terminal-Bench 2.1",
+     "value": "Elo 1618; Terminal-Bench 2.1 80.4%",
+     "plain": "Strong on real work tasks.",
+     "evidence": [
+      {
+       "doc_id": "claude-sonnet-5-card",
+       "source_type": "model_card",
+       "quote": "GDPval-AA v2 Elo; Terminal-Bench 2.1: Elo 1618; Terminal-Bench 2.1 80.4%",
+       "unindexed": true,
+       "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": 97,
+     "status": "reported",
+     "metric": "MASK lying rate",
+     "value": "3.1% (lower is better)",
+     "plain": "Rarely contradicts itself under pressure.",
+     "evidence": [
+      {
+       "doc_id": "claude-sonnet-5-card",
+       "source_type": "model_card",
+       "quote": "MASK lying rate: 3.1% (lower is better)",
+       "unindexed": true,
+       "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf"
+      }
+     ]
+    },
+    "privacy": {
+     "score": 78,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "no training; 30-day retention; ZDR available; HIPAA BAA",
+     "plain": "No training, zero retention available.",
+     "evidence": [
+      {
+       "doc_id": "claude-sonnet-5-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: no training; 30-day retention; ZDR available; HIPAA BAA",
+       "unindexed": true,
+       "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf"
+      }
+     ]
+    },
+    "fairness": {
+     "score": 87,
+     "status": "reported",
+     "metric": "BBQ and harmful-content evaluations",
+     "value": "BBQ accuracy 72.4% / 98.6%, bias 1.8% / 0.6%; safe-response mean 95%",
+     "plain": "Bias testing published, near neutral.",
+     "evidence": [
+      {
+       "doc_id": "claude-sonnet-5-card",
+       "source_type": "model_card",
+       "quote": "BBQ and harmful-content evaluations: BBQ accuracy 72.4% / 98.6%, bias 1.8% / 0.6%; safe-response mean 95%",
+       "unindexed": true,
+       "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf"
+      }
+     ]
+    },
+    "tamper": {
+     "score": 94,
+     "status": "reported",
+     "metric": "Indirect prompt injection benchmark, k=15",
+     "value": "5.9% attack success",
+     "plain": "Attackers got through 6 times in 100.",
+     "evidence": [
+      {
+       "doc_id": "claude-sonnet-5-card",
+       "source_type": "model_card",
+       "quote": "Indirect prompt injection benchmark, k=15: 5.9% attack success",
+       "unindexed": true,
+       "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf"
+      }
+     ],
+     "covers": [
+      "prompt_injection"
+     ]
+    }
+   },
+   "overrides": {
+    "code": {
+     "score": 85,
+     "status": "reported",
+     "metric": "SWE-bench Verified",
+     "value": "85.2%",
+     "evidence": [
+      {
+       "doc_id": "claude-sonnet-5-card",
+       "source_type": "model_card",
+       "quote": "SWE-bench Verified: 85.2%",
+       "unindexed": true,
+       "url": "https://www-cdn.anthropic.com/9e6a1044980d8c4ed85669faf9c2a8342e2e9f1e/Claude%20Sonnet%205%20System%20Card.pdf"
+      }
+     ]
+    }
+   },
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "gpt-5-6-sol",
+   "display_name": "GPT-5.6 Sol",
+   "maker": "openai",
+   "tier": "flagship",
+   "deployment": "api",
+   "api_id": "gpt-5.6-sol",
+   "price": {
+    "input": 4,
+    "output": 20,
+    "note": "$4 in / $20 out per million tokens",
+    "band": "mid"
+   },
+   "context": "1.05M tokens",
+   "data_location": "Choice of regions including US, EU and UK",
+   "card": {
+    "doc_id": "gpt-5-6-sol-card",
+    "url": "https://deploymentsafety.openai.com/gpt-5-6",
+    "type": "system_card",
+    "published": "2026-07-09",
+    "retrieved": "2026-09-12",
+    "title": "GPT-5.6 system card"
+   },
+   "status": "draft",
+   "one_liner": "The GPT-5.6 flagship: very capable and very hard to inject, with the same strong privacy controls as the rest of OpenAI's API, but accuracy is shown as curves rather than a number.",
+   "next_step": "Ask OpenAI to switch on zero data retention for your account before you paste anything with customer names in it.",
+   "how_to_use": "Through the OpenAI API.",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "API",
+    "zdr": "available",
+    "retention": "abuse-monitoring logs up to 30 days",
+    "baa": true,
+    "evidence": [
+     {
+      "doc_id": "gpt-5-6-sol-card",
+      "source_type": "system_card",
+      "quote": "Data policy: trains on inputs by default = false; zero data retention = available; retention = abuse-monitoring logs up to 30 days",
+      "unindexed": true,
+      "url": "https://deploymentsafety.openai.com/gpt-5-6"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 84,
+     "status": "reported",
+     "metric": "Terminal-Bench 2.1; GDPval-AA v2 Elo (independent)",
+     "value": "Terminal-Bench 2.1 88.8%; Elo 1624",
+     "plain": "Strong across coding and agent tasks.",
+     "evidence": [
+      {
+       "doc_id": "gpt-5-6-sol-card",
+       "source_type": "model_card",
+       "quote": "Terminal-Bench 2.1; GDPval-AA v2 Elo (independent): Terminal-Bench 2.1 88.8%; Elo 1624",
+       "unindexed": true,
+       "url": "https://deploymentsafety.openai.com/gpt-5-6"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": 82,
+     "status": "third_party",
+     "metric": "Response-level hallucination rate measured on GPT-5.5, discounted",
+     "value": "9.2% on the previous model; Sol described as slightly better",
+     "plain": "Measured on the previous version.",
+     "evidence": [
+      {
+       "doc_id": "gpt-5-6-sol-card",
+       "source_type": "model_card",
+       "quote": "Response-level hallucination rate measured on GPT-5.5, discounted: 9.2% on the previous model; Sol described as slightly better",
+       "unindexed": true,
+       "url": "https://deploymentsafety.openai.com/gpt-5-6"
+      }
+     ]
+    },
+    "privacy": {
+     "score": 83,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "no training; 30-day abuse logs; ZDR; HIPAA BAA; regions",
+     "plain": "No training, zero retention available.",
+     "evidence": [
+      {
+       "doc_id": "gpt-5-6-sol-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: no training; 30-day abuse logs; ZDR; HIPAA BAA; regions",
+       "unindexed": true,
+       "url": "https://deploymentsafety.openai.com/gpt-5-6"
+      }
+     ]
+    },
+    "fairness": {
+     "score": 72,
+     "status": "reported",
+     "metric": "Safe-completion rates; no demographic bias test",
+     "value": "production not_unsafe mean 93.0%",
+     "plain": "Safe response rates published, no standard bias test.",
+     "evidence": [
+      {
+       "doc_id": "gpt-5-6-sol-card",
+       "source_type": "model_card",
+       "quote": "Safe-completion rates; no demographic bias test: production not_unsafe mean 93.0%",
+       "unindexed": true,
+       "url": "https://deploymentsafety.openai.com/gpt-5-6"
+      }
+     ]
+    },
+    "tamper": {
+     "score": 96,
+     "status": "reported",
+     "metric": "GPT-Red indirect prompt injection",
+     "value": "3.77% attack success; direct 0.05%",
+     "plain": "Attackers got through 4 times in 100.",
+     "evidence": [
+      {
+       "doc_id": "gpt-5-6-sol-card",
+       "source_type": "model_card",
+       "quote": "GPT-Red indirect prompt injection: 3.77% attack success; direct 0.05%",
+       "unindexed": true,
+       "url": "https://deploymentsafety.openai.com/gpt-5-6"
+      }
+     ],
+     "covers": [
+      "prompt_injection",
+      "jailbreak"
+     ]
+    }
+   },
+   "overrides": {
+    "code": {
+     "score": 89,
+     "status": "reported",
+     "metric": "Terminal-Bench 2.1",
+     "value": "88.8%",
+     "evidence": [
+      {
+       "doc_id": "gpt-5-6-sol-card",
+       "source_type": "model_card",
+       "quote": "Terminal-Bench 2.1: 88.8%",
+       "unindexed": true,
+       "url": "https://deploymentsafety.openai.com/gpt-5-6"
+      }
+     ]
+    }
+   },
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "gpt-5-6-terra",
+   "display_name": "GPT-5.6 Terra",
+   "maker": "openai",
+   "tier": "mid",
+   "deployment": "api",
+   "api_id": "gpt-5.6-terra",
+   "price": {
+    "input": 2,
+    "output": 12,
+    "note": "$2 in / $12 out per million tokens",
+    "band": "mid"
+   },
+   "context": "1.05M tokens",
+   "data_location": "Choice of regions including US, EU and UK",
+   "card": {
+    "doc_id": "gpt-5-6-terra-card",
+    "url": "https://deploymentsafety.openai.com/gpt-5-6",
+    "type": "system_card",
+    "published": "2026-07-09",
+    "retrieved": "2026-09-12",
+    "title": "GPT-5.6 system card"
+   },
+   "status": "draft",
+   "one_liner": "The mid-priced GPT-5.6: nearly as capable as Sol, the best prompt-injection resistance in its family, but accuracy is only shown as curves.",
+   "next_step": "Ask OpenAI to switch on zero data retention for your account before you paste anything with customer names in it.",
+   "how_to_use": "Through the OpenAI API.",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "API",
+    "zdr": "available",
+    "retention": "abuse-monitoring logs up to 30 days",
+    "baa": true,
+    "evidence": [
+     {
+      "doc_id": "gpt-5-6-terra-card",
+      "source_type": "system_card",
+      "quote": "Data policy: trains on inputs by default = false; zero data retention = available; retention = abuse-monitoring logs up to 30 days",
+      "unindexed": true,
+      "url": "https://deploymentsafety.openai.com/gpt-5-6"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 78,
+     "status": "reported",
+     "metric": "Terminal-Bench 2.1; GDPval-AA v2 Elo (independent)",
+     "value": "Terminal-Bench 2.1 87.4%; Elo 1479",
+     "plain": "Strong on coding and agent tasks.",
+     "evidence": [
+      {
+       "doc_id": "gpt-5-6-terra-card",
+       "source_type": "model_card",
+       "quote": "Terminal-Bench 2.1; GDPval-AA v2 Elo (independent): Terminal-Bench 2.1 87.4%; Elo 1479",
+       "unindexed": true,
+       "url": "https://deploymentsafety.openai.com/gpt-5-6"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": 50,
+     "status": "inferred",
+     "metric": "Hallucination curves only",
+     "value": "charts only; 'larger models perform better'",
+     "plain": "Charts only, no number to check.",
+     "evidence": [
+      {
+       "doc_id": "gpt-5-6-terra-card",
+       "source_type": "model_card",
+       "quote": "Hallucination curves only: charts only; 'larger models perform better'",
+       "unindexed": true,
+       "url": "https://deploymentsafety.openai.com/gpt-5-6"
+      }
+     ]
+    },
+    "privacy": {
+     "score": 83,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "no training; 30-day abuse logs; ZDR; HIPAA BAA; regions",
+     "plain": "No training, zero retention available.",
+     "evidence": [
+      {
+       "doc_id": "gpt-5-6-terra-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: no training; 30-day abuse logs; ZDR; HIPAA BAA; regions",
+       "unindexed": true,
+       "url": "https://deploymentsafety.openai.com/gpt-5-6"
+      }
+     ]
+    },
+    "fairness": {
+     "score": 71,
+     "status": "reported",
+     "metric": "Safe-completion rates; no demographic bias test",
+     "value": "production not_unsafe mean 92.8%",
+     "plain": "Safe response rates published, no standard bias test.",
+     "evidence": [
+      {
+       "doc_id": "gpt-5-6-terra-card",
+       "source_type": "model_card",
+       "quote": "Safe-completion rates; no demographic bias test: production not_unsafe mean 92.8%",
+       "unindexed": true,
+       "url": "https://deploymentsafety.openai.com/gpt-5-6"
+      }
+     ]
+    },
+    "tamper": {
+     "score": 97,
+     "status": "reported",
+     "metric": "GPT-Red indirect prompt injection",
+     "value": "3.32% attack success",
+     "plain": "Attackers got through 3 times in 100.",
+     "evidence": [
+      {
+       "doc_id": "gpt-5-6-terra-card",
+       "source_type": "model_card",
+       "quote": "GPT-Red indirect prompt injection: 3.32% attack success",
+       "unindexed": true,
+       "url": "https://deploymentsafety.openai.com/gpt-5-6"
+      }
+     ],
+     "covers": [
+      "prompt_injection"
+     ]
+    }
+   },
+   "overrides": {
+    "code": {
+     "score": 87,
+     "status": "reported",
+     "metric": "Terminal-Bench 2.1",
+     "value": "87.4%",
+     "evidence": [
+      {
+       "doc_id": "gpt-5-6-terra-card",
+       "source_type": "model_card",
+       "quote": "Terminal-Bench 2.1: 87.4%",
+       "unindexed": true,
+       "url": "https://deploymentsafety.openai.com/gpt-5-6"
+      }
+     ]
+    }
+   },
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "gemini-3-1-pro-preview",
+   "display_name": "Gemini 3.1 Pro (Preview)",
+   "maker": "google",
+   "tier": "flagship",
+   "deployment": "api",
+   "api_id": "gemini-3.1-pro-preview",
+   "price": {
+    "input": 2,
+    "output": 12,
+    "note": "$2 in / $12 out per million tokens",
+    "band": "mid"
+   },
+   "context": "1M tokens",
+   "data_location": "Global endpoint; no data residency on the developer API",
+   "card": {
+    "doc_id": "gemini-3-1-pro-preview-card",
+    "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/",
+    "type": "model_card",
+    "published": "2026-02",
+    "retrieved": "2026-09-12",
+    "title": "Gemini 3.1 Pro model card"
+   },
+   "status": "draft",
+   "one_liner": "Google's Pro tier, still in preview: strong coding results and a decent independent accuracy score, but its jailbreak resistance is the weakest of the Google models here.",
+   "next_step": "It is a preview model, so check Google's terms before building anything customer-facing on it, and turn billing on before you connect anything.",
+   "how_to_use": "Through the Gemini API with billing enabled (preview).",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "paid Gemini API",
+    "zdr": "on_request",
+    "retention": "55 days for abuse monitoring",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "gemini-3-1-pro-preview-card",
+      "source_type": "model_card",
+      "quote": "Data policy: trains on inputs by default = false; zero data retention = on_request; retention = 55 days for abuse monitoring",
+      "unindexed": true,
+      "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 62,
+     "status": "reported",
+     "metric": "GDPval-AA v2 Elo; Terminal-Bench 2.0",
+     "value": "Elo 1317; Terminal-Bench 2.0 68.5%",
+     "plain": "Capable, with older benchmark versions.",
+     "evidence": [
+      {
+       "doc_id": "gemini-3-1-pro-preview-card",
+       "source_type": "model_card",
+       "quote": "GDPval-AA v2 Elo; Terminal-Bench 2.0: Elo 1317; Terminal-Bench 2.0 68.5%",
+       "unindexed": true,
+       "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": 76,
+     "status": "third_party",
+     "metric": "SimpleQA-Verified as listed in DeepSeek's V4 report",
+     "value": "75.6%",
+     "plain": "Measured by another lab.",
+     "evidence": [
+      {
+       "doc_id": "gemini-3-1-pro-preview-card",
+       "source_type": "model_card",
+       "quote": "SimpleQA-Verified as listed in DeepSeek's V4 report: 75.6%",
+       "unindexed": true,
+       "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"
+      }
+     ]
+    },
+    "privacy": {
+     "score": 46,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "no training on paid tier; 55-day abuse retention; certifications via enterprise platform only",
+     "plain": "Paid accounts only, kept 55 days for abuse checks.",
+     "evidence": [
+      {
+       "doc_id": "gemini-3-1-pro-preview-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: no training on paid tier; 55-day abuse retention; certifications via enterprise platform only",
+       "unindexed": true,
+       "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"
+      }
+     ]
+    },
+    "fairness": {
+     "score": 72,
+     "status": "reported",
+     "metric": "Frontier safety violation rates; no demographic bias test",
+     "value": "cyber 5.4%, CBRN 7.5% violation rates",
+     "plain": "Safety rates published, no standard bias test.",
+     "evidence": [
+      {
+       "doc_id": "gemini-3-1-pro-preview-card",
+       "source_type": "model_card",
+       "quote": "Frontier safety violation rates; no demographic bias test: cyber 5.4%, CBRN 7.5% violation rates",
+       "unindexed": true,
+       "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"
+      }
+     ]
+    },
+    "tamper": {
+     "score": 55,
+     "status": "reported",
+     "metric": "Gray Swan Shade jailbreak (chart reads)",
+     "value": "about 62% cyber and 29% bio attack success",
+     "plain": "Many attacks got through.",
+     "evidence": [
+      {
+       "doc_id": "gemini-3-1-pro-preview-card",
+       "source_type": "model_card",
+       "quote": "Gray Swan Shade jailbreak (chart reads): about 62% cyber and 29% bio attack success",
+       "unindexed": true,
+       "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"
+      }
+     ],
+     "covers": [
+      "jailbreak"
+     ]
+    }
+   },
+   "overrides": {
+    "code": {
+     "score": 81,
+     "status": "reported",
+     "metric": "SWE-bench Verified",
+     "value": "80.6%",
+     "evidence": [
+      {
+       "doc_id": "gemini-3-1-pro-preview-card",
+       "source_type": "model_card",
+       "quote": "SWE-bench Verified: 80.6%",
+       "unindexed": true,
+       "url": "https://deepmind.google/models/model-cards/gemini-3-1-pro/"
+      }
+     ]
+    }
+   },
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    },
+    {
+     "text": "preview model, not generally available",
+     "kind": "warn"
+    }
+   ]
+  },
+  {
+   "id": "gemma-4",
+   "display_name": "Gemma 4",
+   "maker": "google",
+   "tier": "efficient",
+   "deployment": "open_weights",
+   "api_id": "google/gemma-4-31b-it",
+   "price": {
+    "input": 0,
+    "output": 0,
+    "note": "$0 in / $0 out per million tokens",
+    "band": "low"
+   },
+   "context": "256K tokens",
+   "data_location": "Wherever you host it; Google's free hosted tier uses your inputs",
+   "card": {
+    "doc_id": "gemma-4-card",
+    "url": "https://ai.google.dev/gemma/docs/core/model_card_4",
+    "type": "model_card",
+    "published": "2026-06",
+    "retrieved": "2026-09-12",
+    "title": "Gemma 4 model card"
+   },
+   "status": "draft",
+   "one_liner": "Google's open model you can run yourself. Capable for its size, but the card publishes no accuracy, fairness or attack testing, and the free hosted version trains on what you send.",
+   "next_step": "Run it yourself or on a paid cloud with a data processing agreement; do not use the free hosted tier for customer data.",
+   "how_to_use": "Download the weights, or use the free Gemini API tier (which trains on inputs).",
+   "policy": {
+    "trains_on_inputs_by_default": "true",
+    "surface": "Gemini API free tier",
+    "zdr": "self_host",
+    "retention": "free hosted tier retains and uses inputs; self-hosting is your choice",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "gemma-4-card",
+      "source_type": "model_card",
+      "quote": "Data policy: trains on inputs by default = true; zero data retention = self_host; retention = free hosted tier retains and uses inputs; self-hosting is your choice",
+      "unindexed": true,
+      "url": "https://ai.google.dev/gemma/docs/core/model_card_4"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 59,
+     "status": "inferred",
+     "metric": "GPQA Diamond, tau2-bench, MMLU-Pro (no shared axis)",
+     "value": "GPQA 84.3; tau2 76.9; MMLU-Pro 85.2",
+     "plain": "Good for its size, on non-shared tests.",
+     "evidence": [
+      {
+       "doc_id": "gemma-4-card",
+       "source_type": "model_card",
+       "quote": "GPQA Diamond, tau2-bench, MMLU-Pro (no shared axis): GPQA 84.3; tau2 76.9; MMLU-Pro 85.2",
+       "unindexed": true,
+       "url": "https://ai.google.dev/gemma/docs/core/model_card_4"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "privacy": {
+     "score": 55,
+     "status": "reported",
+     "metric": "Self-hosted with a caveat",
+     "value": "free hosted tier trains on inputs; your data stays yours only if you host it",
+     "plain": "Your data stays yours only if you host it.",
+     "evidence": [
+      {
+       "doc_id": "gemma-4-card",
+       "source_type": "model_card",
+       "quote": "Self-hosted with a caveat: free hosted tier trains on inputs; your data stays yours only if you host it",
+       "unindexed": true,
+       "url": "https://ai.google.dev/gemma/docs/core/model_card_4"
+      }
+     ]
+    },
+    "fairness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "tamper": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Nothing published about being tricked.",
+     "evidence": []
+    }
+   },
+   "overrides": {},
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    },
+    {
+     "text": "privacy depends on who hosts it",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "grok-4-6",
+   "display_name": "Grok 4.6",
+   "maker": "xai",
+   "tier": "flagship",
+   "deployment": "api",
+   "api_id": "grok-4.6",
+   "price": {
+    "input": 2,
+    "output": 6,
+    "note": "$2 in / $6 out per million tokens",
+    "band": "mid"
+   },
+   "context": "500K tokens",
+   "data_location": "Not verified; US by default, EU endpoint advertised for enterprise",
+   "card": {
+    "doc_id": "grok-4-6-card",
+    "url": "https://media.x.ai/v1/website/card-4p6-4cd2dc57.pdf",
+    "type": "model_card",
+    "published": "2026-08-17",
+    "retrieved": "2026-09-12",
+    "title": "Grok 4.6 model card"
+   },
+   "status": "draft",
+   "one_liner": "Strong on real work and the best published honesty numbers here, with jailbreak testing published, but xAI's data-location and contract pages could not be verified.",
+   "next_step": "Ask xAI in writing where your data is processed and whether a data processing agreement is available before sending customer details.",
+   "how_to_use": "Through the xAI API.",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "API",
+    "zdr": "unknown",
+    "retention": "not verified",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "grok-4-6-card",
+      "source_type": "model_card",
+      "quote": "Data policy: trains on inputs by default = false; zero data retention = unknown; retention = not verified",
+      "unindexed": true,
+      "url": "https://media.x.ai/v1/website/card-4p6-4cd2dc57.pdf"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 77,
+     "status": "reported",
+     "metric": "GDPval-AA v2 Elo; DeepSWE v1.1",
+     "value": "Elo 1753; DeepSWE 65.9%",
+     "plain": "Strong on real work tasks.",
+     "evidence": [
+      {
+       "doc_id": "grok-4-6-card",
+       "source_type": "model_card",
+       "quote": "GDPval-AA v2 Elo; DeepSWE v1.1: Elo 1753; DeepSWE 65.9%",
+       "unindexed": true,
+       "url": "https://media.x.ai/v1/website/card-4p6-4cd2dc57.pdf"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": 98,
+     "status": "reported",
+     "metric": "Internal hallucination rate; MASK-Rectified dishonesty",
+     "value": "1.7% hallucination; 1.9% dishonesty",
+     "plain": "Very low published error rates.",
+     "evidence": [
+      {
+       "doc_id": "grok-4-6-card",
+       "source_type": "model_card",
+       "quote": "Internal hallucination rate; MASK-Rectified dishonesty: 1.7% hallucination; 1.9% dishonesty",
+       "unindexed": true,
+       "url": "https://media.x.ai/v1/website/card-4p6-4cd2dc57.pdf"
+      }
+     ]
+    },
+    "privacy": {
+     "score": 80,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "no training; retention published; region unverified",
+     "plain": "No training on your data; region unverified.",
+     "evidence": [
+      {
+       "doc_id": "grok-4-6-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: no training; retention published; region unverified",
+       "unindexed": true,
+       "url": "https://media.x.ai/v1/website/card-4p6-4cd2dc57.pdf"
+      }
+     ]
+    },
+    "fairness": {
+     "score": 75,
+     "status": "reported",
+     "metric": "Harmful-content rates; no demographic bias test",
+     "value": "safe-response mean 99.4%",
+     "plain": "Safe response rates published, no standard bias test.",
+     "evidence": [
+      {
+       "doc_id": "grok-4-6-card",
+       "source_type": "model_card",
+       "quote": "Harmful-content rates; no demographic bias test: safe-response mean 99.4%",
+       "unindexed": true,
+       "url": "https://media.x.ai/v1/website/card-4p6-4cd2dc57.pdf"
+      }
+     ]
+    },
+    "tamper": {
+     "score": 96,
+     "status": "reported",
+     "metric": "StrongREJECT compliance",
+     "value": "3.9% of jailbreak attempts complied with",
+     "plain": "Attackers got through 4 times in 100.",
+     "evidence": [
+      {
+       "doc_id": "grok-4-6-card",
+       "source_type": "model_card",
+       "quote": "StrongREJECT compliance: 3.9% of jailbreak attempts complied with",
+       "unindexed": true,
+       "url": "https://media.x.ai/v1/website/card-4p6-4cd2dc57.pdf"
+      }
+     ],
+     "covers": [
+      "jailbreak"
+     ]
+    }
+   },
+   "overrides": {},
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "mistral-large-3",
+   "display_name": "Mistral Large 3",
+   "maker": "mistral",
+   "tier": "flagship",
+   "deployment": "both",
+   "api_id": "mistral-large-2512",
+   "price": {
+    "input": 0.5,
+    "output": 1.5,
+    "note": "$0.5 in / $1.5 out per million tokens",
+    "band": "low"
+   },
+   "context": "256K tokens",
+   "data_location": "EU by default; US endpoint available",
+   "card": {
+    "doc_id": "mistral-large-3-card",
+    "url": "https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512",
+    "type": "model_card",
+    "published": "2025-12",
+    "retrieved": "2026-09-12",
+    "title": "Mistral Large 3 model card"
+   },
+   "status": "draft",
+   "one_liner": "European, cheap and EU-hosted by default, but the card publishes no accuracy, fairness or attack testing and does not state its training default.",
+   "next_step": "Confirm in writing that your inputs are not used for training; Mistral's terms do not state a default.",
+   "how_to_use": "Through Mistral's La Plateforme (EU or US endpoints) or self-hosted.",
+   "policy": {
+    "trains_on_inputs_by_default": "unknown",
+    "surface": "La Plateforme",
+    "zdr": "unknown",
+    "retention": "30 days",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "mistral-large-3-card",
+      "source_type": "model_card",
+      "quote": "Data policy: trains on inputs by default = unknown; zero data retention = unknown; retention = 30 days",
+      "unindexed": true,
+      "url": "https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 59,
+     "status": "inferred",
+     "metric": "GPQA Diamond (no shared axis; independent Elo looks broken)",
+     "value": "GPQA 67.2%",
+     "plain": "Capable, on a non-shared test.",
+     "evidence": [
+      {
+       "doc_id": "mistral-large-3-card",
+       "source_type": "model_card",
+       "quote": "GPQA Diamond (no shared axis; independent Elo looks broken): GPQA 67.2%",
+       "unindexed": true,
+       "url": "https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "privacy": {
+     "score": 63,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "training default not stated; 30-day retention; EU hosting; HIPAA via registry",
+     "plain": "EU hosted, but the training default is not stated.",
+     "evidence": [
+      {
+       "doc_id": "mistral-large-3-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: training default not stated; 30-day retention; EU hosting; HIPAA via registry",
+       "unindexed": true,
+       "url": "https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512"
+      }
+     ]
+    },
+    "fairness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "tamper": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Nothing published about being tricked.",
+     "evidence": []
+    }
+   },
+   "overrides": {},
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "mistral-medium-3-5",
+   "display_name": "Mistral Medium 3.5",
+   "maker": "mistral",
+   "tier": "mid",
+   "deployment": "both",
+   "api_id": "mistral-medium-2604",
+   "price": {
+    "input": 1.5,
+    "output": 7.5,
+    "note": "$1.5 in / $7.5 out per million tokens",
+    "band": "mid"
+   },
+   "context": "256K tokens",
+   "data_location": "EU by default; US endpoint available",
+   "card": {
+    "doc_id": "mistral-medium-3-5-card",
+    "url": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B",
+    "type": "model_card",
+    "published": "2026-04",
+    "retrieved": "2026-09-12",
+    "title": "Mistral Medium 3.5 model card"
+   },
+   "status": "draft",
+   "one_liner": "Mistral's newer mid model: good at code and EU-hosted by default, but nothing published on accuracy, fairness or attacks, and the training default is not stated.",
+   "next_step": "Confirm in writing that your inputs are not used for training; Mistral's terms do not state a default.",
+   "how_to_use": "Through Mistral's La Plateforme or self-hosted.",
+   "policy": {
+    "trains_on_inputs_by_default": "unknown",
+    "surface": "La Plateforme",
+    "zdr": "unknown",
+    "retention": "30 days",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "mistral-medium-3-5-card",
+      "source_type": "model_card",
+      "quote": "Data policy: trains on inputs by default = unknown; zero data retention = unknown; retention = 30 days",
+      "unindexed": true,
+      "url": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 21,
+     "status": "third_party",
+     "metric": "GDPval-AA v2 Elo (independent)",
+     "value": "Elo 875",
+     "plain": "Modest on real work tasks.",
+     "evidence": [
+      {
+       "doc_id": "mistral-medium-3-5-card",
+       "source_type": "model_card",
+       "quote": "GDPval-AA v2 Elo (independent): Elo 875",
+       "unindexed": true,
+       "url": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "privacy": {
+     "score": 63,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "training default not stated; 30-day retention; EU hosting",
+     "plain": "EU hosted, but the training default is not stated.",
+     "evidence": [
+      {
+       "doc_id": "mistral-medium-3-5-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: training default not stated; 30-day retention; EU hosting",
+       "unindexed": true,
+       "url": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B"
+      }
+     ]
+    },
+    "fairness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "tamper": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Nothing published about being tricked.",
+     "evidence": []
+    }
+   },
+   "overrides": {
+    "code": {
+     "score": 78,
+     "status": "reported",
+     "metric": "SWE-bench Verified",
+     "value": "77.6%",
+     "evidence": [
+      {
+       "doc_id": "mistral-medium-3-5-card",
+       "source_type": "model_card",
+       "quote": "SWE-bench Verified: 77.6%",
+       "unindexed": true,
+       "url": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B"
+      }
+     ]
+    }
+   },
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "deepseek-v4-pro",
+   "display_name": "DeepSeek-V4 Pro",
+   "maker": "deepseek",
+   "tier": "flagship",
+   "deployment": "both",
+   "api_id": "deepseek-v4-pro",
+   "price": {
+    "input": 1.32,
+    "output": 3.96,
+    "note": "$1.32 in / $3.96 out per million tokens",
+    "band": "low"
+   },
+   "context": "1M tokens",
+   "data_location": "Mainland China only; no region option",
+   "card": {
+    "doc_id": "deepseek-v4-pro-card",
+    "url": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf",
+    "type": "model_card",
+    "published": "2026-08-13",
+    "retrieved": "2026-09-12",
+    "title": "DeepSeek-V4 model card"
+   },
+   "status": "draft",
+   "one_liner": "Very capable and cheap, but API data is stored only in mainland China, the training default is not stated, and independent jailbreak tests went badly.",
+   "next_step": "Only consider the self-hosted version for customer data; the API stores everything in mainland China.",
+   "how_to_use": "Through the DeepSeek API (China-hosted) or self-hosted weights.",
+   "policy": {
+    "trains_on_inputs_by_default": "unknown",
+    "surface": "DeepSeek API",
+    "zdr": "unknown",
+    "retention": "not stated; PRC law applies",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "deepseek-v4-pro-card",
+      "source_type": "model_card",
+      "quote": "Data policy: trains on inputs by default = unknown; zero data retention = unknown; retention = not stated; PRC law applies",
+      "unindexed": true,
+      "url": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 75,
+     "status": "reported",
+     "metric": "Terminal-Bench 2.1; DeepSWE v1.1",
+     "value": "Terminal-Bench 2.1 87.9%; DeepSWE 62.7%",
+     "plain": "Strong on coding and agent tasks.",
+     "evidence": [
+      {
+       "doc_id": "deepseek-v4-pro-card",
+       "source_type": "model_card",
+       "quote": "Terminal-Bench 2.1; DeepSWE v1.1: Terminal-Bench 2.1 87.9%; DeepSWE 62.7%",
+       "unindexed": true,
+       "url": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": 52,
+     "status": "third_party",
+     "metric": "SimpleQA-Verified on the April preview, discounted",
+     "value": "57.9% (preview)",
+     "plain": "Measured on a preview version.",
+     "evidence": [
+      {
+       "doc_id": "deepseek-v4-pro-card",
+       "source_type": "model_card",
+       "quote": "SimpleQA-Verified on the April preview, discounted: 57.9% (preview)",
+       "unindexed": true,
+       "url": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf"
+      }
+     ]
+    },
+    "privacy": {
+     "score": 10,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "training default not stated; data stored in mainland China; self-host possible",
+     "plain": "Data stays in mainland China unless you host it yourself.",
+     "evidence": [
+      {
+       "doc_id": "deepseek-v4-pro-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: training default not stated; data stored in mainland China; self-host possible",
+       "unindexed": true,
+       "url": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf"
+      }
+     ]
+    },
+    "fairness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "tamper": {
+     "score": 22,
+     "status": "third_party",
+     "metric": "StrongREJECT by an independent lab",
+     "value": "77.8% attack success",
+     "plain": "Most attacks got through, in an independent test.",
+     "evidence": [
+      {
+       "doc_id": "deepseek-v4-pro-card",
+       "source_type": "model_card",
+       "quote": "StrongREJECT by an independent lab: 77.8% attack success",
+       "unindexed": true,
+       "url": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf"
+      }
+     ],
+     "covers": [
+      "jailbreak"
+     ],
+     "stale": true
+    }
+   },
+   "overrides": {
+    "code": {
+     "score": 81,
+     "status": "reported",
+     "metric": "SWE-bench Verified (preview)",
+     "value": "80.6%",
+     "evidence": [
+      {
+       "doc_id": "deepseek-v4-pro-card",
+       "source_type": "model_card",
+       "quote": "SWE-bench Verified (preview): 80.6%",
+       "unindexed": true,
+       "url": "https://fe-static.deepseek.com/chat/transparency/deepseek-V4-model-card-EN.pdf"
+      }
+     ]
+    }
+   },
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "deepseek-v4-1-flash",
+   "display_name": "DeepSeek-V4.1 Flash",
+   "maker": "deepseek",
+   "tier": "efficient",
+   "deployment": "both",
+   "api_id": "deepseek-flash",
+   "price": {
+    "input": 0.3,
+    "output": 1.2,
+    "note": "$0.3 in / $1.2 out per million tokens",
+    "band": "low"
+   },
+   "context": "1M tokens",
+   "data_location": "Mainland China only; no region option",
+   "card": {
+    "doc_id": "deepseek-v4-1-flash-card",
+    "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+    "type": "technical_report",
+    "published": "2026-09-10",
+    "retrieved": "2026-09-12",
+    "title": "DeepSeek-V4.1 Flash technical report"
+   },
+   "status": "draft",
+   "one_liner": "Two days old, top coding scores for the price, and no safety evaluation of any kind published yet.",
+   "next_step": "Wait for a safety report before using it with customer data; the API stores everything in mainland China.",
+   "how_to_use": "Through the DeepSeek API (China-hosted) or self-hosted weights.",
+   "policy": {
+    "trains_on_inputs_by_default": "unknown",
+    "surface": "DeepSeek API",
+    "zdr": "unknown",
+    "retention": "not stated; PRC law applies",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "deepseek-v4-1-flash-card",
+      "source_type": "technical_report",
+      "quote": "Data policy: trains on inputs by default = unknown; zero data retention = unknown; retention = not stated; PRC law applies",
+      "unindexed": true,
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 82,
+     "status": "reported",
+     "metric": "Terminal-Bench 2.1; DeepSWE v1.1",
+     "value": "Terminal-Bench 2.1 90.6%; DeepSWE 74.2%",
+     "plain": "Top tier on coding and agent tasks.",
+     "evidence": [
+      {
+       "doc_id": "deepseek-v4-1-flash-card",
+       "source_type": "model_card",
+       "quote": "Terminal-Bench 2.1; DeepSWE v1.1: Terminal-Bench 2.1 90.6%; DeepSWE 74.2%",
+       "unindexed": true,
+       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": 42,
+     "status": "inferred",
+     "metric": "Base-model SimpleQA-Verified only",
+     "value": "42.3% (base model, 25-shot)",
+     "plain": "Only a base-model figure.",
+     "evidence": [
+      {
+       "doc_id": "deepseek-v4-1-flash-card",
+       "source_type": "model_card",
+       "quote": "Base-model SimpleQA-Verified only: 42.3% (base model, 25-shot)",
+       "unindexed": true,
+       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+      }
+     ]
+    },
+    "privacy": {
+     "score": 10,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "training default not stated; data stored in mainland China; self-host possible",
+     "plain": "Data stays in mainland China unless you host it yourself.",
+     "evidence": [
+      {
+       "doc_id": "deepseek-v4-1-flash-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: training default not stated; data stored in mainland China; self-host possible",
+       "unindexed": true,
+       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+      }
+     ]
+    },
+    "fairness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "tamper": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Nothing published about being tricked.",
+     "evidence": []
+    }
+   },
+   "overrides": {
+    "code": {
+     "score": 91,
+     "status": "reported",
+     "metric": "Terminal-Bench 2.1",
+     "value": "90.6%",
+     "evidence": [
+      {
+       "doc_id": "deepseek-v4-1-flash-card",
+       "source_type": "model_card",
+       "quote": "Terminal-Bench 2.1: 90.6%",
+       "unindexed": true,
+       "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+      }
+     ]
+    }
+   },
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "qwen3-8-max",
+   "display_name": "Qwen3.8-Max",
+   "maker": "qwen",
+   "tier": "flagship",
+   "deployment": "both",
+   "api_id": "qwen3.8-max",
+   "price": {
+    "input": 2,
+    "output": 6,
+    "note": "$2 in / $6 out per million tokens",
+    "band": "mid"
+   },
+   "context": "1M tokens",
+   "data_location": "Your choice of region: Singapore, US, Frankfurt, Tokyo, Hong Kong or Beijing",
+   "card": {
+    "doc_id": "qwen3-8-max-card",
+    "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B",
+    "type": "model_card",
+    "published": "2026-09-02",
+    "retrieved": "2026-09-12",
+    "title": "Qwen3.8-Max model card"
+   },
+   "status": "draft",
+   "one_liner": "Alibaba's flagship: strong on real work, lets you pick where your data lives, but publishes nothing on accuracy, fairness or attacks.",
+   "next_step": "Pick a region outside mainland China in Model Studio and confirm the no-training setting before sending customer details.",
+   "how_to_use": "Through Alibaba Cloud Model Studio or self-hosted weights.",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "Model Studio",
+    "zdr": "unknown",
+    "retention": "not stated",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "qwen3-8-max-card",
+      "source_type": "model_card",
+      "quote": "Data policy: trains on inputs by default = false; zero data retention = unknown; retention = not stated",
+      "unindexed": true,
+      "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 77,
+     "status": "reported",
+     "metric": "Terminal-Bench 2.1; DeepSWE v1.1; GDPval-AA v2 Elo (as cited by Z.ai)",
+     "value": "Terminal-Bench 2.1 86.6%; DeepSWE 56.6%; Elo 1739",
+     "plain": "Strong on real work tasks.",
+     "evidence": [
+      {
+       "doc_id": "qwen3-8-max-card",
+       "source_type": "model_card",
+       "quote": "Terminal-Bench 2.1; DeepSWE v1.1; GDPval-AA v2 Elo (as cited by Z.ai): Terminal-Bench 2.1 86.6%; DeepSWE 56.6%; Elo 1739",
+       "unindexed": true,
+       "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "privacy": {
+     "score": 60,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "no training; SOC 2; selectable regions; self-host",
+     "plain": "No training, and you choose the region.",
+     "evidence": [
+      {
+       "doc_id": "qwen3-8-max-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: no training; SOC 2; selectable regions; self-host",
+       "unindexed": true,
+       "url": "https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B"
+      }
+     ]
+    },
+    "fairness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "tamper": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Nothing published about being tricked.",
+     "evidence": []
+    }
+   },
+   "overrides": {},
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "qwen3-8-flash",
+   "display_name": "Qwen3.8-Flash",
+   "maker": "qwen",
+   "tier": "efficient",
+   "deployment": "both",
+   "api_id": "qwen3.8-flash",
+   "price": {
+    "input": 0.15,
+    "output": 0.47,
+    "note": "$0.15 in / $0.47 out per million tokens",
+    "band": "low"
+   },
+   "context": "1M tokens",
+   "data_location": "Your choice of region: Singapore, US, Frankfurt, Tokyo, Hong Kong or Beijing",
+   "card": {
+    "doc_id": "qwen3-8-flash-card",
+    "url": "https://github.com/QwenLM/Qwen3.8-Flash-Next/blob/main/tech_report.pdf",
+    "type": "technical_report",
+    "published": "2026-08",
+    "retrieved": "2026-09-12",
+    "title": "Qwen3.8-Flash technical report"
+   },
+   "status": "draft",
+   "one_liner": "Very cheap and region-selectable, with a technical report that has no safety section at all.",
+   "next_step": "Pick a region outside mainland China and keep it away from customer-facing use until safety testing is published.",
+   "how_to_use": "Through Alibaba Cloud Model Studio or self-hosted weights.",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "Model Studio",
+    "zdr": "unknown",
+    "retention": "not stated",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "qwen3-8-flash-card",
+      "source_type": "technical_report",
+      "quote": "Data policy: trains on inputs by default = false; zero data retention = unknown; retention = not stated",
+      "unindexed": true,
+      "url": "https://github.com/QwenLM/Qwen3.8-Flash-Next/blob/main/tech_report.pdf"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 59,
+     "status": "reported",
+     "metric": "DeepSWE v1.1 only",
+     "value": "58.7%",
+     "plain": "One shared benchmark only.",
+     "evidence": [
+      {
+       "doc_id": "qwen3-8-flash-card",
+       "source_type": "model_card",
+       "quote": "DeepSWE v1.1 only: 58.7%",
+       "unindexed": true,
+       "url": "https://github.com/QwenLM/Qwen3.8-Flash-Next/blob/main/tech_report.pdf"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "privacy": {
+     "score": 60,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "no training; SOC 2; selectable regions; self-host",
+     "plain": "No training, and you choose the region.",
+     "evidence": [
+      {
+       "doc_id": "qwen3-8-flash-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: no training; SOC 2; selectable regions; self-host",
+       "unindexed": true,
+       "url": "https://github.com/QwenLM/Qwen3.8-Flash-Next/blob/main/tech_report.pdf"
+      }
+     ]
+    },
+    "fairness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "tamper": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Nothing published about being tricked.",
+     "evidence": []
+    }
+   },
+   "overrides": {},
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "kimi-k3",
+   "display_name": "Kimi K3",
+   "maker": "moonshot",
+   "tier": "flagship",
+   "deployment": "both",
+   "api_id": "kimi-k3",
+   "price": {
+    "input": 3,
+    "output": 15,
+    "note": "$3 in / $15 out per million tokens",
+    "band": "mid"
+   },
+   "context": "1M tokens",
+   "data_location": "Singapore; may be transferred outside your country",
+   "card": {
+    "doc_id": "kimi-k3-card",
+    "url": "https://arxiv.org/abs/2607.24653",
+    "type": "technical_report",
+    "published": "2026-07-16",
+    "retrieved": "2026-09-12",
+    "title": "Kimi K3 technical report"
+   },
+   "status": "draft",
+   "one_liner": "Strong on real work with a full technical report, but the API trains on your inputs by default and publishes nothing on fairness or attacks.",
+   "next_step": "The API trains on your inputs by default: opt out in writing or self-host before sending anything about customers.",
+   "how_to_use": "Through the Moonshot API or self-hosted weights.",
+   "policy": {
+    "trains_on_inputs_by_default": "true",
+    "surface": "Moonshot API",
+    "zdr": "unknown",
+    "retention": "not stated",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "kimi-k3-card",
+      "source_type": "technical_report",
+      "quote": "Data policy: trains on inputs by default = true; zero data retention = unknown; retention = not stated",
+      "unindexed": true,
+      "url": "https://arxiv.org/abs/2607.24653"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 80,
+     "status": "reported",
+     "metric": "GDPval-AA v2 Elo; Terminal-Bench 2.1; DeepSWE v1.1",
+     "value": "Elo 1686; Terminal-Bench 2.1 88.3%; DeepSWE 67.5%",
+     "plain": "Strong on real work tasks.",
+     "evidence": [
+      {
+       "doc_id": "kimi-k3-card",
+       "source_type": "model_card",
+       "quote": "GDPval-AA v2 Elo; Terminal-Bench 2.1; DeepSWE v1.1: Elo 1686; Terminal-Bench 2.1 88.3%; DeepSWE 67.5%",
+       "unindexed": true,
+       "url": "https://arxiv.org/abs/2607.24653"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": 49,
+     "status": "third_party",
+     "metric": "AA-Omniscience hallucination rate (independent)",
+     "value": "51%",
+     "plain": "Measured independently, middling.",
+     "evidence": [
+      {
+       "doc_id": "kimi-k3-card",
+       "source_type": "model_card",
+       "quote": "AA-Omniscience hallucination rate (independent): 51%",
+       "unindexed": true,
+       "url": "https://arxiv.org/abs/2607.24653"
+      }
+     ]
+    },
+    "privacy": {
+     "score": 10,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "trains on inputs by default; Singapore; self-host",
+     "plain": "Trains on your inputs unless you opt out or self-host.",
+     "evidence": [
+      {
+       "doc_id": "kimi-k3-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: trains on inputs by default; Singapore; self-host",
+       "unindexed": true,
+       "url": "https://arxiv.org/abs/2607.24653"
+      }
+     ]
+    },
+    "fairness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "tamper": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Nothing published about being tricked.",
+     "evidence": []
+    }
+   },
+   "overrides": {
+    "code": {
+     "score": 88,
+     "status": "reported",
+     "metric": "Terminal-Bench 2.1",
+     "value": "88.3%",
+     "evidence": [
+      {
+       "doc_id": "kimi-k3-card",
+       "source_type": "model_card",
+       "quote": "Terminal-Bench 2.1: 88.3%",
+       "unindexed": true,
+       "url": "https://arxiv.org/abs/2607.24653"
+      }
+     ]
+    }
+   },
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "glm-5-3",
+   "display_name": "GLM-5.3",
+   "maker": "zhipu",
+   "tier": "flagship",
+   "deployment": "both",
+   "api_id": "glm-5.3",
+   "price": {
+    "input": 1.4,
+    "output": 4.4,
+    "note": "$1.4 in / $4.4 out per million tokens",
+    "band": "low"
+   },
+   "context": "1M tokens",
+   "data_location": "Singapore; API content stated as not stored",
+   "card": {
+    "doc_id": "glm-5-3-card",
+    "url": "https://huggingface.co/zai-org/GLM-5.3",
+    "type": "model_card",
+    "published": "2026-08",
+    "retrieved": "2026-09-12",
+    "title": "GLM-5.3 model card"
+   },
+   "status": "draft",
+   "one_liner": "Top marks on real work at a low price and a no-storage promise, but nothing published on accuracy, fairness or attacks for this version.",
+   "next_step": "Get the no-storage promise in writing; the page it was on has since gone missing.",
+   "how_to_use": "Through the Z.ai API or self-hosted weights.",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "Z.ai API",
+    "zdr": "unknown",
+    "retention": "content stated as not stored (page now missing)",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "glm-5-3-card",
+      "source_type": "model_card",
+      "quote": "Data policy: trains on inputs by default = false; zero data retention = unknown; retention = content stated as not stored (page now missing)",
+      "unindexed": true,
+      "url": "https://huggingface.co/zai-org/GLM-5.3"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 82,
+     "status": "reported",
+     "metric": "GDPval-AA v2 Elo; Terminal-Bench 2.1; DeepSWE v1.1",
+     "value": "Elo 1769; Terminal-Bench 2.1 88.2%; DeepSWE 66.9%",
+     "plain": "Top tier on real work tasks.",
+     "evidence": [
+      {
+       "doc_id": "glm-5-3-card",
+       "source_type": "model_card",
+       "quote": "GDPval-AA v2 Elo; Terminal-Bench 2.1; DeepSWE v1.1: Elo 1769; Terminal-Bench 2.1 88.2%; DeepSWE 66.9%",
+       "unindexed": true,
+       "url": "https://huggingface.co/zai-org/GLM-5.3"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "privacy": {
+     "score": 70,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "no training; no-storage default; Singapore; self-host",
+     "plain": "No training, no storage promised.",
+     "evidence": [
+      {
+       "doc_id": "glm-5-3-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: no training; no-storage default; Singapore; self-host",
+       "unindexed": true,
+       "url": "https://huggingface.co/zai-org/GLM-5.3"
+      }
+     ]
+    },
+    "fairness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "tamper": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Nothing published about being tricked for this version.",
+     "evidence": []
+    }
+   },
+   "overrides": {
+    "code": {
+     "score": 88,
+     "status": "reported",
+     "metric": "Terminal-Bench 2.1",
+     "value": "88.2%",
+     "evidence": [
+      {
+       "doc_id": "glm-5-3-card",
+       "source_type": "model_card",
+       "quote": "Terminal-Bench 2.1: 88.2%",
+       "unindexed": true,
+       "url": "https://huggingface.co/zai-org/GLM-5.3"
+      }
+     ]
+    }
+   },
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "glm-5-3-flash",
+   "display_name": "GLM-5.3-Flash",
+   "maker": "zhipu",
+   "tier": "efficient",
+   "deployment": "both",
+   "api_id": "glm-5.3-flash",
+   "price": {
+    "input": 0.15,
+    "output": 0.5,
+    "note": "$0.15 in / $0.5 out per million tokens",
+    "band": "low"
+   },
+   "context": "1M tokens",
+   "data_location": "Singapore",
+   "card": {
+    "doc_id": "glm-5-3-flash-card",
+    "url": "https://huggingface.co/zai-org/GLM-5.3-Flash",
+    "type": "model_card",
+    "published": "2026-08",
+    "retrieved": "2026-09-12",
+    "title": "GLM-5.3-Flash model card"
+   },
+   "status": "draft",
+   "one_liner": "Very cheap and capable, with the same no-storage promise as its bigger sibling and the same silence on safety testing.",
+   "next_step": "Get the no-storage promise in writing; keep it away from customer-facing use until safety testing is published.",
+   "how_to_use": "Through the Z.ai API or self-hosted weights.",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "Z.ai API",
+    "zdr": "unknown",
+    "retention": "content stated as not stored",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "glm-5-3-flash-card",
+      "source_type": "model_card",
+      "quote": "Data policy: trains on inputs by default = false; zero data retention = unknown; retention = content stated as not stored",
+      "unindexed": true,
+      "url": "https://huggingface.co/zai-org/GLM-5.3-Flash"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 79,
+     "status": "reported",
+     "metric": "GDPval-AA v2 Elo; Terminal-Bench 2.1; DeepSWE v1.1",
+     "value": "Elo 1773 (image); Terminal-Bench 2.1 84.3%; DeepSWE 63.4%",
+     "plain": "Strong for the price.",
+     "evidence": [
+      {
+       "doc_id": "glm-5-3-flash-card",
+       "source_type": "model_card",
+       "quote": "GDPval-AA v2 Elo; Terminal-Bench 2.1; DeepSWE v1.1: Elo 1773 (image); Terminal-Bench 2.1 84.3%; DeepSWE 63.4%",
+       "unindexed": true,
+       "url": "https://huggingface.co/zai-org/GLM-5.3-Flash"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "privacy": {
+     "score": 70,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "no training; no-storage default; Singapore; self-host",
+     "plain": "No training, no storage promised.",
+     "evidence": [
+      {
+       "doc_id": "glm-5-3-flash-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: no training; no-storage default; Singapore; self-host",
+       "unindexed": true,
+       "url": "https://huggingface.co/zai-org/GLM-5.3-Flash"
+      }
+     ]
+    },
+    "fairness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "tamper": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Nothing published about being tricked.",
+     "evidence": []
+    }
+   },
+   "overrides": {},
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "minimax-m3",
+   "display_name": "MiniMax-M3",
+   "maker": "minimax",
+   "tier": "flagship",
+   "deployment": "both",
+   "api_id": "MiniMax-M3",
+   "price": {
+    "input": 0.3,
+    "output": 1.2,
+    "note": "$0.3 in / $1.2 out per million tokens",
+    "band": "low"
+   },
+   "context": "1M tokens",
+   "data_location": "US data centre (Singapore company)",
+   "card": {
+    "doc_id": "minimax-m3-card",
+    "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3",
+    "type": "model_card",
+    "published": "2026-08",
+    "retrieved": "2026-09-12",
+    "title": "MiniMax-M3 model card"
+   },
+   "status": "draft",
+   "one_liner": "Cheap, US-hosted and with a low independent hallucination rate (largely because it abstains), but the training default is not stated and nothing is published on fairness or attacks.",
+   "next_step": "Confirm in writing that your inputs are not used for training before sending customer details.",
+   "how_to_use": "Through the MiniMax API or self-hosted weights.",
+   "policy": {
+    "trains_on_inputs_by_default": "unknown",
+    "surface": "MiniMax API",
+    "zdr": "unknown",
+    "retention": "not stated",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "minimax-m3-card",
+      "source_type": "model_card",
+      "quote": "Data policy: trains on inputs by default = unknown; zero data retention = unknown; retention = not stated",
+      "unindexed": true,
+      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 74,
+     "status": "reported",
+     "metric": "GDPval-AA v2 Elo (independent); Terminal-Bench 2.1",
+     "value": "Elo about 1670; Terminal-Bench 2.1 66.0%",
+     "plain": "Good on real work tasks.",
+     "evidence": [
+      {
+       "doc_id": "minimax-m3-card",
+       "source_type": "model_card",
+       "quote": "GDPval-AA v2 Elo (independent); Terminal-Bench 2.1: Elo about 1670; Terminal-Bench 2.1 66.0%",
+       "unindexed": true,
+       "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": 84,
+     "status": "third_party",
+     "metric": "AA-Omniscience hallucination rate (independent)",
+     "value": "16.1%, driven by a low attempt rate",
+     "plain": "Low error rate, mostly by declining to answer.",
+     "evidence": [
+      {
+       "doc_id": "minimax-m3-card",
+       "source_type": "model_card",
+       "quote": "AA-Omniscience hallucination rate (independent): 16.1%, driven by a low attempt rate",
+       "unindexed": true,
+       "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3"
+      }
+     ]
+    },
+    "privacy": {
+     "score": 15,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "training default not stated; US single region; self-host",
+     "plain": "Training default not stated.",
+     "evidence": [
+      {
+       "doc_id": "minimax-m3-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: training default not stated; US single region; self-host",
+       "unindexed": true,
+       "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3"
+      }
+     ]
+    },
+    "fairness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "tamper": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Nothing published about being tricked.",
+     "evidence": []
+    }
+   },
+   "overrides": {
+    "code": {
+     "score": 81,
+     "status": "reported",
+     "metric": "SWE-bench Verified",
+     "value": "80.5%",
+     "evidence": [
+      {
+       "doc_id": "minimax-m3-card",
+       "source_type": "model_card",
+       "quote": "SWE-bench Verified: 80.5%",
+       "unindexed": true,
+       "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3"
+      }
+     ]
+    }
+   },
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "seed-2-1-pro",
+   "display_name": "Seed 2.1 Pro",
+   "maker": "bytedance",
+   "tier": "flagship",
+   "deployment": "api",
+   "api_id": "doubao-seed-2-1-pro-260628",
+   "price": {
+    "input": 0.83,
+    "output": 4.14,
+    "note": "$0.83 in / $4.14 out per million tokens",
+    "band": "low"
+   },
+   "context": "256K tokens",
+   "data_location": "Mainland China only (Volcengine)",
+   "card": {
+    "doc_id": "seed-2-1-pro-card",
+    "url": "https://seed.bytedance.com/seed2_1",
+    "type": "model_card",
+    "published": "2026-06-28",
+    "retrieved": "2026-09-12",
+    "title": "Seed 2.1 model card (web page)"
+   },
+   "status": "draft",
+   "one_liner": "ByteDance's flagship, sold only on its mainland-China cloud; capable on coding, weak published accuracy, and the data policy is still being checked.",
+   "next_step": "Not available outside mainland China; use the Turbo model on BytePlus instead if you need it.",
+   "how_to_use": "Through Volcengine Ark (mainland China only).",
+   "policy": {
+    "trains_on_inputs_by_default": "unknown",
+    "surface": "Volcengine Ark",
+    "zdr": "unknown",
+    "retention": "not verified",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "seed-2-1-pro-card",
+      "source_type": "model_card",
+      "quote": "Data policy: trains on inputs by default = unknown; zero data retention = unknown; retention = not verified",
+      "unindexed": true,
+      "url": "https://seed.bytedance.com/seed2_1"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 71,
+     "status": "reported",
+     "metric": "Terminal-Bench 2.1",
+     "value": "71.0%",
+     "plain": "Good on coding and agent tasks.",
+     "evidence": [
+      {
+       "doc_id": "seed-2-1-pro-card",
+       "source_type": "model_card",
+       "quote": "Terminal-Bench 2.1: 71.0%",
+       "unindexed": true,
+       "url": "https://seed.bytedance.com/seed2_1"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": 32,
+     "status": "third_party",
+     "metric": "SimpleQA Verified on Seed 2.0 Pro, discounted",
+     "value": "36.0% (previous version)",
+     "plain": "Measured on the previous version.",
+     "evidence": [
+      {
+       "doc_id": "seed-2-1-pro-card",
+       "source_type": "model_card",
+       "quote": "SimpleQA Verified on Seed 2.0 Pro, discounted: 36.0% (previous version)",
+       "unindexed": true,
+       "url": "https://seed.bytedance.com/seed2_1"
+      }
+     ]
+    },
+    "privacy": {
+     "score": null,
+     "status": "pending",
+     "metric": "Privacy checklist",
+     "value": "",
+     "plain": "We are still checking the data policy.",
+     "evidence": []
+    },
+    "fairness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "tamper": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Nothing published about being tricked.",
+     "evidence": []
+    }
+   },
+   "overrides": {},
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "seed-2-1-turbo",
+   "display_name": "Seed 2.1 Turbo",
+   "maker": "bytedance",
+   "tier": "mid",
+   "deployment": "api",
+   "api_id": "dola-seed-2-1-turbo-260628",
+   "price": {
+    "input": 0.5,
+    "output": 2.5,
+    "note": "$0.5 in / $2.5 out per million tokens",
+    "band": "low"
+   },
+   "context": "256K tokens",
+   "data_location": "Malaysia, Indonesia or EU (BytePlus)",
+   "card": {
+    "doc_id": "seed-2-1-turbo-card",
+    "url": "https://seed.bytedance.com/seed2_1",
+    "type": "model_card",
+    "published": "2026-06-28",
+    "retrieved": "2026-09-12",
+    "title": "Seed 2.1 model card (web page)"
+   },
+   "status": "draft",
+   "one_liner": "The internationally available ByteDance model: a no-training policy and non-China processing, but nothing published on accuracy, fairness or attacks.",
+   "next_step": "Check which BytePlus region your account uses; you cannot choose it yourself.",
+   "how_to_use": "Through BytePlus (international).",
+   "policy": {
+    "trains_on_inputs_by_default": "false",
+    "surface": "BytePlus",
+    "zdr": "unknown",
+    "retention": "filter-flagged data kept 180 days in Malaysia",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "seed-2-1-turbo-card",
+      "source_type": "model_card",
+      "quote": "Data policy: trains on inputs by default = false; zero data retention = unknown; retention = filter-flagged data kept 180 days in Malaysia",
+      "unindexed": true,
+      "url": "https://seed.bytedance.com/seed2_1"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 68,
+     "status": "reported",
+     "metric": "Terminal-Bench 2.1",
+     "value": "67.6%",
+     "plain": "Good on coding and agent tasks.",
+     "evidence": [
+      {
+       "doc_id": "seed-2-1-turbo-card",
+       "source_type": "model_card",
+       "quote": "Terminal-Bench 2.1: 67.6%",
+       "unindexed": true,
+       "url": "https://seed.bytedance.com/seed2_1"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "privacy": {
+     "score": 35,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "no training; processing in Malaysia, Indonesia or EU, not selectable",
+     "plain": "No training; region not selectable.",
+     "evidence": [
+      {
+       "doc_id": "seed-2-1-turbo-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: no training; processing in Malaysia, Indonesia or EU, not selectable",
+       "unindexed": true,
+       "url": "https://seed.bytedance.com/seed2_1"
+      }
+     ]
+    },
+    "fairness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "tamper": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Nothing published about being tricked.",
+     "evidence": []
+    }
+   },
+   "overrides": {},
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "hy4-preview",
+   "display_name": "Hunyuan Hy4 (preview)",
+   "maker": "tencent",
+   "tier": "flagship",
+   "deployment": "both",
+   "api_id": "hy4-preview",
+   "price": {
+    "input": 0.83,
+    "output": 2.5,
+    "note": "$0.83 in / $2.5 out per million tokens",
+    "band": "low"
+   },
+   "context": "1M tokens",
+   "data_location": "Mainland China for China-collected data; affiliates in US, Germany, Korea, Singapore",
+   "card": {
+    "doc_id": "hy4-preview-card",
+    "url": "https://huggingface.co/tencent/Hy4-preview",
+    "type": "model_card",
+    "published": "2026-08",
+    "retrieved": "2026-09-12",
+    "title": "Hy4 preview model card"
+   },
+   "status": "draft",
+   "one_liner": "Tencent's preview flagship: strong coding results, but nothing on accuracy, fairness or attacks, and data storage in China unless you host it.",
+   "next_step": "Only consider the self-hosted version for customer data.",
+   "how_to_use": "Self-hosted weights, or Tencent Cloud (China).",
+   "policy": {
+    "trains_on_inputs_by_default": "unknown",
+    "surface": "Tencent Cloud",
+    "zdr": "unknown",
+    "retention": "China storage for China-collected data",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "hy4-preview-card",
+      "source_type": "model_card",
+      "quote": "Data policy: trains on inputs by default = unknown; zero data retention = unknown; retention = China storage for China-collected data",
+      "unindexed": true,
+      "url": "https://huggingface.co/tencent/Hy4-preview"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 75,
+     "status": "reported",
+     "metric": "Terminal-Bench 2.1; DeepSWE v1.1",
+     "value": "Terminal-Bench 2.1 85.4%; DeepSWE 64.3%",
+     "plain": "Strong on coding and agent tasks.",
+     "evidence": [
+      {
+       "doc_id": "hy4-preview-card",
+       "source_type": "model_card",
+       "quote": "Terminal-Bench 2.1; DeepSWE v1.1: Terminal-Bench 2.1 85.4%; DeepSWE 64.3%",
+       "unindexed": true,
+       "url": "https://huggingface.co/tencent/Hy4-preview"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "privacy": {
+     "score": 10,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "self-host only path outside China; China storage otherwise",
+     "plain": "Data stays in China unless you host it yourself.",
+     "evidence": [
+      {
+       "doc_id": "hy4-preview-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: self-host only path outside China; China storage otherwise",
+       "unindexed": true,
+       "url": "https://huggingface.co/tencent/Hy4-preview"
+      }
+     ]
+    },
+    "fairness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "tamper": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Nothing published about being tricked.",
+     "evidence": []
+    }
+   },
+   "overrides": {
+    "code": {
+     "score": 85,
+     "status": "reported",
+     "metric": "Terminal-Bench 2.1",
+     "value": "85.4%",
+     "evidence": [
+      {
+       "doc_id": "hy4-preview-card",
+       "source_type": "model_card",
+       "quote": "Terminal-Bench 2.1: 85.4%",
+       "unindexed": true,
+       "url": "https://huggingface.co/tencent/Hy4-preview"
+      }
+     ]
+    }
+   },
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    },
+    {
+     "text": "preview model",
+     "kind": "warn"
+    }
+   ]
+  },
+  {
+   "id": "mimo-v2-5-pro",
+   "display_name": "MiMo-V2.5-Pro",
+   "maker": "xiaomi",
+   "tier": "flagship",
+   "deployment": "both",
+   "api_id": "mimo-v2.5-pro",
+   "price": {
+    "input": 1,
+    "output": 3,
+    "note": "$1 in / $3 out per million tokens",
+    "band": "low"
+   },
+   "context": "1M tokens",
+   "data_location": "Singapore (Netherlands for EEA and UK); may be accessed from mainland China",
+   "card": {
+    "doc_id": "mimo-v2-5-pro-card",
+    "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro",
+    "type": "model_card",
+    "published": "2026-04-27",
+    "retrieved": "2026-09-12",
+    "title": "MiMo-V2.5-Pro model card"
+   },
+   "status": "draft",
+   "one_liner": "Xiaomi's flagship: decent on real work by press transcriptions of its chart, but the card only evaluates the base model and publishes no safety testing.",
+   "next_step": "Only consider the self-hosted version for customer data; the API's data location is not stated.",
+   "how_to_use": "Self-hosted weights or Xiaomi's API.",
+   "policy": {
+    "trains_on_inputs_by_default": "unknown",
+    "surface": "Xiaomi API",
+    "zdr": "unknown",
+    "retention": "not stated",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "mimo-v2-5-pro-card",
+      "source_type": "model_card",
+      "quote": "Data policy: trains on inputs by default = unknown; zero data retention = unknown; retention = not stated",
+      "unindexed": true,
+      "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 72,
+     "status": "reported",
+     "metric": "GDPval-AA v2 Elo; Terminal-Bench 2.0 (press transcriptions of Xiaomi's chart)",
+     "value": "Elo 1581; Terminal-Bench 2.0 68.4%",
+     "plain": "Decent, from transcribed charts.",
+     "evidence": [
+      {
+       "doc_id": "mimo-v2-5-pro-card",
+       "source_type": "model_card",
+       "quote": "GDPval-AA v2 Elo; Terminal-Bench 2.0 (press transcriptions of Xiaomi's chart): Elo 1581; Terminal-Bench 2.0 68.4%",
+       "unindexed": true,
+       "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "privacy": {
+     "score": 10,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "self-host only path; API location not stated",
+     "plain": "Data location not stated unless you host it yourself.",
+     "evidence": [
+      {
+       "doc_id": "mimo-v2-5-pro-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: self-host only path; API location not stated",
+       "unindexed": true,
+       "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro"
+      }
+     ]
+    },
+    "fairness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "tamper": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Nothing published about being tricked.",
+     "evidence": []
+    }
+   },
+   "overrides": {
+    "code": {
+     "score": 79,
+     "status": "reported",
+     "metric": "SWE-bench Verified",
+     "value": "78.9%",
+     "evidence": [
+      {
+       "doc_id": "mimo-v2-5-pro-card",
+       "source_type": "model_card",
+       "quote": "SWE-bench Verified: 78.9%",
+       "unindexed": true,
+       "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro"
+      }
+     ]
+    }
+   },
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  },
+  {
+   "id": "step-3-7-flash",
+   "display_name": "Step 3.7 Flash",
+   "maker": "stepfun",
+   "tier": "flagship",
+   "deployment": "both",
+   "api_id": "step-3.7-flash",
+   "price": {
+    "input": 0.2,
+    "output": 1.15,
+    "note": "$0.2 in / $1.15 out per million tokens",
+    "band": "low"
+   },
+   "context": "256K tokens",
+   "data_location": "Mainland China; not transferred abroad",
+   "card": {
+    "doc_id": "step-3-7-flash-card",
+    "url": "https://static.stepfun.com/blog/step-3.7-flash/",
+    "type": "technical_report",
+    "published": "2026-07",
+    "retrieved": "2026-09-12",
+    "title": "Step 3.7 Flash report"
+   },
+   "status": "draft",
+   "one_liner": "Cheap and decent at code, with data kept in mainland China and no accuracy, fairness or attack testing published.",
+   "next_step": "Only consider the self-hosted version for customer data.",
+   "how_to_use": "Through StepFun's API (China) or self-hosted weights.",
+   "policy": {
+    "trains_on_inputs_by_default": "unknown",
+    "surface": "StepFun API",
+    "zdr": "unknown",
+    "retention": "kept in mainland China",
+    "baa": null,
+    "evidence": [
+     {
+      "doc_id": "step-3-7-flash-card",
+      "source_type": "technical_report",
+      "quote": "Data policy: trains on inputs by default = unknown; zero data retention = unknown; retention = kept in mainland China",
+      "unindexed": true,
+      "url": "https://static.stepfun.com/blog/step-3.7-flash/"
+     }
+    ]
+   },
+   "dims": {
+    "performance": {
+     "score": 60,
+     "status": "reported",
+     "metric": "Terminal-Bench 2.1",
+     "value": "59.5%",
+     "plain": "Decent on coding tasks.",
+     "evidence": [
+      {
+       "doc_id": "step-3-7-flash-card",
+       "source_type": "model_card",
+       "quote": "Terminal-Bench 2.1: 59.5%",
+       "unindexed": true,
+       "url": "https://static.stepfun.com/blog/step-3.7-flash/"
+      }
+     ]
+    },
+    "truthfulness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "privacy": {
+     "score": 10,
+     "status": "reported",
+     "metric": "Privacy checklist",
+     "value": "mainland China; self-host",
+     "plain": "Data stays in mainland China unless you host it yourself.",
+     "evidence": [
+      {
+       "doc_id": "step-3-7-flash-card",
+       "source_type": "model_card",
+       "quote": "Privacy checklist: mainland China; self-host",
+       "unindexed": true,
+       "url": "https://static.stepfun.com/blog/step-3.7-flash/"
+      }
+     ]
+    },
+    "fairness": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Not tested publicly at all.",
+     "evidence": []
+    },
+    "tamper": {
+     "score": null,
+     "status": "missing",
+     "metric": "",
+     "value": "",
+     "plain": "Nothing published about being tricked.",
+     "evidence": []
+    }
+   },
+   "overrides": {
+    "code": {
+     "score": 77,
+     "status": "reported",
+     "metric": "SWE-bench Verified",
+     "value": "76.5%",
+     "evidence": [
+      {
+       "doc_id": "step-3-7-flash-card",
+       "source_type": "model_card",
+       "quote": "SWE-bench Verified: 76.5%",
+       "unindexed": true,
+       "url": "https://static.stepfun.com/blog/step-3.7-flash/"
+      }
+     ]
+    }
+   },
+   "badges": [
+    {
+     "text": "figures from our research pass; card not yet indexed",
+     "kind": "info"
+    }
+   ]
+  }
+ ],
+ "skipped": [
+  {
+   "name": "Gemini Omni 1.1 Flash",
+   "reason": "a video-generation model with no text benchmarks or safety numbers"
+  },
+  {
+   "name": "GPT-5.5",
+   "reason": "superseded by GPT-5.6 Sol and GPT-6 Astra"
+  },
+  {
+   "name": "Gemini 3.7 Flash",
+   "reason": "superseded by Gemini 3.8 Flash"
+  },
+  {
+   "name": "Grok 4.5",
+   "reason": "superseded by Grok 4.6"
+  },
+  {
+   "name": "Kimi K2.6",
+   "reason": "superseded by Kimi K3"
+  },
+  {
+   "name": "MiniMax-M2.7",
+   "reason": "superseded by MiniMax-M3 and licensed non-commercial"
+  },
+  {
+   "name": "ERNIE 5.0 and 5.1",
+   "reason": "5.0 is superseded and 5.1 has a blog post but no card"
+  },
+  {
+   "name": "Grok 4.3, iFlytek Spark X2.5, Llama 4",
+   "reason": "no official model card or system card found"
   }
  ],
  "validated": "2026-09-12"

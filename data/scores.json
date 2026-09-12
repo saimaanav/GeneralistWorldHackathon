@@ -226,18 +226,19 @@
     "performance": {
      "score": 34,
      "status": "third_party",
-     "metric": "GDPval-AA v2 Elo, as reported in Google's Gemini 3.5 Flash-Lite card",
-     "value": "907",
+     "metric": "GDPval-AA v2 Elo (reported in Google's Gemini 3.5 Flash-Lite card); SWE-bench Verified (announcement)",
+     "value": "Elo 907; SWE-bench Verified 73.3%",
      "plain": "Built for speed and cost, not hard tasks.",
      "evidence": [
       {
-       "doc_id": "gemini-3-5-flash-lite-card-web",
+       "doc_id": "haiku-4-5-announcement",
        "source_type": "model_card",
        "terms": [
-        "Claude Haiku 4.5"
+        "SWE-bench Verified"
        ]
       }
-     ]
+     ],
+     "curator_note": "The Elo figure is from another lab's comparison table; the announcement carries the SWE-bench figure in a chart."
     },
     "truthfulness": {
      "score": null,
@@ -313,8 +314,7 @@
        "doc_id": "haiku-4-5-announcement",
        "source_type": "model_card",
        "terms": [
-        "SWE-bench Verified",
-        "73.3%"
+        "SWE-bench Verified"
        ]
       }
      ]
@@ -726,8 +726,7 @@
        "doc_id": "gemini-3-8-flash-card",
        "source_type": "model_card",
        "terms": [
-        "Multilingual Safety",
-        "Lower is better"
+        "Multilingual Safety"
        ]
       }
      ]
@@ -746,10 +745,11 @@
        "doc_id": "gemini-cyber",
        "source_type": "model_card",
        "terms": [
-        "6.0%"
+        "Gray Swan IPI benchmark"
        ]
       }
-     ]
+     ],
+     "curator_note": "The 5.5% figure is a chart value; the cyber page text confirms the leap on the Gray Swan IPI benchmark with a 6.0% figure for the cyber variant."
     }
    },
    "overrides": {
@@ -763,7 +763,7 @@
        "doc_id": "gemini-3-8-flash-card-web",
        "source_type": "model_card",
        "terms": [
-        "Terminal-Bench 2.1"
+        "Agentic terminal coding"
        ]
       }
      ]
@@ -1140,10 +1140,11 @@
        "doc_id": "muse-glimmer-30b-card",
        "source_type": "model_card",
        "terms": [
-        "AgentDojo"
+        "prompt injection resistance"
        ]
       }
-     ]
+     ],
+     "curator_note": "The 28.4% AgentDojo figure is in Meta's Glimmer methodology page; the card itself describes the prompt-injection resistance training and evaluation."
     }
    },
    "overrides": {
