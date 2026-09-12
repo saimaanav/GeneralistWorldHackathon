@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #FFF8EE; font-family: Figtree, system-ui, sans-serif; color: #16151C; -webkit-font-smoothing: antialiased; }
+  a { color: #17706B; text-underline-offset: 3px; }
+  a:hover { color: #0F4F4B; }
+  button, input, textarea { font-family: Figtree, system-ui, sans-serif; }
+  h1, h2, h3 { font-family: "Bricolage Grotesque", Figtree, sans-serif; font-weight: 800; letter-spacing: -0.03em; margin: 0; }
+  @keyframes v3-rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  @keyframes v3-pop { 0% { transform: scale(.6) rotate(-6deg); opacity: 0; } 65% { transform: scale(1.12) rotate(2deg); } 100% { transform: scale(1) rotate(0); opacity: 1; } }
+  @keyframes v3-slide { from { opacity: 0; transform: translateX(26px); } to { opacity: 1; transform: none; } }
+  @keyframes v3-drawer { from { transform: translateX(100%); } to { transform: none; } }
+  @keyframes v3-fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes v3-float { 0%, 100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-14px) rotate(3deg); } }
+  @keyframes v3-needle { 0%, 100% { transform: rotate(-38deg); } 50% { transform: rotate(42deg); } }
+  @keyframes v3-blink { 0%, 100% { opacity: .28; } 50% { opacity: 1; } }
+  @keyframes v3-sweep { from { background-position: 0% 50%; } to { background-position: 200% 50%; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; background: #FFF8EE; overflow-x: hidden;">
+
+  <div style="position: sticky; top: 0; z-index: 40; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 9px 20px; background: #16151C; color: #FFF8EE;">
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #8C8798;">Prototype nav</span>
+    <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+      <sc-for list="{{ screens }}" as="s" hint-placeholder-count="5">
+        <button onClick="{{ s.go }}" style="{{ s.style }}">{{ s.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 28px; background: #FFF8EE;">
+    <span style="display: flex; align-items: center; gap: 11px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.03em; cursor: default; transition: transform .3s cubic-bezier(.34,1.56,.64,1);" style-hover="transform: scale(1.04);">
+      <span style="position: relative; width: 34px; height: 34px; border-radius: 50%; background: #16151C; display: flex; align-items: center; justify-content: center;">
+        <span style="position: absolute; inset: 4px; border-radius: 50%; border: 2px solid #2F6D69;"></span>
+        <span style="width: 13px; height: 13px; background: #17706B; border-top-right-radius: 12px; border-bottom-left-radius: 12px; animation: v3-needle 6s ease-in-out infinite; transform-origin: 50% 50%;"></span>
+        <span style="position: absolute; top: 3px; left: 50%; width: 3px; height: 3px; margin-left: -1.5px; border-radius: 50%; background: #FFC24B;"></span>
+      </span>
+      <span>Card<span style="color: #17706B;">Compass</span></span>
+    </span>
+    <button onClick="{{ startQuiz }}" style="margin-left: auto; background: #16151C; color: #FFF8EE; border: none; border-radius: 999px; padding: 12px 24px; font-size: 15px; font-weight: 700; cursor: pointer; transition: transform .18s cubic-bezier(.34,1.56,.64,1);" style-hover="transform: translateY(-3px) scale(1.03);">Find my match</button>
+  </div>
+
+  <sc-if value="{{ isLanding }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <div style="background: #16151C; color: #FFF8EE; padding: 66px 28px 80px; position: relative;">
+      <span style="position: absolute; top: 40px; right: 8%; width: 90px; height: 90px; border-radius: 30px; background: #FFC24B; opacity: .9; animation: v3-float 7s ease-in-out infinite;"></span>
+      <span style="position: absolute; bottom: 60px; left: 4%; width: 56px; height: 56px; border-radius: 50%; background: #17706B; animation: v3-float 9s ease-in-out infinite reverse;"></span>
+      <div style="max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px; align-items: center; position: relative;">
+        <div style="animation: v3-rise .55s ease-out both;">
+          <span style="display: inline-block; background: #FFC24B; color: #40300A; border-radius: 999px; padding: 7px 16px; font-size: 14px; font-weight: 800; transform: rotate(-2deg);">Built for small businesses</span>
+          <h1 style="font-size: 66px; line-height: .98; margin: 20px 0 18px; max-width: 14ch; text-wrap: balance;">Pick the AI that won't let you down.</h1>
+          <p style="font-size: 20px; line-height: 1.55; color: #C9C3D4; max-width: 46ch; margin: 0 0 30px; text-wrap: pretty;">Seven plain questions about your business. We read the 900 pages of small print the AI companies publish, then show you which model fits, and what each one quietly leaves out.</p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+            <button onClick="{{ startQuiz }}" style="background: #17706B; color: #FFFFFF; border: none; border-radius: 999px; padding: 19px 36px; font-size: 18px; font-weight: 800; cursor: pointer; box-shadow: 0 7px 0 #0B3D3A; transition: transform .16s ease, box-shadow .16s ease;" style-hover="transform: translateY(3px); box-shadow: 0 4px 0 #0B3D3A;" style-active="transform: translateY(7px); box-shadow: 0 0 0 #0B3D3A;">Start, it takes 2 minutes</button>
+            <span style="font-size: 15px; color: #AFA9BD;">No sign-up. Nothing you type is kept.</span>
+          </div>
+        </div>
+
+        <div style="background: #FFF8EE; color: #16151C; border-radius: 28px; padding: 26px 26px 22px; box-shadow: 0 24px 50px rgba(0,0,0,.3); animation: v3-rise .55s .14s ease-out both;">
+          <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 4px;">
+            <h3 style="font-size: 21px;">How much do they tell you?</h3>
+          </div>
+          <p style="font-size: 14px; color: #565064; margin: 0 0 18px;">Share of the five checks each maker actually publishes.</p>
+          <sc-for list="{{ race }}" as="r" hint-placeholder-count="8">
+            <div onMouseEnter="{{ r.hover }}" style="{{ r.rowStyle }}" style-hover="transform: translateX(3px);">
+              <span style="{{ r.tile }}">{{ r.letter }}</span>
+              <span style="flex: 0 0 112px; font-size: 13px; font-weight: 600;">{{ r.name }}</span>
+              <span style="flex: 1 1 auto; height: 16px; border-radius: 999px; background: #EFE7DA; overflow: hidden;"><span style="{{ r.fill }}"></span></span>
+              <span style="flex: 0 0 38px; text-align: right; font-size: 13px; font-weight: 800; font-variant-numeric: tabular-nums;">{{ r.pct }}</span>
+            </div>
+          </sc-for>
+          <div style="margin-top: 14px; background: #F3EEE4; border-radius: 14px; padding: 12px 14px; font-size: 14px; line-height: 1.45; color: #3F3A48; min-height: 62px;">{{ raceCaption }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: #FFF8EE; padding: 72px 28px;">
+      <div style="max-width: 1120px; margin: 0 auto;">
+        <h2 style="font-size: 44px; line-height: 1.05; max-width: 18ch; margin-bottom: 12px;">Five things worth knowing before you trust one.</h2>
+        <p style="font-size: 18px; color: #44404E; max-width: 52ch; margin: 0 0 34px;">Hover any of them to see how the eight models compare right now.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px;">
+          <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="5">
+            <div onMouseEnter="{{ p.hover }}" style="{{ p.cardStyle }}">
+              <span style="{{ p.iconStyle }}">{{ p.icon }}</span>
+              <h3 style="font-size: 19px; margin-top: 14px;">{{ p.name }}</h3>
+              <p style="font-size: 15px; line-height: 1.5; color: #44404E; margin: 8px 0 14px;">{{ p.plain }}</p>
+              <div style="display: flex; gap: 4px; align-items: flex-end; height: 54px;">
+                <sc-for list="{{ p.bars }}" as="b" hint-placeholder-count="8">
+                  <span style="{{ b.style }}"></span>
+                </sc-for>
+              </div>
+              <div style="font-size: 13px; color: #565064; margin-top: 10px;">{{ p.footnote }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: #17706B; color: #FFFFFF; padding: 66px 28px;">
+      <div style="max-width: 1120px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px;">
+          <sc-for list="{{ stats }}" as="st" hint-placeholder-count="3">
+            <div style="background: #0F5A56; border-radius: 24px; padding: 26px 24px; transition: transform .25s cubic-bezier(.34,1.56,.64,1), background .25s ease;" style-hover="transform: translateY(-6px); background: #0C4D4A;">
+              <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 62px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; color: #FFC24B;">{{ st.figure }}</div>
+              <div style="font-size: 17px; line-height: 1.5; color: #E4F2F1; margin-top: 8px; max-width: 30ch; text-wrap: pretty;">{{ st.text }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: #FFF8EE; padding: 72px 28px 86px;">
+      <div style="max-width: 1120px; margin: 0 auto;">
+        <h2 style="font-size: 40px; margin-bottom: 8px;">Start from a business like yours</h2>
+        <p style="font-size: 18px; color: #44404E; margin: 0 0 26px;">Three examples, already filled in. Change anything afterwards.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px;">
+          <sc-for list="{{ personas }}" as="p" hint-placeholder-count="3">
+            <button onClick="{{ p.go }}" style="{{ p.style }}" style-hover="transform: translateY(-6px) rotate(-1deg); box-shadow: 0 22px 36px rgba(22,21,28,.14);">
+              <span style="{{ p.markStyle }}">{{ p.mark }}</span>
+              <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 21px; font-weight: 800; letter-spacing: -0.02em;">{{ p.name }}</span>
+              <span style="font-size: 15px; line-height: 1.5; color: #44404E;">{{ p.blurb }}</span>
+              <span style="font-size: 15px; font-weight: 800; color: #17706B;">See their match →</span>
+            </button>
+          </sc-for>
+        </div>
+        <p style="font-size: 14px; line-height: 1.6; color: #565064; max-width: 76ch; margin: 40px 0 0;">We compare how much each company tells you and how solid those numbers are, rather than one lab's benchmark against another's. This is not legal advice: check the vendor's terms before you upload customer, payment or health information.</p>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isQuiz }}" hint-placeholder-val="{{ false }}">
+  <div style="background: #FFF8EE; padding: 26px 24px 80px;">
+    <div style="max-width: 720px; margin: 0 auto;">
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <span style="font-size: 14px; font-weight: 700; color: #565064;">{{ stepLabel }}</span>
+        <button onClick="{{ goResults }}" style="margin-left: auto; background: none; border: none; font-size: 14px; font-weight: 700; color: #17706B; text-decoration: underline; cursor: pointer;">Skip to results</button>
+      </div>
+      <div style="height: 10px; border-radius: 999px; background: #EFE7DA; overflow: hidden;"><span style="{{ progressStyle }}"></span></div>
+
+      <div style="background: #FFFFFF; border-radius: 26px; padding: 34px; margin-top: 22px; box-shadow: 0 16px 34px rgba(22,21,28,.08); animation: v3-slide .34s cubic-bezier(.34,1.2,.64,1) both;">
+        <h2 style="font-size: 36px; line-height: 1.1; margin-bottom: 8px; text-wrap: pretty;">{{ question.title }}</h2>
+        <p style="font-size: 16px; color: #565064; margin: 0 0 24px;">{{ question.hint }}</p>
+
+        <sc-if value="{{ question.isChoice }}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <sc-for list="{{ question.options }}" as="o" hint-placeholder-count="4">
+              <button onClick="{{ o.pick }}" style="{{ o.style }}" style-hover="border-color: #17706B; transform: translateX(4px);">
+                <span style="{{ o.markStyle }}">{{ o.mark }}</span>
+                <span style="display: flex; flex-direction: column; gap: 3px; text-align: left;">
+                  <span style="font-size: 17px; font-weight: 600;">{{ o.label }}</span>
+                  <span style="{{ o.effectStyle }}">{{ o.effect }}</span>
+                </span>
+              </button>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ question.isText }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <textarea placeholder="e.g. We are a three person bakery. I answer the same Instagram questions all day and I would like help replying without sounding like a robot." style="width: 100%; min-height: 132px; resize: vertical; padding: 16px; font-size: 16px; line-height: 1.5; color: #16151C; background: #FDF9F2; border: 2px solid #EFE7DA; border-radius: 16px;" style-focus="border-color: #17706B; outline: none;"></textarea>
+            <div style="border: 2px dashed #DCD3C4; border-radius: 16px; background: #FDF9F2; padding: 22px; text-align: center; transition: border-color .2s ease, background .2s ease;" style-hover="border-color: #17706B; background: #F0F7F6;">
+              <div style="font-size: 16px; color: #3F3A48;">Got something written down? Drop it here, <span style="color: #17706B; font-weight: 700; text-decoration: underline;">or browse</span></div>
+              <div style="font-size: 13px; color: #565064; margin-top: 6px;">Word doc, text file or PDF, up to 4 MB. We read it, use it, then throw it away.</div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px; margin-top: 20px;">
+        <button onClick="{{ prevStep }}" style="font-size: 16px; font-weight: 700; background: #FFFFFF; border: 2px solid #EFE7DA; color: #3F3A48; border-radius: 999px; padding: 13px 24px; cursor: pointer;" style-hover="border-color: #CFC6B5;">Back</button>
+        <button onClick="{{ nextStep }}" style="font-size: 17px; font-weight: 800; background: #17706B; border: none; color: #FFFFFF; border-radius: 999px; padding: 16px 30px; cursor: pointer; box-shadow: 0 6px 0 #0B3D3A; transition: transform .16s ease, box-shadow .16s ease;" style-hover="transform: translateY(3px); box-shadow: 0 3px 0 #0B3D3A;">{{ nextLabel }}</button>
+        <span style="margin-left: auto; font-size: 14px; color: #565064;">{{ question.reassure }}</span>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isLoading }}" hint-placeholder-val="{{ false }}">
+  <div style="background: #16151C; color: #FFF8EE; min-height: 70vh; display: flex; align-items: center; justify-content: center; padding: 70px 24px;">
+    <div style="max-width: 560px; width: 100%; text-align: center; animation: v3-fade .3s ease-out both;">
+      <h2 style="font-size: 38px; line-height: 1.1;">Reading eight system cards</h2>
+      <p style="font-size: 17px; color: #A8A2B4; margin: 10px 0 30px;">About 900 pages of it. One moment.</p>
+      <div style="height: 12px; border-radius: 999px; background: #2A2833; overflow: hidden; margin-bottom: 26px;"><span style="{{ loadBarStyle }}"></span></div>
+      <div style="display: flex; flex-direction: column; gap: 12px; align-items: stretch;">
+        <sc-for list="{{ loadLines }}" as="l" hint-placeholder-count="5">
+          <span style="{{ l.style }}"><span style="{{ l.tile }}">{{ l.letter }}</span><span style="flex: 1 1 auto; text-align: left;">{{ l.text }}</span><span style="{{ l.tickStyle }}">{{ l.tick }}</span></span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isResults }}" hint-placeholder-val="{{ false }}">
+  <div style="background: #FFF8EE; padding: 24px 24px 90px;">
+    <div style="max-width: 1120px; margin: 0 auto;">
+
+      <div style="background: #16151C; color: #FFF8EE; border-radius: 28px; padding: 30px 32px; animation: v3-rise .45s ease-out both;">
+        <div style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start;">
+          <div style="flex: 1 1 400px; min-width: 280px;">
+            <h2 style="font-size: 34px; line-height: 1.1;">8 models, ranked for Rosa's Bakery</h2>
+            <p style="font-size: 17px; line-height: 1.55; color: #BEB8C9; margin: 10px 0 0; max-width: 54ch; text-wrap: pretty;">You will use AI to reply to customers and write marketing copy. Customers read the replies with nobody checking first, the public can message it on your website, and you will paste in customer names. You want the cheapest option that is still safe.</p>
+            <div style="display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap;">
+              <button onClick="{{ goQuiz }}" style="background: transparent; border: 2px solid #3A3747; border-radius: 999px; padding: 10px 20px; font-size: 15px; font-weight: 700; color: #FFF8EE; cursor: pointer;" style-hover="border-color: #FFF8EE;">Change my answers</button>
+              <button onClick="{{ toggleNumbers }}" style="{{ numbersToggleStyle }}">{{ numbersToggleLabel }}</button>
+            </div>
+          </div>
+          <div style="flex: 0 1 300px; min-width: 250px; background: #201E29; border-radius: 20px; padding: 20px 22px;">
+            <div style="font-size: 15px; font-weight: 800; margin-bottom: 2px;">What mattered most</div>
+            <div style="font-size: 13px; color: #AFA9BD; margin-bottom: 14px;">Worked out from your answers</div>
+            <sc-for list="{{ weights }}" as="w" hint-placeholder-count="5">
+              <div style="display: flex; align-items: center; gap: 10px; padding: 5px 0;">
+                <span style="flex: 0 0 104px; font-size: 13px; color: #D7D2E0;">{{ w.label }}</span>
+                <span style="flex: 1 1 auto; height: 9px; border-radius: 999px; background: #33303F; overflow: hidden;"><span style="{{ w.fill }}"></span></span>
+                <span style="flex: 0 0 28px; text-align: right; font-size: 13px; font-weight: 800; font-variant-numeric: tabular-nums;">{{ w.pct }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 18px; margin-top: 20px;">
+        <sc-for list="{{ ranked }}" as="m" hint-placeholder-count="4">
+          <div style="{{ m.cardStyle }}" style-hover="transform: translateY(-4px); box-shadow: 0 24px 44px rgba(22,21,28,.14);">
+            <sc-if value="{{ m.ribbon }}" hint-placeholder-val="{{ false }}">
+              <div style="display: inline-flex; align-items: center; gap: 8px; background: #FFC24B; color: #40300A; border-radius: 999px; padding: 8px 18px; font-size: 14px; font-weight: 800; margin-bottom: 18px; animation: v3-pop .5s .2s cubic-bezier(.34,1.56,.64,1) both;">★ Best match for you</div>
+            </sc-if>
+
+            <div style="display: flex; gap: 26px; align-items: flex-start; flex-wrap: wrap;">
+              <div style="flex: 1 1 320px; min-width: 250px;">
+                <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                  <span style="{{ m.tile }}">{{ m.letter }}</span>
+                  <span style="display: flex; flex-direction: column; gap: 1px;">
+                    <h3 style="font-size: 26px;">{{ m.name }}</h3>
+                    <span style="font-size: 14px; font-weight: 600; color: #565064;">{{ m.maker }}</span>
+                  </span>
+                </div>
+                <p style="font-size: 16px; line-height: 1.55; color: #3F3A48; margin: 10px 0 0; max-width: 56ch; text-wrap: pretty;">{{ m.oneLiner }}</p>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px;">
+                  <span style="{{ m.priceStyle }}">{{ m.priceBand }}</span>
+                  <sc-for list="{{ m.badges }}" as="b" hint-placeholder-count="1">
+                    <span style="{{ b.style }}">{{ b.text }}</span>
+                  </sc-for>
+                </div>
+              </div>
+
+              <div style="flex: 0 0 168px; text-align: center;">
+                <div style="position: relative; width: 130px; height: 130px; margin: 0 auto;">
+                  <svg viewBox="0 0 120 120" style="width: 130px; height: 130px; transform: rotate(-90deg);">
+                    <circle cx="60" cy="60" r="52" fill="none" stroke="#EFE7DA" stroke-width="12"></circle>
+                    <circle cx="60" cy="60" r="52" fill="none" stroke-linecap="round" stroke-width="12" style="{{ m.dialStyle }}"></circle>
+                  </svg>
+                  <span style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 38px; font-weight: 800; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; line-height: 1;">{{ m.scoreShown }}</span>
+                    <span style="font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #565064;">match</span>
+                  </span>
+                </div>
+                <div style="{{ m.trustStyle }}">{{ m.trustText }}</div>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; align-items: center;">
+              <sc-if value="{{ m.isTop }}" hint-placeholder-val="{{ false }}">
+                <button style="background: #16151C; color: #FFF8EE; border: none; border-radius: 999px; padding: 14px 26px; font-size: 16px; font-weight: 800; cursor: pointer; transition: transform .18s cubic-bezier(.34,1.56,.64,1);" style-hover="transform: translateY(-3px) scale(1.02);">How to set this up →</button>
+              </sc-if>
+              <button onClick="{{ m.toggle }}" style="{{ m.toggleStyle }}">{{ m.toggleLabel }}</button>
+              <span style="margin-left: auto; display: flex; gap: 12px; flex-wrap: wrap;">
+                <sc-for list="{{ m.mini }}" as="d" hint-placeholder-count="5">
+                  <span style="display: flex; flex-direction: column; gap: 5px; align-items: center;">
+                    <span style="width: 52px; height: 9px; border-radius: 999px; background: #EFE7DA; overflow: hidden;"><span style="{{ d.fill }}"></span></span>
+                    <span style="font-size: 10px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: #565064;">{{ d.short }}</span>
+                  </span>
+                </sc-for>
+              </span>
+            </div>
+
+            <sc-if value="{{ m.expanded }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top: 22px; border-top: 2px solid #F3EEE4; padding-top: 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 30px; animation: v3-fade .3s ease-out both;">
+                <div>
+                  <div style="font-size: 16px; font-weight: 800; margin-bottom: 14px;">What the maker publishes</div>
+                  <sc-for list="{{ m.dims }}" as="d" hint-placeholder-count="5">
+                    <div style="padding: 11px 12px; margin: 0 -12px; border-radius: 12px; border-bottom: 1px solid #F5F0E7; transition: background .2s ease;" style-hover="background: #FDF9F2;">
+                      <div style="display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;">
+                        <span style="font-size: 15px; font-weight: 700;">{{ d.label }}</span>
+                        <span style="{{ d.statusStyle }}">{{ d.status }}</span>
+                        <span style="margin-left: auto; font-size: 16px; font-weight: 800; font-variant-numeric: tabular-nums;">{{ d.value }}</span>
+                      </div>
+                      <div style="height: 11px; border-radius: 999px; background: #EFE7DA; margin-top: 8px; overflow: hidden;"><span style="{{ d.fill }}"></span></div>
+                      <div style="display: flex; gap: 10px; margin-top: 7px; flex-wrap: wrap; align-items: baseline;">
+                        <span style="font-size: 13px; color: #565064; line-height: 1.45;">{{ d.plain }}</span>
+                        <button onClick="{{ d.openDrawer }}" style="background: none; border: none; padding: 0; font-size: 13px; font-weight: 700; color: #17706B; text-decoration: underline; cursor: pointer;">show me where</button>
+                      </div>
+                      <sc-if value="{{ showNumbers }}" hint-placeholder-val="{{ false }}">
+                        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6E687C; margin-top: 5px;">{{ d.source }}</div>
+                      </sc-if>
+                    </div>
+                  </sc-for>
+                </div>
+                <div>
+                  <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+                    <span style="font-size: 16px; font-weight: 800;">Why we picked it</span>
+                    <button onClick="{{ refine }}" style="{{ refineStyle }}">{{ refineLabel }}</button>
+                  </div>
+                  <div style="font-size: 16px; line-height: 1.65; color: #3F3A48;">
+                    <sc-for list="{{ m.why }}" as="p" hint-placeholder-count="3">
+                      <p style="margin: 0 0 12px; text-wrap: pretty;">{{ p.before }}<button onClick="{{ p.open }}" style="{{ p.pillStyle }}">{{ p.pill }}</button>{{ p.after }}</p>
+                    </sc-for>
+                  </div>
+                  <div style="background: #E6F2F0; border-radius: 16px; padding: 15px 17px; font-size: 15px; line-height: 1.55; color: #0F4F4B; border-left: 5px solid #17706B; transition: transform .22s cubic-bezier(.34,1.56,.64,1), background .22s ease;" style-hover="transform: translateX(4px); background: #DAEDEA;"><strong style="font-weight: 800;">Do this first:</strong> {{ m.nextStep }}</div>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="margin-top: 24px; background: #FFFFFF; border-radius: 26px; padding: 24px 28px; box-shadow: 0 14px 30px rgba(22,21,28,.06);">
+        <h3 style="font-size: 20px;">Set aside for you</h3>
+        <p style="font-size: 15px; color: #565064; margin: 6px 0 16px;">Cheap, but a poor fit for the way you plan to use it.</p>
+        <sc-for list="{{ demoted }}" as="m" hint-placeholder-count="1">
+          <div style="background: #FDF9F2; border-radius: 18px; padding: 20px; display: flex; gap: 18px; flex-wrap: wrap; align-items: flex-start;">
+            <div style="flex: 1 1 320px; min-width: 250px;">
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <span style="{{ m.tile }}">{{ m.letter }}</span>
+                <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: -0.02em;">{{ m.name }}</span>
+                <span style="{{ m.badgeStyle }}">{{ m.badge }}</span>
+              </div>
+              <p style="font-size: 15px; line-height: 1.55; color: #3F3A48; margin: 8px 0 0; max-width: 62ch;">{{ m.reason }}</p>
+            </div>
+            <button onClick="{{ m.openDrawer }}" style="background: #FFFFFF; border: 2px solid #EFE7DA; border-radius: 999px; padding: 10px 20px; font-size: 14px; font-weight: 700; color: #3F3A48; cursor: pointer;" style-hover="border-color: #17706B;">Show me where</button>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="margin-top: 24px; background: #17706B; color: #FFFFFF; border-radius: 26px; padding: 28px 32px;">
+        <h3 style="font-size: 26px;">Ask the small print anything</h3>
+        <p style="font-size: 15px; color: #DCEFED; margin: 8px 0 18px;">Answers come only from those eight documents. If they do not cover it, we say so.</p>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <input placeholder="Does it train on my customers' messages?" style="flex: 1 1 320px; padding: 16px 20px; font-size: 16px; border: none; border-radius: 999px; background: #0F5A56; color: #FFFFFF;">
+          <button style="background: #FFC24B; color: #40300A; border: none; border-radius: 999px; padding: 16px 30px; font-size: 16px; font-weight: 800; cursor: pointer; transition: transform .18s cubic-bezier(.34,1.56,.64,1);" style-hover="transform: scale(1.05);">Ask</button>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px;">
+          <sc-for list="{{ chips }}" as="c" hint-placeholder-count="3">
+            <span style="border: 1px solid #3D8D88; border-radius: 999px; padding: 9px 17px; font-size: 14px; color: #E4F2F1; cursor: pointer; transition: background .18s ease;" style-hover="background: #0F5A56;">{{ c.text }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isMethod }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <div style="background: #16151C; color: #FFF8EE; padding: 60px 28px;">
+      <div style="max-width: 860px; margin: 0 auto;">
+        <h2 style="font-size: 48px; line-height: 1.05;">How we work it out</h2>
+        <p style="font-size: 19px; line-height: 1.6; color: #BEB8C9; max-width: 58ch; margin: 14px 0 0;">In one line: we reward makers who publish real numbers about their model, and mark down the ones who stay quiet. Two models with the same score are not equally proven, which is what the evidence column is for.</p>
+      </div>
+    </div>
+
+    <div style="background: #FFF8EE; padding: 60px 28px 80px;">
+      <div style="max-width: 860px; margin: 0 auto;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+            <div style="background: #FFFFFF; border-radius: 20px; padding: 22px 26px; display: flex; gap: 18px; align-items: flex-start; box-shadow: 0 12px 26px rgba(22,21,28,.05); transition: transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .22s ease;" style-hover="transform: translateY(-5px); box-shadow: 0 20px 34px rgba(22,21,28,.10);">
+              <span style="flex: 0 0 38px; height: 38px; border-radius: 50%; background: #E6F2F0; color: #0F4F4B; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center;">{{ s.n }}</span>
+              <span style="display: flex; flex-direction: column; gap: 5px;">
+                <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 19px; font-weight: 800; letter-spacing: -0.02em;">{{ s.title }}</span>
+                <span style="font-size: 15px; line-height: 1.6; color: #3F3A48;">{{ s.text }}</span>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+
+        <h3 style="font-size: 28px; margin: 44px 0 6px;">What all eight publish, side by side</h3>
+        <p style="font-size: 16px; color: #44404E; margin: 0 0 18px;">Each bar is one model. Green is a published test result, amber is a description with no number, red is silence.</p>
+        <div style="background: #FFFFFF; border-radius: 22px; padding: 24px 26px; box-shadow: 0 12px 26px rgba(22,21,28,.05);">
+          <sc-for list="{{ stacks }}" as="s" hint-placeholder-count="8">
+            <div style="display: flex; align-items: center; gap: 14px; padding: 7px 12px; margin: 0 -12px; border-radius: 12px; transition: background .2s ease, transform .2s ease;" style-hover="background: #FDF9F2; transform: translateX(3px);">
+              <span style="{{ s.tile }}">{{ s.letter }}</span>
+              <span style="flex: 0 0 150px; font-size: 14px; font-weight: 600;">{{ s.name }}</span>
+              <span style="flex: 1 1 auto; display: flex; height: 20px; border-radius: 999px; overflow: hidden; background: #F3EEE4;">
+                <sc-for list="{{ s.segs }}" as="g" hint-placeholder-count="3">
+                  <span style="{{ g.style }}"></span>
+                </sc-for>
+              </span>
+              <span style="flex: 0 0 44px; text-align: right; font-size: 14px; font-weight: 800; font-variant-numeric: tabular-nums;">{{ s.pct }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <h3 style="font-size: 28px; margin: 44px 0 14px;">What the bars mean</h3>
+        <div style="background: #FFFFFF; border-radius: 22px; padding: 8px 26px; box-shadow: 0 12px 26px rgba(22,21,28,.05);">
+          <sc-for list="{{ statuses }}" as="s" hint-placeholder-count="5">
+            <div style="padding: 15px 0; border-bottom: 1px solid #F5F0E7; display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+              <span style="flex: 0 0 74px; height: 11px; border-radius: 999px; background: #EFE7DA; overflow: hidden;"><span style="{{ s.sample }}"></span></span>
+              <span style="flex: 0 0 160px;"><span style="{{ s.chipStyle }}">{{ s.name }}</span></span>
+              <span style="flex: 1 1 260px; font-size: 15px; line-height: 1.55; color: #3F3A48;">{{ s.text }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <h3 style="font-size: 28px; margin: 44px 0 14px;">Where it all comes from</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <sc-for list="{{ sources }}" as="s" hint-placeholder-count="5">
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: baseline; border-bottom: 1px solid #EFE7DA; padding: 8px 12px 10px; margin: 0 -12px; border-radius: 12px; transition: background .2s ease;" style-hover="background: #FFFFFF;">
+              <span style="{{ s.tile }}">{{ s.letter }}</span>
+              <a href="#" style="font-size: 16px; font-weight: 700;">{{ s.title }}</a>
+              <span style="font-size: 13px; color: #565064;">{{ s.meta }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <p style="font-size: 14px; line-height: 1.6; color: #565064; margin: 26px 0 0;">Not legal or compliance advice. Check the vendor's data processing terms before uploading customer, payment or health information.</p>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ drawerOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeDrawer }}" style="position: fixed; inset: 0; background: rgba(22,21,28,.5); z-index: 60; animation: v3-fade .2s ease-out both;"></div>
+    <div style="position: fixed; top: 0; right: 0; bottom: 0; width: min(520px, 100%); background: #FFFFFF; z-index: 61; overflow-y: auto; animation: v3-drawer .3s cubic-bezier(.2,.9,.2,1) both;">
+      <div style="padding: 24px 28px; border-bottom: 2px solid #F5F0E7; display: flex; align-items: flex-start; gap: 16px;">
+        <div>
+          <div style="font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #565064;">Straight from the document</div>
+          <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 23px; font-weight: 800; letter-spacing: -0.02em; margin-top: 5px;">{{ drawer.title }}</div>
+        </div>
+        <button onClick="{{ closeDrawer }}" style="margin-left: auto; background: #F5F0E7; border: none; border-radius: 50%; width: 38px; height: 38px; font-size: 18px; color: #3F3A48; cursor: pointer;" style-hover="background: #EFE7DA;">×</button>
+      </div>
+      <div style="padding: 24px 28px 44px;">
+        <div style="font-size: 16px; line-height: 1.75; color: #565064; background: #FDF9F2; border-radius: 18px; padding: 20px; border-left: 5px solid #FFC24B;">{{ drawer.before }}<mark style="background: #FFE3A3; color: #16151C; padding: 2px 4px; border-radius: 4px;">{{ drawer.quote }}</mark>{{ drawer.after }}</div>
+        <div style="margin-top: 18px; display: flex; flex-direction: column; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6E687C;">
+          <div>{{ drawer.source }}</div>
+          <div>{{ drawer.locator }}</div>
+        </div>
+        <div style="margin-top: 18px; background: #E6F2F0; border-radius: 16px; padding: 15px 17px; font-size: 15px; line-height: 1.6; color: #0F4F4B;"><strong style="font-weight: 800;">In plain English.</strong> {{ drawer.note }}</div>
+        <a href="#" style="display: inline-block; margin-top: 18px; font-size: 15px; font-weight: 700;">Open the full document ↗</a>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#17706B&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#17706B&quot;,&quot;#3B4FD8&quot;,&quot;#B2452C&quot;,&quot;#5B3FA8&quot;]},&quot;showTechnical&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+const ACCENT = "#17706B", AMBER = "#7A5410", RED = "#9C3A24";
+
+const STATUS_CHIP = {
+  reported: "font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#0F4F4B;background:#E6F2F0;border-radius:999px;padding:3px 9px;",
+  inferred: "font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#7A5410;background:#FCEFD4;border-radius:999px;padding:3px 9px;",
+  third_party: "font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#46414F;background:#F0EBE1;border-radius:999px;padding:3px 9px;",
+  missing: "font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#8E3524;background:#FADFD8;border-radius:999px;padding:3px 9px;",
+  pending: "font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#565064;background:#FFFFFF;border:1px dashed #C6BFB1;border-radius:999px;padding:2px 9px;"
+};
+
+const STATUS_WORD = { reported: "they publish it", inferred: "described, not measured", third_party: "older version", missing: "they do not say", pending: "we are still checking" };
+
+function fill(pct, status, accent, on, delay) {
+  const w = "display:block;height:100%;border-radius:999px;transition:width .9s cubic-bezier(.34,1.1,.64,1) " + (delay || 0) + "s;width:" + (on ? pct : 0) + "%;";
+  if (status === "reported") return w + "background:" + accent + ";";
+  if (status === "inferred") return w + "background:repeating-linear-gradient(90deg,#E8A93C 0 5px,#FCEFD4 5px 10px);";
+  if (status === "third_party") return w + "background:" + accent + ";opacity:.5;";
+  if (status === "missing") return w + "background:repeating-linear-gradient(45deg,#DFA091 0 5px,#F7DED7 5px 10px);";
+  return w + "background:#D8D1C5;";
+}
+
+const MODELS = [
+  { id: "fable", name: "Claude Fable 5.1", maker: "by Anthropic", score: 82, trust: 100, price: "Premium, $10 / $50 per million words", priceTone: "high", coverage: 100,
+    oneLiner: "The best documented model here. It is the only one publishing a real number for both accuracy and resisting people who try to trick it.",
+    badges: [], nextStep: "Anthropic keeps your inputs for 30 days and cannot switch that off. Fine for customer messages, not for health or HR records.",
+    dims: [
+      { label: "Gets things right", value: 85, status: "reported", plain: "Tested for honesty, scored 85 out of 100.", source: "MASK honesty 85% · §3.5.1" },
+      { label: "Keeps your data private", value: 70, status: "reported", plain: "Never trains on your data, but keeps it 30 days.", source: "30-day retention, no ZDR, HIPAA BAA" },
+      { label: "Hard to trick", value: 99, status: "reported", plain: "Attackers got through 1 time in 100 attempts.", source: "Gray Swan Shade PI 1.0% k=15" },
+      { label: "Treats people fairly", value: 70, status: "reported", plain: "Bias testing published, results near neutral.", source: "BBQ disambig 89.9%, bias −0.91%" },
+      { label: "Good at the work", value: 96, status: "reported", plain: "Top of the set on real work tasks.", source: "GDPval-AA v2 Elo 1853" }
+    ],
+    why: [
+      { before: "Your replies go straight to customers and strangers can message your site, so two things matter most: does it state things accurately, and can somebody talk it into saying what you would never approve. Fable is the only model here with a published number for both, ", pill: "85 out of 100 on honesty", after: ", and attacks succeeding once in a hundred tries." },
+      { before: "Its privacy terms are good rather than perfect. Anthropic does not train on anything you send, but ", pill: "inputs are kept for 30 days", after: " and that cannot be turned off. For customer names and Instagram messages, that is fine." },
+      { before: "The cheaper Claude Haiku has better privacy terms, but publishes nothing at all about accuracy. ", pill: "A blank counts against a model twice", after: ", once in the score and once in our confidence in the total." }
+    ] },
+  { id: "astra", name: "GPT-6 Astra", maker: "by OpenAI", score: 70, trust: 89, price: "Premium, $10 / $50 per million words", priceTone: "high", coverage: 89,
+    oneLiner: "Same price as the winner and better privacy controls, but it talks about its accuracy rather than measuring it.",
+    badges: [], nextStep: "Ask OpenAI to switch on zero data retention for your account before you paste anything with customer names in it.",
+    dims: [
+      { label: "Gets things right", value: 55, status: "inferred", plain: "Charts only, no headline number to check.", source: "curves and relative claims" },
+      { label: "Keeps your data private", value: 90, status: "reported", plain: "No training, zero retention available, healthcare agreement.", source: "ZDR, BAA, 10 regions" },
+      { label: "Hard to trick", value: 92, status: "reported", plain: "Attacks succeeded 8 times in 100.", source: "IPI Arena 8.5% k=15" },
+      { label: "Treats people fairly", value: 74, status: "reported", plain: "Safe response rate 97.7%, no standard bias test.", source: "safe-completion mean ≈ 97.7%" },
+      { label: "Good at the work", value: 73, status: "reported", plain: "Strong across coding and computer use tasks.", source: "DeepSWE 74.1, OSWorld 2.0 72.6" }
+    ], why: [
+      { before: "Astra costs the same as the winner and handles your data better: OpenAI will switch off retention entirely if you ask, and ", pill: "attacks got through 8 times in 100", after: ", which is solid for a public facing assistant." },
+      { before: "What holds it back is accuracy. OpenAI shows charts and says errors are substantially fewer, but ", pill: "publishes no number you can check", after: ". Because your customers read the replies with nobody checking first, we count a description as half of a measurement." },
+      { before: "Worth choosing over the winner if you ever expect to handle health, legal or HR records, since ", pill: "zero retention is available here and is not on Fable", after: "." }
+    ] },
+  { id: "spark", name: "Muse Spark 1.3", maker: "by Meta", score: 65, trust: 94, price: "Mid priced, $1.25 / $4.25 per million words", priceTone: "mid", coverage: 94,
+    oneLiner: "Strong numbers for a fraction of the price, but the safety testing was done on an older version and Meta will not say how long it keeps your data.",
+    badges: [{ text: "safety tests cover an older version", kind: "warn" }],
+    nextStep: "Meta has not published a retention period. Get zero retention terms in writing from their sales team before you send customer details.",
+    dims: [
+      { label: "Gets things right", value: 75, status: "third_party", plain: "Good score, but measured on version 1.1.", source: "v1.1 MASK 95.7 ×0.9" },
+      { label: "Keeps your data private", value: 38, status: "reported", plain: "No training on your data, but no published retention period.", source: "retention not published" },
+      { label: "Hard to trick", value: 87, status: "third_party", plain: "Strong, on the older version.", source: "v1.1 Gray Swan ART 3.2% k=10" },
+      { label: "Treats people fairly", value: 50, status: "inferred", plain: "Meta describes improvements and withholds the rates.", source: "absolute rates withheld" },
+      { label: "Good at the work", value: 87, status: "reported", plain: "Second only to the winner.", source: "Elo 1709, TB 2.1 89.2" }
+    ], why: [
+      { before: "On capability and honesty this is close to the winner at roughly an eighth of the price, which for a bakery is the difference between a few pounds a month and a few tens of pounds. ", pill: "The numbers come from version 1.1", after: ", and you would be running version 1.3." },
+      { before: "The bigger problem is what Meta leaves out. ", pill: "No retention period is published at all", after: ", so nobody can tell you how long your customers' messages sit on their servers, or whether that changes next month." },
+      { before: "Pick it if cost is the deciding factor and you can get retention terms in writing first. ", pill: "Otherwise the winner is only two places up", after: " with every check measured on the model you would actually use." }
+    ] },
+  { id: "haiku", name: "Claude Haiku 4.5", maker: "by Anthropic", score: 58, trust: 76, price: "Cheap, $1 / $5 per million words", priceTone: "low", coverage: 76,
+    oneLiner: "The most open about its own weaknesses and the best privacy terms here, but it publishes no accuracy testing and half the attacks on it got through.",
+    badges: [], nextStep: "Zero data retention is available on request, and worth asking for even on a small account.",
+    dims: [
+      { label: "Gets things right", value: 35, status: "missing", plain: "Not tested publicly at all.", source: "not reported" },
+      { label: "Keeps your data private", value: 90, status: "reported", plain: "No training, zero retention on request, healthcare agreement.", source: "ZDR on request, BAA" },
+      { label: "Hard to trick", value: 49, status: "reported", plain: "About half of attacks got through.", source: "Gray Swan ART 51.1% k=10" },
+      { label: "Treats people fairly", value: 90, status: "reported", plain: "Best bias results in the set.", source: "BBQ bias 0.54%, harmless 99.38%" },
+      { label: "Good at the work", value: 34, status: "reported", plain: "Built for speed and cost, not hard tasks.", source: "Elo 907, TB 2.1 44.2" }
+    ], why: [
+      { before: "This is the most candid document of the eight and the best privacy terms in the set: no training, zero retention on request, and ", pill: "the strongest bias results here", after: ". For a small shop handling customer names, that is a lot to like." },
+      { before: "It falls down on the two things your setup depends on. Anthropic ", pill: "publishes no accuracy testing at all", after: " for this model, and about half of the attacks run against it succeeded." },
+      { before: "Since strangers can message your site and nobody checks the replies before customers read them, ", pill: "we cannot put it near the top", after: ". It would rank far higher for staff only use." }
+    ] },
+  { id: "flash", name: "Gemini 3.8 Flash", maker: "by Google", score: 57, trust: 69, price: "Cheap, $0.75 / $3.75 per million words", priceTone: "low", coverage: 69,
+    oneLiner: "Cheap and hard to trick, but it publishes no accuracy testing, and its safety in languages other than English went backwards.",
+    badges: [], nextStep: "The promise not to train on your data only applies once billing is switched on. Turn billing on before you connect anything.",
+    dims: [
+      { label: "Gets things right", value: 35, status: "missing", plain: "Not tested publicly at all.", source: "not reported" },
+      { label: "Keeps your data private", value: 73, status: "reported", plain: "Paid accounts only, kept 55 days for abuse checks.", source: "paid tier, 55-day retention" },
+      { label: "Hard to trick", value: 94, status: "reported", plain: "Attacks succeeded 6 times in 100.", source: "Gray Swan IPI 5.5%" },
+      { label: "Treats people fairly", value: 45, status: "inferred", plain: "Only relative claims, and multilingual safety got worse.", source: "multilingual +5.4pp worse" },
+      { label: "Good at the work", value: 79, status: "reported", plain: "Very capable for the price.", source: "Elo 1545, TB 2.1 89.4" }
+    ], why: [
+      { before: "Very capable for the money and genuinely hard to trick: ", pill: "attacks succeeded 6 times in 100", after: ", which is the second best result in the set and matters because the public can message your assistant." },
+      { before: "Google publishes nothing on accuracy, and on fairness it only describes changes rather than giving rates. ", pill: "Safety in languages other than English got worse", after: " compared with the previous version, which is worth knowing if you serve customers in more than one language." },
+      { before: "One setup trap: the promise not to train on your data ", pill: "only applies once billing is switched on", after: ". A free project does not get it." }
+    ] },
+  { id: "glimmer", name: "Muse Glimmer 30B", maker: "by Meta, runs on your own computer", score: 54, trust: 62, price: "Cheapest to host, about $0.30 / $1.10", priceTone: "low", coverage: 62,
+    oneLiner: "You can run this one yourself, which makes privacy your decision rather than a company's, but two of the five things we check are not reported at all.",
+    badges: [{ text: "privacy depends on who hosts it", kind: "info" }],
+    nextStep: "Run it yourself, or pick a hosting company that will sign a data processing agreement.",
+    dims: [
+      { label: "Gets things right", value: 35, status: "missing", plain: "Not tested publicly at all.", source: "not reported" },
+      { label: "Keeps your data private", value: 80, status: "reported", plain: "Your data never leaves your machine, if you host it.", source: "self-hosted" },
+      { label: "Hard to trick", value: 72, status: "reported", plain: "Attacks succeeded 28 times in 100.", source: "AgentDojo PI 28.4" },
+      { label: "Treats people fairly", value: 35, status: "missing", plain: "Not tested publicly at all.", source: "not reported" },
+      { label: "Good at the work", value: 39, status: "reported", plain: "Modest, but fine for simple jobs.", source: "Elo 953, TB 2.1 51.7" }
+    ], why: [
+      { before: "This is the only model here you can run on your own hardware, which changes the privacy question completely. ", pill: "Nothing leaves your premises", after: " if you host it, so no retention period or training policy applies to you." },
+      { before: "The trade is evidence. ", pill: "Two of the five checks are not reported at all", after: ", and its capability is modest, so it suits straightforward jobs like drafting replies from a template rather than anything subtle." },
+      { before: "It only works out cheaper if somebody already looks after your computers. ", pill: "Hosting it with a third party puts privacy back in their hands", after: ", so ask them to sign a data processing agreement." }
+    ] },
+  { id: "luna", name: "GPT-5.6 Luna", maker: "by OpenAI", score: 67, trust: 85, price: "Cheapest, $0.20 / $1.20 per million words", priceTone: "low", coverage: 85,
+    oneLiner: "By far the cheapest, with the same privacy terms as its bigger sibling. We have not finished checking how capable it is, so it cannot take the top spot yet.",
+    badges: [{ text: "we are still checking this one", kind: "pending" }],
+    nextStep: "Come back later today. We are fetching a comparable capability score, and until then its place in the list is provisional.",
+    dims: [
+      { label: "Gets things right", value: 50, status: "inferred", plain: "Charts only, no number we can check.", source: "chart-only claims" },
+      { label: "Keeps your data private", value: 90, status: "reported", plain: "No training, zero retention available.", source: "ZDR, BAA" },
+      { label: "Hard to trick", value: 50, status: "reported", plain: "Half of attacks got through.", source: "IPI Arena 50.0% k=15" },
+      { label: "Treats people fairly", value: 90, status: "reported", plain: "Strong published fairness results.", source: "First-Person Fairness harm 0.61%" },
+      { label: "Good at the work", value: 0, status: "pending", plain: "No shared test between the makers yet.", source: "pending" }
+    ], why: [
+      { before: "At a fifth of the price of anything else here, Luna is the budget option that does not compromise on data handling: same zero retention route as Astra, and ", pill: "the strongest fairness results in the set", after: "." },
+      { before: "Half of the attacks run against it got through, which is the weak spot for a public facing assistant, and accuracy is ", pill: "described in charts rather than measured", after: "." },
+      { before: "We are still verifying how capable it is on a test the makers share, so ", pill: "it cannot take the top spot today", after: ". Its position here is provisional rather than a verdict." }
+    ] }
+];
+
+const MAKERS = {
+  anthropic: { letter: "A", name: "Anthropic", bg: "#F0E3DA", fg: "#8A4A2B" },
+  openai: { letter: "O", name: "OpenAI", bg: "#E4E7E6", fg: "#26332F" },
+  google: { letter: "G", name: "Google", bg: "#E2EBFA", fg: "#2E5DA8" },
+  meta: { letter: "M", name: "Meta", bg: "#E6E6FB", fg: "#3A3AA8" }
+};
+function makerKey(name) {
+  if (name.indexOf("Claude") === 0) return "anthropic";
+  if (name.indexOf("GPT") === 0) return "openai";
+  if (name.indexOf("Gemini") === 0) return "google";
+  return "meta";
+}
+function tile(key, size) {
+  const m = MAKERS[key], s = size || 34;
+  return "display:flex;align-items:center;justify-content:center;flex:0 0 " + s + "px;width:" + s + "px;height:" + s + "px;border-radius:" +
+    Math.round(s * 0.32) + "px;background:" + m.bg + ";color:" + m.fg + ";font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:" +
+    Math.round(s * 0.5) + "px;letter-spacing:-0.02em;transition:transform .22s cubic-bezier(.34,1.56,.64,1);";
+}
+function tileLetter(key) { return MAKERS[key].letter; }
+
+const SHORT = { "Gets things right": "Right", "Keeps your data private": "Private", "Hard to trick": "Safe", "Treats people fairly": "Fair", "Good at the work": "Able" };
+
+const RACE = [
+  { name: "Claude Fable 5.1", pct: 100, note: "Anthropic publishes a tested number for all five checks, including the one most people forget: whether a stranger can talk the model into going off script." },
+  { name: "Muse Spark 1.3", pct: 94, note: "Meta publishes plenty, but the safety testing was run on an earlier version of the model, so we discount it." },
+  { name: "GPT-6 Astra", pct: 89, note: "OpenAI shows charts for accuracy rather than a number you can check, so that check counts for half." },
+  { name: "GPT-5.6 Luna", pct: 85, note: "Good coverage for the cheapest model in the set. We are still verifying how capable it is." },
+  { name: "Claude Haiku 4.5", pct: 76, note: "Candid about its weak spots, but it publishes nothing at all on accuracy." },
+  { name: "Gemini 3.8 Flash", pct: 69, note: "Hard to trick and very cheap, yet Google reports no accuracy testing and only relative claims on bias." },
+  { name: "Muse Glimmer 30B", pct: 62, note: "Open weights you can host yourself. Two of the five checks are simply not reported." },
+  { name: "Gemini 3.5 Flash-Lite", pct: 41, note: "The thinnest document of the eight. Nothing published on accuracy, and nothing on resisting attacks." }
+];
+
+const PILLARS = [
+  { name: "Gets things right", icon: "✓", plain: "How often it makes things up.", values: [85, 55, 75, 35, 35, 35, 50, 35], statuses: ["reported", "inferred", "third_party", "missing", "missing", "missing", "inferred", "missing"], footnote: "4 of 8 makers publish nothing here." },
+  { name: "Keeps your data private", icon: "🔒", plain: "Whether your customers' details train the model.", values: [70, 90, 38, 90, 73, 80, 90, 73], statuses: ["reported", "reported", "reported", "reported", "reported", "reported", "reported", "reported"], footnote: "All eight say something. Only five let you switch retention off." },
+  { name: "Hard to trick", icon: "🛡", plain: "Whether a stranger can talk it off script.", values: [99, 92, 87, 49, 94, 72, 50, 35], statuses: ["reported", "reported", "third_party", "reported", "reported", "reported", "reported", "missing"], footnote: "Scores range from 1 attack in 100 to more than half." },
+  { name: "Treats people fairly", icon: "⚖", plain: "Whether anyone tested it for bias.", values: [70, 74, 50, 90, 45, 35, 90, 50], statuses: ["reported", "reported", "inferred", "reported", "inferred", "missing", "reported", "inferred"], footnote: "Three makers describe fairness without publishing rates." },
+  { name: "Good at the work", icon: "★", plain: "How well it handles the job you have in mind.", values: [96, 73, 87, 34, 79, 39, 40, 48], statuses: ["reported", "reported", "reported", "reported", "reported", "reported", "pending", "reported"], footnote: "Price and capability are barely related." }
+];
+
+const QUESTIONS = [
+  { title: "What kind of business do you run?", hint: "This just sets sensible starting points.", reassure: "Nothing is stored",
+    options: [["Shop or online store", ""], ["Restaurant, café or hotel", ""], ["Professional services", "we will assume contracts and payments"], ["Health, wellness or care", "we will insist on strict data handling"], ["Trades and home services", ""], ["Creative or marketing", ""], ["School or charity", ""], ["Something else", ""]] },
+  { title: "What is the first job you would give it?", hint: "Pick up to two.", reassure: "Pick up to two",
+    options: [["Reply to customer messages and reviews", ""], ["Write marketing and product copy", ""], ["Summarise or draft contracts and long documents", "needs a model that holds a lot of text"], ["Bookkeeping, invoices, data entry", "accuracy matters more here"], ["Screen applicants or write job posts", "fairness matters more here"], ["Answer staff questions from our own documents", ""], ["Translate for customers", ""], ["Build or fix our website", ""]] },
+  { title: "Who sees what it writes?", hint: "", reassure: "One answer",
+    options: [["Only me or my team", ""], ["Customers, after someone checks it", ""], ["Customers directly, with nobody checking", "we will weight accuracy and safety much higher"]] },
+  { title: "What will you type in or connect to it?", hint: "Pick everything that applies.", reassure: "This is the important one",
+    options: [["Nothing personal", ""], ["Customer names and contact details", ""], ["Payment, bank or tax records", "we will rule out anything that trains on your data"], ["Health, legal or HR records", "we will rule out anything without strict retention terms"]] },
+  { title: "Can strangers reach it?", hint: "Pick everything that applies.", reassure: "Pick all that apply",
+    options: [["No, staff only", ""], ["Yes, the public can message it on our site or WhatsApp", "we will test how hard it is to trick"], ["It reads emails, uploads or web pages written by other people", "this is how most attacks arrive"], ["It can act: send email, take bookings, make payments", "the highest risk setting there is"]] },
+  { title: "Will it help decide anything about people?", hint: "Hiring, pricing, credit, tenancy, eligibility.", reassure: "One answer",
+    options: [["No", ""], ["Yes", "we will weight fairness heavily and add a legal note"]] },
+  { title: "And money?", hint: "", reassure: "Almost done",
+    options: [["Cheapest that is still safe", ""], ["Somewhere in the middle", ""], ["Best quality, cost comes second", ""]] },
+  { title: "Anything else you would like to tell us?", hint: "Optional. Your seven answers are already enough.", isText: true, reassure: "Optional" }
+];
+
+const STACKS = [
+  ["Claude Fable 5.1", 100, 0, 0],
+  ["Muse Spark 1.3", 60, 40, 0],
+  ["GPT-6 Astra", 80, 20, 0],
+  ["GPT-5.6 Luna", 60, 20, 20],
+  ["Claude Haiku 4.5", 80, 0, 20],
+  ["Gemini 3.8 Flash", 60, 20, 20],
+  ["Muse Glimmer 30B", 60, 0, 40],
+  ["Gemini 3.5 Flash-Lite", 40, 20, 40]
+];
+
+class Component extends DCLogic {
+  state = { screen: "landing", step: 1, picked: { 1: [0], 2: [0, 1], 3: [2], 4: [1], 5: [1], 6: [0], 7: [0] }, expanded: "fable", drawer: null, refined: false, showNumbers: false, barsOn: false, load: 0, spot: 0, pillar: 0, dialsOn: false, counts: {} };
+
+  componentDidMount() {
+    this._spot = setInterval(() => this.setState(s => ({ spot: (s.spot + 1) % RACE.length })), 2200);
+    this._t0 = setTimeout(() => this.setState({ barsOn: true }), 120);
+  }
+  componentWillUnmount() { clearInterval(this._spot); clearInterval(this._i); clearInterval(this._c); clearTimeout(this._t0); clearTimeout(this._t1); }
+
+  armResults() {
+    if (this._armed) return;
+    this._armed = true;
+    this._t1 = setTimeout(() => this.setState({ barsOn: true, dialsOn: true }), 80);
+    const start = Date.now(), dur = 1100;
+    clearInterval(this._c);
+    this._c = setInterval(() => {
+      const p = Math.min(1, (Date.now() - start) / dur);
+      const e = 1 - Math.pow(1 - p, 3);
+      const counts = {};
+      MODELS.forEach(m => { counts[m.id] = Math.round(m.score * e); });
+      this.setState({ counts });
+      if (p >= 1) clearInterval(this._c);
+    }, 40);
+  }
+
+  runLoader() {
+    clearInterval(this._i);
+    this.setState({ screen: "loading", load: 0 });
+    this._i = setInterval(() => this.setState(s => {
+      const n = s.load + 1;
+      if (n >= 5) { clearInterval(this._i); this.armResults(); return { load: 5, screen: "results" }; }
+      return { load: n };
+    }), 330);
+  }
+
+  go(screen) { return () => { if (screen === "results") this.armResults(); this.setState({ screen, drawer: null }); }; }
+  openDrawer(p) { return () => this.setState({ drawer: p }); }
+
+  drawerFor(name, d) {
+    return {
+      title: name + " · " + d.label,
+      before: "…in our evaluations the model achieves ",
+      quote: d.source,
+      after: " under the conditions described in this section of the document.",
+      source: name.split(" ")[0] + " system card (PDF)",
+      locator: "page 88 · section 3.5.1 · fetched 12 Sept 2026",
+      note: "This is the maker's own wording, copied from their document. We check every quote against the original file, and anything we cannot find is marked as still checking rather than scored."
+    };
+  }
+
+  renderVals() {
+    const accent = this.props.accent || ACCENT;
+    const s = this.state.screen;
+    if (s === "results") this.armResults();
+    const on = this.state.barsOn;
+    const showNumbers = this.state.showNumbers;
+
+    const screens = [["landing", "Home"], ["quiz", "Questions"], ["loading", "Loading"], ["results", "Results"], ["method", "How it works"]].map(([id, label]) => ({
+      label, go: id === "loading" ? () => this.runLoader() : this.go(id),
+      style: "font-size:12px;font-weight:700;padding:6px 13px;border-radius:999px;cursor:pointer;border:1px solid " +
+        (s === id ? "#FFF8EE" : "#3A3747") + ";background:" + (s === id ? "#FFF8EE" : "transparent") + ";color:" + (s === id ? "#16151C" : "#B5AFC2") + ";"
+    }));
+
+    const spot = this.state.spot;
+    const race = RACE.map((r, i) => ({
+      name: r.name, pct: r.pct + "%",
+      hover: () => this.setState({ spot: i }),
+      tile: tile(makerKey(r.name), 24), letter: tileLetter(makerKey(r.name)),
+      rowStyle: "display:flex;align-items:center;gap:10px;padding:5px 0;cursor:default;transition:opacity .35s ease,transform .25s ease;opacity:" + (i === spot ? 1 : .62) + ";",
+      fill: "display:block;height:100%;border-radius:999px;transition:width 1s cubic-bezier(.34,1.1,.64,1) " + (i * 0.07) + "s, background .35s ease;width:" + (on ? r.pct : 0) + "%;background:" + (i === spot ? "#FFC24B" : accent) + ";"
+    }));
+
+    const pillars = PILLARS.map((p, pi) => ({
+      name: p.name, plain: p.plain, icon: p.icon, footnote: p.footnote,
+      hover: () => this.setState({ pillar: pi }),
+      cardStyle: "background:#FFFFFF;border-radius:22px;padding:22px;box-shadow:0 12px 28px rgba(22,21,28,.06);transition:transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .22s ease;transform:" + (this.state.pillar === pi ? "translateY(-6px)" : "none") + ";animation:v3-rise .5s " + (0.08 * pi) + "s ease-out both;",
+      iconStyle: "display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:14px;font-size:20px;background:" + (this.state.pillar === pi ? "#FFC24B" : "#E6F2F0") + ";transition:background .25s ease;",
+      bars: p.values.map((v, i) => ({
+        style: "flex:1 1 0;border-radius:6px 6px 3px 3px;transition:height .7s cubic-bezier(.34,1.3,.64,1) " + (i * 0.05) + "s;height:" + (on ? Math.max(8, v * 0.54) : 4) + "px;background:" +
+          (p.statuses[i] === "missing" ? "#E8B7AB" : (p.statuses[i] === "inferred" ? "#F0C878" : (p.statuses[i] === "pending" ? "#D8D1C5" : accent))) + ";opacity:" + (p.statuses[i] === "third_party" ? .55 : 1) + ";"
+      }))
+    }));
+
+    const q = QUESTIONS[this.state.step - 1];
+    const picked = this.state.picked[this.state.step] || [];
+    const question = {
+      title: q.title, hint: q.hint, reassure: q.reassure, isText: !!q.isText, isChoice: !q.isText,
+      options: (q.options || []).map((o, i) => {
+        const sel = picked.indexOf(i) >= 0;
+        return {
+          label: o[0], effect: o[1], mark: sel ? "✓" : "",
+          pick: () => this.setState(st => {
+            const cur = (st.picked[st.step] || []).slice();
+            const at = cur.indexOf(i);
+            if (at >= 0) cur.splice(at, 1); else cur.push(i);
+            return { picked: Object.assign({}, st.picked, { [st.step]: cur }) };
+          }),
+          style: "display:flex;gap:14px;align-items:center;width:100%;padding:16px 18px;border-radius:16px;cursor:pointer;transition:border-color .18s ease,background .18s ease,transform .18s cubic-bezier(.34,1.56,.64,1);background:" +
+            (sel ? "#F0F7F6" : "#FDF9F2") + ";border:2px solid " + (sel ? accent : "#EFE7DA") + ";",
+          markStyle: "flex:0 0 26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#FFFFFF;transition:background .18s ease,transform .25s cubic-bezier(.34,1.56,.64,1);transform:scale(" + (sel ? 1 : .88) + ");background:" +
+            (sel ? accent : "#FFFFFF") + ";border:2px solid " + (sel ? accent : "#D8D1C5") + ";",
+          effectStyle: "font-size:14px;color:#565064;" + (o[1] ? "" : "display:none;")
+        };
+      })
+    };
+
+    const badgeStyle = kind => ({
+      warn: "font-size:13px;font-weight:700;color:#7A5410;background:#FCEFD4;border-radius:999px;padding:6px 14px;",
+      info: "font-size:13px;font-weight:700;color:#46414F;background:#F0EBE1;border-radius:999px;padding:6px 14px;",
+      pending: "font-size:13px;font-weight:700;color:#565064;background:#FFFFFF;border:1px dashed #C6BFB1;border-radius:999px;padding:5px 14px;"
+    }[kind]);
+
+    const priceStyle = tone => "font-size:13px;font-weight:800;border-radius:999px;padding:6px 14px;" + (
+      tone === "low" ? "color:#0F4F4B;background:#E6F2F0;" : (tone === "mid" ? "color:#46414F;background:#F0EBE1;" : "color:#565064;background:#F5F0E7;"));
+
+    const trustOf = t => t >= 75 ? ["Well evidenced", accent] : (t >= 50 ? ["Partly evidenced", AMBER] : ["Thin evidence", RED]);
+    const C = 2 * Math.PI * 52;
+
+    const ranked = MODELS.map((m, idx) => {
+      const expanded = this.state.expanded === m.id;
+      const tr = trustOf(m.trust);
+      const top = idx === 0;
+      return {
+        name: m.name, maker: m.maker, oneLiner: m.oneLiner, nextStep: m.nextStep,
+        tile: tile(makerKey(m.name), 44), letter: tileLetter(makerKey(m.name)),
+        scoreShown: this.state.counts[m.id] === undefined ? m.score : this.state.counts[m.id],
+        expanded, isTop: top, ribbon: top,
+        dialStyle: "stroke:" + (top ? accent : "#4F9A95") + ";stroke-dasharray:" + C + ";stroke-dashoffset:" + (this.state.dialsOn ? C * (1 - m.score / 100) : C) + ";transition:stroke-dashoffset 1.2s cubic-bezier(.34,1.05,.64,1) " + (idx * 0.07) + "s;",
+        priceBand: m.price, priceStyle: priceStyle(m.priceTone),
+        cardStyle: "background:#FFFFFF;border-radius:26px;padding:28px 30px;box-shadow:0 16px 34px rgba(22,21,28," + (top ? ".12" : ".06") + ");border:3px solid " + (top ? accent : "transparent") + ";animation:v3-rise .5s " + (idx * 0.07 + 0.1) + "s cubic-bezier(.34,1.1,.64,1) both;",
+        badges: m.badges.map(b => ({ text: b.text, style: badgeStyle(b.kind) })),
+        trustText: tr[0],
+        trustStyle: "display:inline-block;margin-top:10px;font-size:13px;font-weight:800;color:" + tr[1] + ";",
+        toggle: () => this.setState(st => ({ expanded: st.expanded === m.id ? null : m.id })),
+        toggleLabel: expanded ? "Hide the detail" : "See what they publish",
+        toggleStyle: "background:#FFFFFF;border:2px solid #EFE7DA;border-radius:999px;padding:12px 22px;font-size:15px;font-weight:700;color:#3F3A48;cursor:pointer;transition:border-color .18s ease,transform .18s ease;",
+        dims: m.dims.map((d, di) => ({
+          label: d.label, plain: d.plain, source: d.source,
+          value: d.status === "pending" ? "—" : d.value,
+          status: STATUS_WORD[d.status], statusStyle: STATUS_CHIP[d.status],
+          fill: fill(d.status === "pending" ? 100 : d.value, d.status, accent, on, di * 0.08),
+          openDrawer: this.openDrawer(this.drawerFor(m.name, d))
+        })),
+        mini: m.dims.map((d, di) => ({ short: SHORT[d.label], fill: fill(d.status === "pending" ? 100 : d.value, d.status, accent, on, di * 0.06) })),
+        why: (m.why || []).map(p => ({
+          before: p.before, pill: p.pill, after: p.after,
+          open: this.openDrawer(this.drawerFor(m.name, m.dims[0])),
+          pillStyle: "font:inherit;font-weight:700;color:#0F4F4B;background:#E6F2F0;border:none;border-radius:7px;padding:1px 7px;cursor:pointer;transition:background .18s ease;"
+        }))
+      };
+    });
+
+    return {
+      screens,
+      isLanding: s === "landing", isQuiz: s === "quiz", isLoading: s === "loading", isResults: s === "results", isMethod: s === "method",
+      startQuiz: this.go("quiz"), goQuiz: this.go("quiz"), goResults: () => this.runLoader(),
+      race, raceCaption: RACE[spot].note, pillars,
+      stats: [
+        { figure: "58%", text: "of small businesses already use AI in some form." },
+        { figure: "36%", text: "of the businesses that have not adopted AI say privacy and security is what stops them." },
+        { figure: "900", text: "pages of small print we read so you do not have to." }
+      ],
+      personas: [
+        { mark: "🥖", name: "Rosa's Bakery", blurb: "Replies to customer messages and writes marketing copy. The public can message it." },
+        { mark: "🩺", name: "Northside Physio", blurb: "Drafts letters from patient notes, so the data rules are strict." },
+        { mark: "🧾", name: "Kwan Accounting", blurb: "Bookkeeping and client documents. Payment and tax records go in." }
+      ].map((p, i) => ({
+        mark: p.mark, name: p.name, blurb: p.blurb, go: () => this.runLoader(),
+        markStyle: "display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:18px;font-size:26px;background:" + ["#FFE3A3", "#E6F2F0", "#F0EBE1"][i] + ";",
+        style: "text-align:left;background:#FFFFFF;border:none;border-radius:24px;padding:24px;cursor:pointer;display:flex;flex-direction:column;gap:10px;box-shadow:0 14px 28px rgba(22,21,28,.07);transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease;animation:v3-rise .5s " + (0.08 * i) + "s ease-out both;"
+      })),
+      question,
+      stepLabel: "Question " + this.state.step + " of 8",
+      progressStyle: "display:block;height:100%;border-radius:999px;background:" + accent + ";transition:width .5s cubic-bezier(.34,1.2,.64,1);width:" + (this.state.step / 8 * 100) + "%;",
+      nextLabel: this.state.step === 8 ? "Show my matches →" : "Next",
+      prevStep: () => this.setState(st => st.step > 1 ? { step: st.step - 1 } : { screen: "landing" }),
+      nextStep: () => { if (this.state.step < 8) this.setState(st => ({ step: st.step + 1 })); else this.runLoader(); },
+      loadBarStyle: "display:block;height:100%;border-radius:999px;transition:width .32s linear;width:" + (this.state.load / 5 * 100) + "%;background:linear-gradient(90deg," + accent + ",#FFC24B," + accent + ");background-size:200% 100%;animation:v3-sweep 1.3s linear infinite;",
+      loadLines: [["Anthropic, 251 pages", "anthropic"], ["OpenAI, 184 pages", "openai"], ["Google, 96 pages", "google"], ["Meta, 71 pages", "meta"], ["Matching against your answers", null]].map(([text, key], i) => ({
+        text, tick: i < this.state.load ? "✓" : "",
+        tile: key ? tile(key, 26) : "display:none;", letter: key ? tileLetter(key) : "",
+        style: "display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 16px;border-radius:14px;font-size:15px;transition:background .3s ease,color .3s ease;background:" +
+          (i < this.state.load ? "#232130" : "transparent") + ";color:" + (i < this.state.load ? "#FFF8EE" : "#9A93AC") + ";font-weight:" + (i < this.state.load ? "700" : "400") + ";" + (i === this.state.load ? "animation:v3-blink 1s ease-in-out infinite;" : ""),
+        tickStyle: "color:#FFC24B;font-weight:800;"
+      })),
+      weights: [["Gets things right", 25], ["Hard to trick", 28], ["Keeps data private", 17], ["Good at the work", 17], ["Treats people fairly", 13]].map((w, i) => ({
+        label: w[0], pct: w[1] + "%",
+        fill: "display:block;height:100%;border-radius:999px;background:" + (i === 1 ? "#FFC24B" : accent) + ";transition:width .9s cubic-bezier(.34,1.1,.64,1) " + (i * 0.07) + "s;width:" + (on ? w[1] / 28 * 100 : 0) + "%;"
+      })),
+      showNumbers,
+      toggleNumbers: () => this.setState(st => ({ showNumbers: !st.showNumbers })),
+      numbersToggleLabel: showNumbers ? "Hide the technical numbers" : "Show the technical numbers",
+      numbersToggleStyle: "border-radius:999px;padding:10px 20px;font-size:15px;font-weight:700;cursor:pointer;transition:background .18s ease;border:2px solid " +
+        (showNumbers ? accent : "#3A3747") + ";background:" + (showNumbers ? accent : "transparent") + ";color:#FFF8EE;",
+      ranked,
+      demoted: [{
+        name: "Gemini 3.5 Flash-Lite", badge: "nothing published about being tricked", badgeStyle: badgeStyle("warn"),
+        tile: tile("google", 34), letter: "G",
+        reason: "It is the cheapest model in the set and would otherwise sit mid table. But the public can message your assistant, and Google publishes nothing at all about whether this model can be talked into going off script. We will not rank it above models that show their work.",
+        openDrawer: this.openDrawer({
+          title: "Gemini 3.5 Flash-Lite · Hard to trick",
+          before: "We searched the whole document for ", quote: "jailbreak, prompt injection, adversarial, red team",
+          after: " and found no test results for any of them.",
+          source: "Gemini 3.5 Flash-Lite model card (PDF), 14 pages",
+          locator: "no matching passage · fetched 12 Sept 2026",
+          note: "A blank is not proof the model is unsafe. It means nobody has told you either way, and we will not guess on your behalf."
+        })
+      }],
+      refine: () => this.setState(st => ({ refined: !st.refined })),
+      refineLabel: this.state.refined ? "Writing…" : "Explain it for my business",
+      refineStyle: "font-size:13px;font-weight:700;border-radius:999px;padding:6px 13px;cursor:pointer;border:2px solid " + accent + ";color:" + accent + ";background:#FFFFFF;" + (this.state.refined ? "animation:v3-blink 1.2s ease-in-out infinite;" : ""),
+      chips: [
+        { text: "Does it train on my customers' messages?" },
+        { text: "What happens if someone tries to trick it?" },
+        { text: "What does it get wrong?" }
+      ],
+      steps: [
+        { n: "1", title: "You tell us how you will use it", text: "Seven questions about your business, your data, and who can reach the AI. Each answer changes how much weight we give to the five things we compare." },
+        { n: "2", title: "We read what the makers publish", text: "Every AI company publishes a long document about its model. We index all eight and pull out what they say about accuracy, privacy, bias and security." },
+        { n: "3", title: "We score what is there, and what is not", text: "A published test result counts fully. A vague description counts for half. Silence is scored low and lowers our confidence in the total, so quiet makers cannot hide behind a good headline." },
+        { n: "4", title: "You see the quote", text: "Every claim on every card links to the sentence it came from, with the page number and a link to the original." }
+      ],
+      stacks: STACKS.map(([name, pub, desc, sil], i) => ({
+        name, pct: pub + "%", tile: tile(makerKey(name), 26), letter: tileLetter(makerKey(name)),
+        segs: [[pub, accent], [desc, "#F0C878"], [sil, "#E8B7AB"]].map(([v, c], j) => ({
+          style: "display:block;height:100%;transition:width .9s cubic-bezier(.34,1.1,.64,1) " + (i * 0.06 + j * 0.05) + "s;width:" + (on ? v : 0) + "%;background:" + c + ";"
+        }))
+      })),
+      statuses: [
+        { name: "they publish it", text: "A tested number, printed in their own document. Counts in full.", chipStyle: STATUS_CHIP.reported, sample: fill(80, "reported", accent, true) },
+        { name: "described, not measured", text: "They describe the behaviour but publish no number. Capped, and counted at half.", chipStyle: STATUS_CHIP.inferred, sample: fill(55, "inferred", accent, true) },
+        { name: "older version", text: "Measured by someone else, or by the maker on a previous version of the model.", chipStyle: STATUS_CHIP.third_party, sample: fill(70, "third_party", accent, true) },
+        { name: "they do not say", text: "Nothing published. Scored low and counted as no evidence, so a gap costs twice.", chipStyle: STATUS_CHIP.missing, sample: fill(35, "missing", accent, true) },
+        { name: "we are still checking", text: "Not verified yet. Left out of the average, and the model cannot come first.", chipStyle: STATUS_CHIP.pending, sample: fill(100, "pending", accent, true) }
+      ],
+      sources: [
+        { title: "Claude Fable 5.1 and Mythos 5.1 system card", meta: "PDF · 212 pages · published Aug 2026 · fetched 12 Sept 2026", tile: tile("anthropic", 28), letter: "A" },
+        { title: "GPT-6 Astra system card", meta: "PDF · published Jul 2026 · fetched 12 Sept 2026", tile: tile("openai", 28), letter: "O" },
+        { title: "Gemini 3.8 Flash model card", meta: "PDF · published Aug 2026 · fetched 12 Sept 2026", tile: tile("google", 28), letter: "G" },
+        { title: "Muse Spark safety report (v1.0) and v1.1 evaluation report", meta: "web pages · fetched 12 Sept 2026", tile: tile("meta", 28), letter: "M" },
+        { title: "Data retention and training policies from all four makers", meta: "6 pages · fetched 12 Sept 2026", tile: "display:none;", letter: "" }
+      ],
+      drawerOpen: !!this.state.drawer,
+      drawer: this.state.drawer || {},
+      closeDrawer: () => this.setState({ drawer: null })
+    };
+  }
+}
+
+</script>
+</body>
+</html>
